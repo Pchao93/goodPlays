@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class NavBar extends React.Component {
 
@@ -7,6 +8,18 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const display = this.props.currentUser ? (
+    <div>
+      <p>Hello, {this.props.currentUser.username}</p>
+      <button onClick={this.props.logout}>Logout</button>
+    </div>
+  ) : (
+    <div>
+      <Link className="btn" to="/signup">Sign Up</Link>
+      <Link className="btn" to="/login">Log In</Link>
+    </div>
+  );
+
     return (
       <nav>
         <ul className="NavButtonList">
@@ -18,10 +31,7 @@ class NavBar extends React.Component {
           </li>
         </ul>
         <ul className="SessionControls">
-          <button onClick={this.props.logout} className="session-button">
-            log out
-          </button>
-          
+          {display}
         </ul>
       </nav>
     );
