@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
-
+gem 'font-awesome-sass', '~> 4.7.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

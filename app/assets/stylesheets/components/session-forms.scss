@@ -1,0 +1,87 @@
+.session-form-background {
+  background: rgba(0,0,0,0.3);
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  position: absolute;
+}
+
+.session-form-modal {
+  z-index: 6;
+  background: #fff;
+  margin: 20px auto;
+  width: 380px;
+  padding: 40px 20px;
+  
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.tabs li {
+  margin-right: 20px;
+  font-size: 14px;
+  padding-bottom: 10px;
+  margin-bottom: -1px;
+}
+
+.tabs li a {
+  color: $button-purple;
+}
+
+.tabs li:hover {
+  border-bottom: 1px solid $button-purple;
+  color: $purple-main;
+
+}
+
+.tabs li.target {
+  border-bottom: 1px solid $button-purple;
+
+}
+
+.session-form-modal label {
+  color: #6e6779;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+.tabs li.target a {
+  color: #444;
+}
+
+.session-form-modal input {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 30px;
+  margin: 0 auto;
+  padding: 5px;
+  box-sizing: border-box;
+  color: #6e6779;
+  margin-bottom: 10px;
+}
+
+.session-form-modal input:focus {
+  border: 1px solid #bbb;
+  box-shadow: inset 0 0 0 0.5px #bbb;
+
+}
+
+.session-form-modal .btn {
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 10px;
+}
+
+.session-form-modal .submit-container {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+
+}

@@ -1,8 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    console.log("constructor", this.props);
     this.state = {
       username: "",
       password: '',
@@ -19,30 +21,46 @@ class Login extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log("submission", this.props.sourceurl);
     e.preventDefault();
     this.props.login(this.state)
-      .then( () => this.props.history.push('/'));
+      .then( () => this.props.history.push(this.props.sourceurl));
   }
 
   render(){
-    console.log("rendering");
     return (
-      <div className='session-form'>
-        <h2>Log In!</h2>
-        <form>
-          <label>Username:
+      <div className='session-form-background'>
+        <form className='session-form-modal'>
+          <ul className='tabs'>
+            <li className='target'>
+              <Link sourceurl={this.props.sourceurl} to='/login'>
+                Log In
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/signup'>
+                Sign Up
+              </Link>
+            </li>
+
+          </ul>
+
+          <label>Username: </label>
             <input
               type="text"
               value={this.state.username}
               onChange={this.handleInput('username')}/>
-          </label>
-          <label>password:
+
+          <label>Password: </label>
             <input
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')}/>
-          </label>
-          <button onClick={this.handleSubmit}>Submit</button>
+
+          <div className="submit-container">
+            <button className="btn" onClick={this.handleSubmit}>Log In</button>
+          </div>
         </form>
       </div>
     );

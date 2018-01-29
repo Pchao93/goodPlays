@@ -1,0 +1,171 @@
+nav {
+  background: $purple-main;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-nav {
+  display: flex;
+  align-items: center;
+}
+.left-nav span:first-child {
+  margin-left: 10px;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 300;
+}
+.left-nav span:last-child {
+  // margin-left: 10px;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 350;
+}
+
+.nav-button-list {
+  display: flex;
+  width: 400px;
+}
+
+.nav-button-list li {
+  font-size: 14px;
+  color: #b8b5c0;
+  margin-left: 30px;
+  // color: #19171c;
+}
+
+.search-container {
+  background: #fff;
+  height: 30px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 6px 0 $border-purple, inset 0 0 0 1px $border-purple;
+  box-sizing: border-box;
+}
+
+.search {
+  line-height: 1;
+  margin-top: 1px;
+  z-index: 0;
+  color: #aaa;
+}
+
+.search-container i{
+  font-size: 14px;
+  color: #777;
+
+}
+
+.icon-div {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  position: relative
+
+}
+
+.search-container input {
+  width: 350px;
+  margin-left: -38px;
+  height: 28px;
+  z-index: 1;
+}
+
+.search-container input.white {
+  background: #fff;
+}
+
+.session-controls div {
+  display: flex;
+  align-items: center;
+
+}
+
+.session-controls div {
+
+  width: 240px;
+}
+
+.session-controls {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  // justify-content: flex-end;
+}
+
+
+
+.user-info {
+  width: 220px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  // box-sizing: border-box;
+  // justify-content: flex-end;
+}
+
+.user-info:focus {
+  border: 1px solid $purple-main;
+}
+
+.user-info i {
+  color: #b8b5c0;
+  font-size: 20px;
+}
+
+.user-info img {
+  width: 30px;
+  height: 30px;
+}
+
+
+.user-info span {
+  font-size: 14px;
+  position: relative;
+  color: $background-gray;
+  padding: 10px;
+}
+
+.user-info button span {
+  line-height: 1;
+  color: #b8b5c0;
+}
+
+.user-info button{
+  // margin: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 20px;
+  width: 100%;
+  // right: 0px;
+  // line-height: 1;
+
+}
+
+.user-info ul {
+  top: 50px;
+  position: absolute;
+  height: 50px;
+
+}
+
+.user-info li{
+  display: flex;
+  align-items: center;
+  line-height: 1;
+
+  width: 240px;
+  padding: 10px 0;
+  background: $background-dark-purple;
+}
+
+.user-info button:hover {
+  background: $purple-main;
+}
