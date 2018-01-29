@@ -1,10 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import {AuthRoute, ProtectedRoute} from '../../utils/route_utils';
+import SignupContainer from '../session/signup_container';
+import LoginContainer from '../session/login_container';
 class NavBar extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props.location.pathname);
     this.state = {
       userDropdownClass: "user-dropdown hidden",
       searchQuery: "",
@@ -63,8 +66,8 @@ class NavBar extends React.Component {
     </div>
   ) : (
     <div className="session-controls">
-      <Link className="btn" to="/login">Log in</Link>
-      <Link className="btn" to="/signup">Sign up</Link>
+      <Link className="btn" to={`${this.props.location.pathname}/login/`}>Log in</Link>
+      <Link className="btn" to={`${this.props.location.pathname}/signup/`}>Sign up</Link>
 
     </div>
   );
@@ -88,7 +91,8 @@ class NavBar extends React.Component {
         </ul>
 
           {display}
-
+        <AuthRoute path={`*/login`} component={LoginContainer} />
+        <AuthRoute path={`*/signup`} component={SignupContainer} />
       </nav>
     );
   }

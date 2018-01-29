@@ -23,7 +23,7 @@ class Signup extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createNewUser(this.state)
-      .then( () => this.props.history.push(this.props.sourceurl));
+      .then( () => this.props.history.push(this.props.match.params[0]));
   }
 
   render(){
@@ -32,13 +32,13 @@ class Signup extends React.Component {
         <form className='session-form-modal'>
           <ul className='tabs'>
             <li>
-              <Link to='/login'>
+              <Link to={`${this.props.match.params[0]}/login`}>
                 Log In
               </Link>
             </li>
 
             <li className='target'>
-              <Link sourceurl={this.props.sourceurl} to='/signup'>
+              <Link to={`${this.props.match.params[0]}/signup`}>
                 Sign Up
               </Link>
             </li>
@@ -66,6 +66,11 @@ class Signup extends React.Component {
             <button className="btn" onClick={this.handleSubmit}>Sign Up</button>
           </div>
         </form>
+        <div className="close-form-button">
+          <Link to={this.props.match.params[0]}>
+            x
+          </Link>
+        </div>
       </div>
     );
   }

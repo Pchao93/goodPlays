@@ -24,7 +24,7 @@ class Login extends React.Component {
     console.log("submission", this.props.sourceurl);
     e.preventDefault();
     this.props.login(this.state)
-      .then( () => this.props.history.push(this.props.sourceurl));
+      .then( () => this.props.history.push(this.props.match.params[0]));
   }
 
   render(){
@@ -33,13 +33,13 @@ class Login extends React.Component {
         <form className='session-form-modal'>
           <ul className='tabs'>
             <li className='target'>
-              <Link sourceurl={this.props.sourceurl} to='/login'>
+              <Link to={`${this.props.match.params[0]}/login`}>
                 Log In
               </Link>
             </li>
 
             <li>
-              <Link to='/signup'>
+              <Link to={`${this.props.match.params[0]}/signup`}>
                 Sign Up
               </Link>
             </li>
@@ -62,6 +62,11 @@ class Login extends React.Component {
             <button className="btn" onClick={this.handleSubmit}>Log In</button>
           </div>
         </form>
+        <div className="close-form-button">
+          <Link to={this.props.match.params[0]}>
+            x
+          </Link>
+        </div>
       </div>
     );
   }
