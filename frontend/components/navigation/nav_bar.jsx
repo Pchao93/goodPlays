@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../../utils/route_utils';
-import SignupContainer from '../session/signup_container';
-import LoginContainer from '../session/login_container';
+import SessionContainer from '../session/session_container';
+
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -91,8 +91,8 @@ class NavBar extends React.Component {
         </ul>
 
           {display}
-        <AuthRoute path={`*/login`} component={LoginContainer} />
-        <AuthRoute path={`*/signup`} component={SignupContainer} />
+        <AuthRoute path={`*/login`} component={SessionContainer} />
+        <AuthRoute path={`*/signup`} component={SessionContainer} />
       </nav>
     );
   }

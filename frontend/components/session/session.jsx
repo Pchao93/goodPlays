@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-class Signup extends React.Component {
+class Session extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      email: '',
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeForm = this.closeForm.bind(this);
+
   }
 
   handleInput(type) {
@@ -23,7 +23,7 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.state)
+    this.props.action(this.state)
       .then( () => this.props.history.push(this.props.match.params[0]));
   }
 
@@ -36,22 +36,22 @@ class Signup extends React.Component {
   render(){
     return (
       <div onClick={this.closeForm} className='session-form-background'>
-
         <form className='session-form-modal'>
           <ul className='tabs'>
-            <li>
+            <li className={this.props.type === 'signup' ? '' : 'target'}>
               <Link to={`${this.props.match.params[0]}/login`}>
                 Log In
               </Link>
             </li>
 
-            <li className='target'>
+            <li className={this.props.type === 'signup' ? 'target' : ''}>
               <Link to={`${this.props.match.params[0]}/signup`}>
                 Sign Up
               </Link>
             </li>
 
           </ul>
+
           <label>Username: </label>
             <input
               type="text"
@@ -63,15 +63,15 @@ class Signup extends React.Component {
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')}/>
-
-            <label>Email: </label>
+            { this.props.type === 'signup' && <label>Email: </label>}
+            { this.props.type === 'signup' &&
             <input
               type="text"
               value={this.state.email}
-              onChange={this.handleInput('email')}/>
+              onChange={this.handleInput('email')}/>}
 
           <div className="submit-container">
-            <button className="btn" onClick={this.handleSubmit}>Sign Up</button>
+            <button className="btn" onClick={this.handleSubmit}>{this.props.type === 'signup' ? 'Sign Up' : 'Log In'}</button>
           </div>
         </form>
         <div className="close-form-button">
@@ -84,4 +84,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default Session;
