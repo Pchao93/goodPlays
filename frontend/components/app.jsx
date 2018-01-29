@@ -11,6 +11,7 @@ export default () => (
 
 
     <NavBarContainer />
+    Hello Heroku!
 
 
   </div>
