@@ -10,6 +10,7 @@ class Signup extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeForm = this.closeForm.bind(this);
   }
 
   handleInput(type) {
@@ -26,9 +27,16 @@ class Signup extends React.Component {
       .then( () => this.props.history.push(this.props.match.params[0]));
   }
 
+  closeForm(e) {
+    if (e.currentTarget === e.target) {
+      this.props.history.push(this.props.match.params[0]);
+    }
+  }
+
   render(){
     return (
-      <div className='session-form-background'>
+      <div onClick={this.closeForm} className='session-form-background'>
+
         <form className='session-form-modal'>
           <ul className='tabs'>
             <li>
