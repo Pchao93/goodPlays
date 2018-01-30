@@ -1,10 +1,12 @@
 .side-bar {
-  width: 220px;
+  width: 200px;
   top: 50px;
+  left: 0px;
+  bottom: 0px;
   // height: calc(100vh);
   height: calc(100% - 50px);
   background: #19171c;
-
+  position: fixed;
   padding: 10px;
   // padding-top: 60px;
 }

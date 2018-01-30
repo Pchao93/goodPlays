@@ -28,6 +28,7 @@ class GameShow extends React.Component {
     }
     return  game === undefined ? null : (
       <div className='game-show-container'>
+        <GameInfoContainer game={game} />
         <div className='game-info-container'>
           <div className="game-list-item">
             <img className='game-cover-art' src={game.image_url}></img>

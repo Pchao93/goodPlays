@@ -6,6 +6,13 @@ html {
 	height: 100%;
 }
 
+//disable scrollbounce fix from stack overflow:
+// https://stackoverflow.com/questions/21209223/remove-bounce-on-scroll-in-browser-issue-with-positionfixed-div
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
 	width: 100%;
 	margin: 0 auto;
@@ -26,7 +33,14 @@ body {
 }
 
 #root {
+	position: absolute;
 	height: 100%;
+	top: 50px;
+  bottom: 0;
+  left: 220px;
+  right: 0;
+  overflow: auto;
+	overflow: auto;
 }
 
 .app-container {

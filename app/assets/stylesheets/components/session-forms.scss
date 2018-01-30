@@ -2,14 +2,15 @@
   background: rgba(23,20,31,.6);
   z-index: 5;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0px;
   bottom: 0px;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
+
 }
 
 .session-form-modal {
