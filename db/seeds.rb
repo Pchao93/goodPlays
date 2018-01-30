@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+blizzard = Developer.create(name: "Blizzard Entertainment")
+p overwatch = Game.create!(title: "Overwatch", release_date: "2016-05-23", description: "Overwatch is a highly stylized team-based shooter set on earth in the near future. Every match is an intense multiplayer showdown pitting a diverse cast of soldiers, mercenaries, scientists, adventurers, and oddities against each other in an epic, globe-spanning conflict.", image_url: "https://static-cdn.jtvnw.net/ttv-boxart/Overwatch-285x380.jpg", amazon_url: "https://www.amazon.com/Overwatch-Game-Year-PlayStation-4/dp/B0733HQQQP/", developer_id: blizzard.id)
+
+pc = Platform.create(name: 'Personal Computer', abreviation: 'PC')
+ps4 = Platform.create(name: 'PlayStation 4', abreviation: 'PS4')
+xb1 = Platform.create(name: 'XBOX ONE', abreviation: 'XB1')
+
+PlatformGame.create(game_id: overwatch.id, platform_id: pc.id)
+PlatformGame.create(game_id: overwatch.id, platform_id: ps4.id)
+PlatformGame.create(game_id: overwatch.id, platform_id: xb1.id)
+
+# 'Blizzard Entertainment	Blizzard Entertainment	PC PlayStation 4 Xbox One	General-Action-Shooter First-Person Tactical	T'

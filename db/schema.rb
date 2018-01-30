@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127045055) do
+ActiveRecord::Schema.define(version: 20180130012639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "developers", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_developers_on_name", unique: true
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "title", null: false
+    t.date "release_date", null: false
+    t.integer "developer_id", null: false
+    t.string "image_url", null: false
+    t.text "description", null: false
+    t.string "amazon_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_games_on_developer_id"
+    t.index ["title"], name: "index_games_on_title", unique: true
+  end
+
+  create_table "platform_games", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "platform_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id", "platform_id"], name: "index_platform_games_on_game_id_and_platform_id"
+    t.index ["game_id"], name: "index_platform_games_on_game_id"
+    t.index ["platform_id"], name: "index_platform_games_on_platform_id"
+  end
+
+  create_table "platforms", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "abreviation", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false

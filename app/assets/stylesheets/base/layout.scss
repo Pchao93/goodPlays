@@ -25,6 +25,16 @@ body {
   margin-right: 10px;
 }
 
+#root {
+	height: 100%;
+}
+
+.app-container {
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+}
+
 // button {
 // 	background-color: $light-blue;
 // 	border-color: $blue;

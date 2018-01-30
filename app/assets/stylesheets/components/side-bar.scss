@@ -1,0 +1,17 @@
+.side-bar {
+  width: 220px;
+  top: 50px;
+  // height: calc(100vh);
+  height: calc(100% - 50px);
+  background: #19171c;
+
+  padding: 10px;
+  // padding-top: 60px;
+}
+
+.side-bar-collections {
+  color: #b8b5c0;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #2c2541;
+}
