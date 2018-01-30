@@ -2,7 +2,7 @@
   width: calc(100% - 300px);
   // display: flex;
   padding: 30px;
-  height: 10000px;
+  // height: 10000px;
 
 }
 
@@ -62,10 +62,10 @@
 .arrow-down {
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
 
-  border-top: 15px solid #fff;
+  border-top: 12px solid #fff;
 }
 
 
