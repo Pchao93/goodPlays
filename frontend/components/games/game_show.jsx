@@ -93,14 +93,27 @@ class GameShow extends React.Component {
                     5.0
                   </li>
                 </ul>
-              <ul className="platform-badges">
-                <label className='game-label'>Platforms:</label>
-                {game && platforms}
+                <div className="stats">
+                  <div className='stats-top-row'>
+                    <ul className="platform-badges">
+                      <label className='game-label'>Platforms:</label>
+                      {game && platforms}
+                    </ul>
 
-              </ul>
-
-              <span className='release_date'><span className='game-label'>
-                Released on:</span> May 23, 2015</span>
+                    <span className='release_date'><span className='game-label'>
+                      Released on:</span> May 23, 2015</span>
+                  </div>
+                  <div className='stats-bottom-row'>
+                    <ul className="genre-list">
+                      <label className='game-label'>Genres: </label>
+                      <span className="placeholder-text">Placeholder text</span>
+                    </ul>
+                    <span className='release_date'>
+                      <span className='game-label'>Rating: </span>
+                      <span className="placeholder-text">Placeholder text</span>
+                    </span>
+                  </div>
+                </div>
 
             </div>
 
