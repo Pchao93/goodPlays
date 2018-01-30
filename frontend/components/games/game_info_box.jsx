@@ -19,7 +19,9 @@ const GameInfoBox = ({ game, platforms }) => (
         <img src="https://images-na.ssl-images-amazon.com/images/G/01/SellerCentral/legal/amazon-logo_transparent.png">
         </img>
       </a>
+
       
+
     </div>
   </div>
 );

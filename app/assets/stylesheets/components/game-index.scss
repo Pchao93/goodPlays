@@ -1,0 +1,55 @@
+.game-index-container {
+  padding: 30px;
+  width: 100%;
+
+}
+
+.game-index-header {
+  font-size: 28px;
+  border-bottom: 1px solid $button-purple;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  color: #19171c;
+}
+
+.game-show-link:hover {
+  .game-title-container {
+    color: $button-purple;
+
+  }
+}
+
+.game-index-container .game-list-item {
+  width: 240px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.game-index-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 100px;
+
+}
+
+
+.game-title-container {
+  line-height: 1;
+  padding-top: 5px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #19171c;
+}
+
+.game-index-list .game-index-item .review_button {
+  display: flex;
+  background: black;
+}
+
+.rating-text {
+  // background: black;
+}
+.game-index-list .game-index-item .review_button .rating-stars {
+  display: flex;
+  background: black;
+}

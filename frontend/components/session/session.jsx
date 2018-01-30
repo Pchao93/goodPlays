@@ -34,6 +34,13 @@ class Session extends React.Component {
   }
 
   render(){
+
+    let errorsArray = this.props.errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ));
+
+    let errorsBool = (this.props.errors.length > 0);
+
     return (
       <div onClick={this.closeForm} className='session-form-background'>
         <form className='session-form-modal'>
@@ -51,7 +58,9 @@ class Session extends React.Component {
             </li>
 
           </ul>
-
+          {errorsBool && <ul className='error-container'>
+            {errorsArray}
+          </ul> }
           <label>Username: </label>
             <input
               type="text"

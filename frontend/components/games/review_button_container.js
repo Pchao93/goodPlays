@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import CollectionButton from './collection_button';
+import ReviewButton from './review_button';
 
 const mapStateToProps = (state, ownProps) => ({
   game: ownProps.game,
 });
 
-export default connect(mapStateToProps, null)(CollectionButton);
+export default connect(mapStateToProps, null)(ReviewButton);

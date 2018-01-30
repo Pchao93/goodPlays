@@ -1,31 +1,14 @@
 import React from 'react';
 import CollectionButtonContainer from './collection_button_container';
-
+import { Link } from 'react-router-dom';
+import ReviewButtonContainer from './review_button_container';
 
 const GameControls = ({game}) => (
   <div className="game-list-item">
-    <img className='game-cover-art' src={game.image_url}></img>
+    <Link to={`/games/${game.id}`}><img className='game-cover-art' src={game.image_url}></img></Link>
     <CollectionButtonContainer game={game}/>
-    <div className='rating-button'>
-      <span className='rating-text'>Rate this game</span>
-      <ul className='rating-stars'>
-        <li className='star'>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </li>
-        <li className='star'>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </li>
-        <li className='star'>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </li>
-        <li className='star'>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </li>
-        <li className='star'>
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </li>
-      </ul>
-    </div>
+    <ReviewButtonContainer game={game}/>
+
   </div>
 );
 

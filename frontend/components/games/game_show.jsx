@@ -22,9 +22,10 @@ class GameShow extends React.Component {
   render() {
     let { game } = this.props;
     let platforms;
+
     if (game){
-      platforms = this.props.game.platforms.map((platform) => (
-        <li className='platform-badge' key={platform.id}>{platform.abreviation}</li>
+      platforms = game.platforms.map(platform => (
+        <li className='platform-badge' key={platform}>{platform}</li>
       ));
     }
     return  game === undefined ? null : (

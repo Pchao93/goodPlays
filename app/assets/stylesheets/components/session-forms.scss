@@ -1,6 +1,6 @@
 .session-form-background {
   background: rgba(23,20,31,.6);
-  z-index: 5;
+  z-index: 100;
   width: 100%;
   height: 100vh;
   top: 0px;
@@ -14,7 +14,7 @@
 }
 
 .session-form-modal {
-  z-index: 6;
+  z-index: 101;
   background: #fff;
   // margin: 20px auto;
   width: 380px;
@@ -101,10 +101,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: arial;
 }
 
 .session-form-background .close-form-button a:hover {
   background: rgba(75,54,124,0.4);
 
   z-index: 100;
+}
+
+.error-container {
+    background: #ffe6e6;
+    color: #c86e6e;
+    padding: 10px;
+    margin: 0 0 20px;
+    border: 1px solid #f5c8c8;
+}
+.error-container li {
+  color: #c86e6e;
+  margin: 5px 0;
 }

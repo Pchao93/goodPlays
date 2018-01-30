@@ -3,11 +3,15 @@ import { login, createNewUser } from '../../actions/session';
 import Session from './session';
 
 const mapStateToProps = (state, ownProps) => {
+  let errors = state.errors;
   let type = 'signup';
   if (ownProps.match.path === '*/login') {
     type = 'login';
   }
-  return {type};
+  return ({
+    type,
+    errors
+  });
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

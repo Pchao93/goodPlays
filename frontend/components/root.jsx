@@ -6,7 +6,7 @@ import App from './app';
 export default ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-      <App />
+      <App currentUser={store.getState().session.currentUser} />
     </HashRouter>
   </Provider>
 );
