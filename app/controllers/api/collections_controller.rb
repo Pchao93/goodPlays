@@ -1,7 +1,7 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    @collection = Collection.find_by(id: params[:id])
+    @collection = Collection.include(:games).find_by(id: params[:id])
     if @collection
       render :show
     else
@@ -10,7 +10,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   def index
-    @collections = current_user.collections
+    @collections = current_user.collections.include(:games)
   end
 
   def create

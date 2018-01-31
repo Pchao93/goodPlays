@@ -10,6 +10,11 @@
 
 require 'csv'
 
+user = User.new
+user.username = "patrick"
+user.password = "password"
+user.save
+
 PLATFORMS = {
   'PlayStation 4' => 'PS4',
   'Xbox One' => 'XB1',
@@ -129,7 +134,15 @@ csv.each_with_index do |row, idx|
 
 end
 
+want_to_read = Collection.create(name: "Want to Play", user_id: user.id)
+have_played = Collection.create(name: "Have Played", user_id: user.id)
+playing = Collection.create(name: "Playing", user_id: user.id)
+my_favorites = Collection.create(name: "My Favorites", user_id: user.id)
 
+CollectionGame.create(game_id: overwatch.id, collection_id: 1)
+CollectionGame.create(game_id: overwatch.id, collection_id: 2)
+CollectionGame.create(game_id: overwatch.id, collection_id: 3)
+CollectionGame.create(game_id: overwatch.id, collection_id: 4)
 
 
 
