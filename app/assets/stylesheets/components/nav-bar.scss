@@ -14,17 +14,22 @@ nav {
   display: flex;
   align-items: center;
 }
-.left-nav span:first-child {
-  margin-left: 10px;
+.logo span:first-child {
+
   font-size: 24px;
   color: #fff;
   font-weight: 300;
 }
-.left-nav span:last-child {
+.logo span:last-child {
   // margin-left: 10px;
   font-size: 24px;
   color: #fff;
   font-weight: 350;
+}
+
+a.logo {
+  background: $purple-main;
+  margin-left: 10px;
 }
 
 .nav-button-list {
@@ -150,13 +155,35 @@ nav {
   width: 100%;
   // right: 0px;
   // line-height: 1;
+  // transition: 4s;
+
 
 }
 
-.user-info ul {
+
+
+.user-info .user-dropdown {
   top: 50px;
   position: absolute;
+  // height: 1000px;
+  background: $background-dark-purple;
+  transition: height .2s ease-out;
   height: 50px;
+
+}
+// .user-dropdown.active {
+//   transition: height 2s ease-out;
+//   height: 50px;
+//
+// }
+.user-dropdown.hidden {
+  top: 50px;
+	height: 0px;
+	overflow: hidden;
+  // transition: height 2s ease-out;
+  li {
+    height: 0px;
+  }
 
 }
 
@@ -164,12 +191,13 @@ nav {
   display: flex;
   align-items: center;
   line-height: 1;
-
+  height: 50px;
   width: 240px;
-  padding: 10px 0;
-  background: $background-dark-purple;
+  // padding: 10px 0;
+  transition: height .2s ease-out;
 }
 
 .user-info button:hover {
   background: $purple-main;
+  cursor: pointer;
 }

@@ -19,7 +19,7 @@ const GameStats = ({game, platforms}) => (
       </ul>
       <span className='release_date'>
         <span className='game-label'>Rating: </span>
-        <span className="placeholder-text">Placeholder text</span>
+        <span className="placeholder-text">{game.rating}</span>
       </span>
     </div>
   </div>

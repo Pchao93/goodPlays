@@ -47,6 +47,10 @@
 
 }
 
+.default-collection-button:hover {
+  background: $border-purple;
+}
+
 .dropdown-button {
   border-left: 1px solid black;
   width: 20%;
@@ -56,6 +60,9 @@
   display: flex;
   justify-content: center;
 
+}
+.dropdown-button:hover {
+  background: $border-purple;
 }
 
 //CSS triangle taken from CSS Tricks

@@ -3,9 +3,12 @@ class Game < ApplicationRecord
   validates :title, uniqueness: true
 
   belongs_to :developer
+
+
   has_many :platform_games
   has_many :platforms,
     through: :platform_games
+
 
   has_many :collection_games
 
@@ -16,5 +19,5 @@ class Game < ApplicationRecord
     through: :collections,
     source: :user
 
-    
+
 end

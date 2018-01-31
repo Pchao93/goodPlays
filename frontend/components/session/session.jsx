@@ -49,10 +49,16 @@ class Session extends React.Component {
     return (
       <div onClick={e => this.closeForm(e)} className='session-form-background'>
         <form className='session-form-modal'>
+          <div className='logo-container'>
+            <div className='logo'>
+              <span>good</span><span>Plays</span>
+            </div>
+          </div>
+
           <ul className='tabs'>
             <li
               onClick={ this.props.type === 'signup' ?
-                () => this.props.clearSessionErrors() : ''}
+                () => this.props.clearSessionErrors() : () => {}}
               className={this.props.type === 'signup' ? '' : 'target'}>
               <Link to={`${this.props.match.params[0]}/login`}>
                 Log In
@@ -60,7 +66,7 @@ class Session extends React.Component {
             </li>
 
             <li
-              onClick={ this.props.type === 'signup' ? '' :
+              onClick={ this.props.type === 'signup' ? () => {} :
                 () => this.props.clearSessionErrors()}
               className={this.props.type === 'signup' ? 'target' : ''}>
               <Link to={`${this.props.match.params[0]}/signup`}>
@@ -76,7 +82,9 @@ class Session extends React.Component {
             <input
               type="text"
               value={this.state.username}
-              onChange={this.handleInput('username')}/>
+              onChange={this.handleInput('username')}
+              autoFocus='true'
+              />
 
           <label>Password: </label>
             <input

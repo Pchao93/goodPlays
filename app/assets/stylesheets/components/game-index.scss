@@ -1,6 +1,8 @@
 .game-index-container {
   padding: 30px;
   width: 100%;
+  // background: $background-gray;
+  // background: white;
 
 }
 
@@ -14,7 +16,7 @@
 
 .game-show-link:hover {
   .game-title-container {
-    color: $button-purple;
+    color: $border-purple;
 
   }
 }
@@ -22,7 +24,10 @@
 .game-index-container .game-list-item {
   width: 240px;
   margin-bottom: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
+  background: white;
+  // box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.4);
+  padding: 20px 10px;
 
 }
 
@@ -36,13 +41,15 @@
 
 .game-title-container {
   line-height: 1;
-  height: 60px;
+  height: 40px;
+  padding: 0 10px;
   padding-top: 5px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 400;
   color: #19171c;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .game-index-list .game-index-item .review_button {

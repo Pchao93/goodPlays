@@ -75,7 +75,7 @@ class NavBar extends React.Component {
     return (
       <nav>
         <ul className="left-nav">
-          <Link to='/'>
+          <Link className='logo' to='/'>
             <span>good</span><span>Plays</span>
           </Link>
 
