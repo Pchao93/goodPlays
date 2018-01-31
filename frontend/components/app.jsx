@@ -6,7 +6,7 @@ import NavBarContainer from './navigation/nav_bar_container';
 import SideBarContainer from './side_bar/side_bar_container';
 import GameShowContainer from './games/game_show_container';
 import GameIndexContainer from './games/game_index_container';
-
+import NotFound from './not_found';
 
 
 
@@ -20,8 +20,14 @@ export default (props) => (
     <NavBarContainer />
     <SideBarContainer />
     <Switch>
-      <Route path='/directory' component={GameIndexContainer} />
-      <Route path="/games/:gameId" component={GameShowContainer}/>
+      <Route exact path='/directory' component={GameIndexContainer} />
+      <Route exact path='/directory/login' component={GameIndexContainer} />
+      <Route exact path='/directory/signup' component={GameIndexContainer} />
+
+      <Route exact path="/games/:gameId" component={GameShowContainer}/>
+      <Route exact path="/games/:gameId/login" component={GameShowContainer}/>
+      <Route exact path="/games/:gameId/signup" component={GameShowContainer}/>
+      <Route path="*" component={NotFound}/>
 
     </Switch>
 

@@ -1,0 +1,51 @@
+.not-found-background {
+  // background-image: url(<%= asset_path("404_background.jpg") %>)
+  // background: black;
+  background: asset-url("404_background.jpg");
+  background-size: cover;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  top: 50px;
+  left: 240px;
+}
+
+.not-found-background-overlay {
+  background: rgba(0,0,0,0.7);
+  z-index: 2;
+  height: 100%;
+  padding-top: 100px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  top: 50px;
+  left: 240px;
+}
+
+.not-found-message-box {
+  width: 75%;
+  // border: 1px solid #b8b5c0;
+  margin: 0 auto;
+  // margin-top: 200px;
+  // background: rgba(0,0,0,0.3);
+  height: 75%
+}
+
+.not-found-message-box .top-text, .bottom-text {
+  font-size: 48px;
+  color: #b8b5c0;
+  display: block;
+  font-weight: 300;
+
+
+}
+
+.not-found-message-box .top-text {
+  margin-bottom: 500px;
+
+}
+
+.not-found-message-box .bottom-text {
+  text-align: right;
+}
