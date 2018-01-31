@@ -23,6 +23,7 @@
   width: 240px;
   margin-bottom: 20px;
   margin-right: 20px;
+
 }
 
 .game-index-list {
@@ -35,10 +36,13 @@
 
 .game-title-container {
   line-height: 1;
+  height: 60px;
   padding-top: 5px;
   font-size: 24px;
   font-weight: 400;
   color: #19171c;
+  display: flex;
+  align-items: center;
 }
 
 .game-index-list .game-index-item .review_button {
