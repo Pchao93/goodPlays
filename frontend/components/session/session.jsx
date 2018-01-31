@@ -33,6 +33,10 @@ class Session extends React.Component {
     }
   }
 
+  clearErrors(e) {
+    
+  }
+
   render(){
 
     let errorsArray = this.props.errors.map((error, idx) => (
@@ -42,10 +46,12 @@ class Session extends React.Component {
     let errorsBool = (this.props.errors.length > 0);
 
     return (
-      <div onClick={this.closeForm} className='session-form-background'>
+      <div onClick={e => this.closeForm(e)} className='session-form-background'>
         <form className='session-form-modal'>
           <ul className='tabs'>
-            <li className={this.props.type === 'signup' ? '' : 'target'}>
+            <li
+              onClick={this.clearErrors}
+              className={this.props.type === 'signup' ? '' : 'target'}>
               <Link to={`${this.props.match.params[0]}/login`}>
                 Log In
               </Link>
