@@ -76,7 +76,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'seeddata.csv')).scrub
 csv = CSV.parse(csv_text, headers: true, encoding: 'UTF-8')
 
 csv.each_with_index do |row, idx|
-  if idx == 223
+  if idx == 222
     break
   end
   game = Game.new

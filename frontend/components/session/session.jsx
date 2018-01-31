@@ -30,11 +30,12 @@ class Session extends React.Component {
   closeForm(e) {
     if (e.currentTarget === e.target) {
       this.props.history.push(this.props.match.params[0]);
+      this.props.clearSessionErrors();
     }
   }
 
   clearErrors(e) {
-    
+    this.props.clearSessionErrors();
   }
 
   render(){
@@ -50,14 +51,18 @@ class Session extends React.Component {
         <form className='session-form-modal'>
           <ul className='tabs'>
             <li
-              onClick={this.clearErrors}
+              onClick={ this.props.type === 'signup' ?
+                () => this.props.clearSessionErrors() : ''}
               className={this.props.type === 'signup' ? '' : 'target'}>
               <Link to={`${this.props.match.params[0]}/login`}>
                 Log In
               </Link>
             </li>
 
-            <li className={this.props.type === 'signup' ? 'target' : ''}>
+            <li
+              onClick={ this.props.type === 'signup' ? '' :
+                () => this.props.clearSessionErrors()}
+              className={this.props.type === 'signup' ? 'target' : ''}>
               <Link to={`${this.props.match.params[0]}/signup`}>
                 Sign Up
               </Link>
@@ -90,7 +95,9 @@ class Session extends React.Component {
           </div>
         </form>
         <div className="close-form-button">
-          <Link to={this.props.match.params[0]}>
+          <Link
+            onClick={() => this.props.clearSessionErrors()}
+            to={this.props.match.params[0]}>
             x
           </Link>
         </div>

@@ -15,4 +15,6 @@ class Game < ApplicationRecord
   has_many :players,
     through: :collections,
     source: :user
+
+    
 end

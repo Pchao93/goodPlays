@@ -52,7 +52,9 @@ class NavBar extends React.Component {
   render() {
     const display = this.props.currentUser ? (
     <div className="user-info" onClick={this.toggleDropdown}>
-      <img src="https://s3.amazonaws.com/i.seelio.com/f3/b3/f3b38e0625012600f8c71693e75443dc526c.jpg"></img>
+      <img src=
+        "https://s3.amazonaws.com/i.seelio.com/f3/b3/f3b38e0625012600f8c71693e75443dc526c.jpg">
+      </img>
       <span>{this.props.currentUser.username}</span>
       <ul className={this.state.userDropdownClass}>
         <li>
@@ -67,7 +69,6 @@ class NavBar extends React.Component {
     <div className="session-controls">
       <Link className="btn" to={`${this.props.location.pathname}/login/`}>Log in</Link>
       <Link className="btn" to={`${this.props.location.pathname}/signup/`}>Sign up</Link>
-
     </div>
   );
 
@@ -85,7 +86,10 @@ class NavBar extends React.Component {
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
             <span className="search">Search</span>
-            <input className={this.state.backgroundClass} onChange={this.update("searchQuery")} type="search" value={this.state.searchQuery}></input>
+            <input
+              className={this.state.backgroundClass}
+              onChange={this.update("searchQuery")} type="search"
+              value={this.state.searchQuery}></input>
           </div>
         </ul>
 

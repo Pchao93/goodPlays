@@ -24,7 +24,7 @@ class GameShow extends React.Component {
     let platforms;
 
     if (game){
-      platforms = game.platforms.map(platform => (
+      platforms = game.platforms.slice(0, 4).map(platform => (
         <li className='platform-badge' key={platform}>{platform}</li>
       ));
     }

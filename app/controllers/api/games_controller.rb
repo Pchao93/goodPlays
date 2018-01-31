@@ -1,13 +1,17 @@
 class Api::GamesController < ApplicationController
 
   def show
-    @game = Game.find_by(id: params[:id])
+    @game = Game.find_by(id: params[:id]).includes(:developer, :platforms)
     if @game.nil?
       render :json ["Game not found"], status: 404
     end
   end
 
   def index
-    @games = Game.all
+    @games = Game.includes(:developer, :platforms).limit(25)
   end
+
+  # def game_params
+  #   params.requre(:game).permit(:pagination)
+  # end
 end
