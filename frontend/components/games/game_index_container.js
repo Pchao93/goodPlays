@@ -5,7 +5,8 @@ import GameIndex from './game_index';
 
 
 const mapStateToProps = (state, ownProps) => ({
-  games: Object.values(state.games),
+  games: Object.values(state.entities.games),
+  headerText: "Top Games"
 });
 
 

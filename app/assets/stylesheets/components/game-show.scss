@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 
@@ -43,6 +43,7 @@
   display: flex;
   justify-content: center;
   font-size: 16px;
+  border-radius: 5px 0 0 5px;
 
 
 }
@@ -59,6 +60,7 @@
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  border-radius: 0 5px 5px 0;
 
 }
 .dropdown-button:hover {

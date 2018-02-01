@@ -1,16 +1,16 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    @collection = Collection.include(:games).find_by(id: params[:id])
+    @collection = Collection.includes(:games).find_by(id: params[:id])
     if @collection
       render :show
     else
-      render json: ["Unable to find that collection."]
+      render json: ["Unable to find that collection."], status: 404
     end
   end
 
   def index
-    @collections = current_user.collections.include(:games)
+    @collections = current_user.collections.includes(:games)
   end
 
   def create
@@ -19,7 +19,7 @@ class Api::CollectionsController < ApplicationController
     if @collection.save
       render :show
     else
-      render json: @collection.errors.full_messages
+      render json: @collection.errors.full_messages, status: 400
     end
   end
 
@@ -33,10 +33,10 @@ class Api::CollectionsController < ApplicationController
       elsif @collection.update(Collection.find_by(id: params[:id]))
         render :show
       else
-        render json: @collection.errors.full_messages
+        render json: @collection.errors.full_messages, status: 400
       end
     else
-      render json: ["Unable to find that collection."]
+      render json: ["Unable to find that collection."], status: 404
     end
 
   end
@@ -51,7 +51,7 @@ class Api::CollectionsController < ApplicationController
         render :show
       end
     else
-      render json: ["Unable to find that collection."]
+      render json: ["Unable to find that collection."], status: 404
     end
   end
 

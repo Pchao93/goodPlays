@@ -13,17 +13,29 @@ class GameIndexContainer extends React.Component {
     this.props.getAllGames();
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps === this.props) {
+  //     return;
+  //   } else {
+  //     this.props.getAllGames();
+  //   }
+  // }
+
   render() {
-    let gamesListItems = this.props.games.map((game) =>(
+
+    let gamesListItems = [];
+    // console.log(this.props.games);
+    // debugger;
+    if (this.props.games.length > 0) {
+      gamesListItems = this.props.games.map((game) =>(
         <GameIndexItem key={game.id} game={game}/>
-    ));
-
-
+      ));
+    }
 
     return (
       <div className='game-index-container'>
         <div className='game-index-header'>
-          Top Games
+          {this.props.headerText}
         </div>
         <ul className='game-index-list'>
           {gamesListItems}

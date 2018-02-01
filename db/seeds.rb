@@ -81,7 +81,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'seeddata.csv')).scrub
 csv = CSV.parse(csv_text, headers: true, encoding: 'UTF-8')
 
 csv.each_with_index do |row, idx|
-  if idx == 222
+  if idx == 208
     break
   end
   game = Game.new
@@ -139,10 +139,10 @@ have_played = Collection.create(name: "Have Played", user_id: user.id)
 playing = Collection.create(name: "Playing", user_id: user.id)
 my_favorites = Collection.create(name: "My Favorites", user_id: user.id)
 
-CollectionGame.create(game_id: overwatch.id, collection_id: 1)
-CollectionGame.create(game_id: overwatch.id, collection_id: 2)
-CollectionGame.create(game_id: overwatch.id, collection_id: 3)
-CollectionGame.create(game_id: overwatch.id, collection_id: 4)
+CollectionGame.create(game_id: 1, collection_id: 1)
+CollectionGame.create(game_id: 1, collection_id: 2)
+CollectionGame.create(game_id: 1, collection_id: 3)
+CollectionGame.create(game_id: 1, collection_id: 4)
 
 
 

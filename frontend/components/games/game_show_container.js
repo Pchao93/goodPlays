@@ -5,7 +5,7 @@ import GameShow from './game_show';
 
 
 const mapStateToProps = (state, ownProps) => ({
-  game: state.games[ownProps.match.params.gameId],
+  game: state.entities.games[ownProps.match.params.gameId],
 });
 
 

@@ -1,15 +1,9 @@
-import  {
-  RECEIVE_SESSION_ERRORS,
-  CLEAR_SESSION_ERRORS,
-} from '../actions/session';
+import { combineReducers } from 'redux';
 
-export default (state = [], action) => {
-  switch(action.type) {
-    case RECEIVE_SESSION_ERRORS:
-      return action.errors.responseJSON;
-    case CLEAR_SESSION_ERRORS:
-      return [];
-    default:
-      return state;
-  }
-};
+import sessionsErrorsReducer from './session_errors';
+import collectionsErrorsReducer from './collections_errors';
+
+export default combineReducers({
+  session: sessionsErrorsReducer,
+  collections: collectionsErrorsReducer,
+});

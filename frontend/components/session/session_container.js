@@ -3,7 +3,7 @@ import { login, createNewUser, clearSessionErrors } from '../../actions/session'
 import Session from './session';
 
 const mapStateToProps = (state, ownProps) => {
-  let errors = state.errors;
+  let errors = state.errors.session;
   let type = 'signup';
   if (ownProps.match.path === '*/login') {
     type = 'login';

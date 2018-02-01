@@ -24,7 +24,7 @@
 }
 
 .not-found-message-box {
-  width: 75%;
+  width: 100%;
   // border: 1px solid #b8b5c0;
   margin: 0 auto;
   // margin-top: 200px;
@@ -42,10 +42,16 @@
 }
 
 .not-found-message-box .top-text {
-  margin-bottom: 500px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
 
 }
 
 .not-found-message-box .bottom-text {
   text-align: right;
+  position: absolute;
+
+  bottom: 200px;
+  right: 50px;
 }

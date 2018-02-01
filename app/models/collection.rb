@@ -1,5 +1,5 @@
 class Collection < ApplicationRecord
-
+  validates :name, presence: true, length: {minimum: 1}
   has_many :collection_games
 
   has_many :games,

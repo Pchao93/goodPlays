@@ -85,9 +85,10 @@ class NavBar extends React.Component {
             <div className="icon-div">
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
-            <span className="search">Search</span>
+            
             <input
               className={this.state.backgroundClass}
+              placeholder="Search"
               onChange={this.update("searchQuery")} type="search"
               value={this.state.searchQuery}></input>
           </div>
