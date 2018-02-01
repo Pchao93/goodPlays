@@ -4,13 +4,12 @@ import {
   getOneCollection,
   deleteCollection,
   updateCollection,
-} from '../../actions/games';
+} from '../../actions/collections';
 import GameIndex from '../games/game_index.jsx';
 
 const mapStateToProps = (state, ownProps) => {
   let collection = state.entities.collections[ownProps.match.params.collectionId];
   let games = [];
-  
   if (collection) {
     games = collection.games.map(gameIndex => {
 

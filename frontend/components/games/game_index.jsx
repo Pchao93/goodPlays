@@ -7,28 +7,28 @@ class GameIndexContainer extends React.Component {
   constructor(props) {
     super(props);
 
+    this.props.action();
+
+
   }
 
   componentDidMount() {
     this.props.action();
+
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps === this.props) {
-  //     return;
-  //   } else {
-  //     this.props.getAllGames();
-  //   }
-  // }
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname){
+      this.props.action();
+    }
+  }
 
   render() {
 
     let gamesListItems = [];
-    // console.log(this.props.games);
-    // debugger;
     if (this.props.games.length > 0) {
       gamesListItems = [];
-      this.props.games.each((game) =>{
+      this.props.games.forEach((game) =>{
 
         if (game !== undefined) {
           gamesListItems.push(<GameIndexItem key={game.id} game={game}/>);

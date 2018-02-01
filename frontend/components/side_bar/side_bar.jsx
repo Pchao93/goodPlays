@@ -17,15 +17,17 @@ class SideBar extends React.Component {
     this.closeForm = this.closeForm.bind(this);
     this.toggleHelper = this.toggleHelper.bind(this);
 
-
-
-  }
-
-  componentWillMount() {
     if (this.props.currentUser) {
       this.props.getAllCollections();
     }
+
   }
+
+  // componentWillMount() {
+  //   if (this.props.currentUser) {
+  //     this.props.getAllCollections();
+  //   }
+  // }
 
   // componentWillReceiveProps() {
   //   this.props.getAllCollections();

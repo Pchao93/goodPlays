@@ -18,13 +18,19 @@ export default (state = {}, action) => {
 
       return newState;
     case RECEIVE_GAMES:
-      return action.games;
+      newState = merge({}, state, action.games);
+      return newState;
 
     case RECEIVE_ONE_COLLECTION:
-      return action.games;
+      newState = merge({}, state);
+      action.games.forEach(game => {
+        newState[game.id] = game;
+      });
+      return newState;
 
     case RECEIVE_COLLECTIONS:
-      return action.games;
+      newState = merge({}, state, action.games);
+      return newState;
     default:
       return state;
   }

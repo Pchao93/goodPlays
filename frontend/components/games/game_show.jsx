@@ -6,12 +6,13 @@ class GameShow extends React.Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-
     this.props.getOneGame(this.props.match.params.gameId);
   }
+
+  // componentDidMount() {
+  //
+  //   this.props.getOneGame(this.props.match.params.gameId);
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.gameId !== this.props.match.params.gameId) {
@@ -28,7 +29,7 @@ class GameShow extends React.Component {
         <li className='platform-badge' key={platform}>{platform}</li>
       ));
     }
-    return  game === undefined ? null : (
+    return  game === undefined ? '' : (
       <div className='game-show-container'>
         <GameInfoBox platforms={platforms} game={game} />
 
