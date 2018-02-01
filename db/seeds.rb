@@ -139,12 +139,8 @@ have_played = Collection.create(name: "Have Played", user_id: user.id)
 playing = Collection.create(name: "Playing", user_id: user.id)
 my_favorites = Collection.create(name: "My Favorites", user_id: user.id)
 
-CollectionGame.create(game_id: 1, collection_id: 1)
-CollectionGame.create(game_id: 1, collection_id: 2)
-CollectionGame.create(game_id: 1, collection_id: 3)
-CollectionGame.create(game_id: 1, collection_id: 4)
 
-(0..3).each do |collection_id|
+(1..4).each do |collection_id|
   10.times do
     game_id = rand(0..200)
     CollectionGame.create(game_id: game_id, collection_id: collection_id)

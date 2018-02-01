@@ -10,7 +10,7 @@ class GameIndexContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAllGames();
+    this.props.action();
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -27,9 +27,13 @@ class GameIndexContainer extends React.Component {
     // console.log(this.props.games);
     // debugger;
     if (this.props.games.length > 0) {
-      gamesListItems = this.props.games.map((game) =>(
-        <GameIndexItem key={game.id} game={game}/>
-      ));
+      gamesListItems = [];
+      this.props.games.each((game) =>{
+
+        if (game !== undefined) {
+          gamesListItems.push(<GameIndexItem key={game.id} game={game}/>);
+        }
+      });
     }
 
     return (

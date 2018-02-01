@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  getAllGames: () => dispatch(getAllGames()),
+  action: () => dispatch(getAllGames()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameIndex));
