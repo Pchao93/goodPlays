@@ -23,7 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
   return ({
     action,
-    clearSessionErrors: () => dispatch(clearSessionErrors())
+    clearSessionErrors: () => dispatch(clearSessionErrors()),
+    login: (user) => dispatch(login(user))
+
   });
 };
 

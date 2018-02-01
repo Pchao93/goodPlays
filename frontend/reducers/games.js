@@ -22,10 +22,7 @@ export default (state = {}, action) => {
       return newState;
 
     case RECEIVE_ONE_COLLECTION:
-      newState = merge({}, state);
-      action.games.forEach(game => {
-        newState[game.id] = game;
-      });
+      newState = merge({}, state, action.games);
       return newState;
 
     case RECEIVE_COLLECTIONS:

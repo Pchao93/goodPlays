@@ -10,7 +10,7 @@ class Session extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeForm = this.closeForm.bind(this);
-
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleInput(type) {
@@ -24,6 +24,13 @@ class Session extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state)
+      .then( () => this.props.history.push(this.props.match.params[0]));
+  }
+
+  handleDemo(e) {
+    console.log("demo submit!");
+    e.preventDefault();
+    this.props.login({username: 'demo', password: 'password'})
       .then( () => this.props.history.push(this.props.match.params[0]));
   }
 
@@ -100,6 +107,7 @@ class Session extends React.Component {
 
           <div className="submit-container">
             <button className="btn" onClick={this.handleSubmit}>{this.props.type === 'signup' ? 'Sign Up' : 'Log In'}</button>
+            <button className="btn demo" onClick={this.handleDemo}>Demo</button>
           </div>
         </form>
         <div className="close-form-button">

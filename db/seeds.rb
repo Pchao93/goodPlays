@@ -87,11 +87,10 @@ csv.each_with_index do |row, idx|
   game = Game.new
   row
   game.title = row['title'][0...-1]
+
   if row['release date'].include?('@')
-    'hi'
     game.release_date = row['release date'].gsub!('@', ',')
   else
-    'bye'
     game.release_date = row['release date']
   end
 
@@ -100,11 +99,10 @@ csv.each_with_index do |row, idx|
   else
     game.description = row['description']
   end
+
   game.image_url = row['image_url']
   game.amazon_url = row['amazon url']
   game.rating = row['rating']
-
-
 
   developer = Developer.find_by(name: row['developer'])
   if developer

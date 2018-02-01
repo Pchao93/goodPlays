@@ -6,10 +6,19 @@ import {
 } from '../../actions/collections';
 import SideBar from './side_bar';
 
-const mapStateToProps = (state, ownProps) => ({
-  currentUser: state.session.currentUser,
-  collections: Object.values(state.entities.collections)
-});
+const mapStateToProps = (state, ownProps) => {
+
+  let currentUser = state.session.currentUser;
+  let collections = [];
+  if (currentUser) {
+    collections = Object.values(state.entities.collections)
+      .filter(collection => collection.user_id === currentUser.id);
+  }
+  return {
+    currentUser,
+    collections
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   createCollection: (collection) => dispatch(createCollection(collection)),

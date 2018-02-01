@@ -18,7 +18,7 @@
   background: #fff;
   // margin: 20px auto;
   width: 380px;
-  padding: 20px 20px;
+  padding: 30px 20px;
 
 
 }
@@ -27,7 +27,7 @@ div.logo-container {
   display: flex;
   align-items: center;
   // justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   // display: none
 }
 
@@ -94,17 +94,22 @@ div.logo {
 }
 
 .session-form-modal .btn {
-  margin: 0 auto;
   font-size: 14px;
   line-height: 1;
   padding: 0 10px;
+}
+
+.session-form-modal .btn.demo {
+  margin-right: 20px;
 }
 
 .session-form-modal .submit-container {
   margin-top: 20px;
   border-top: 1px solid #dad8de;
   padding-top: 20px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .session-form-background .close-form-button a{

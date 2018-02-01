@@ -16,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
       return state.entities.games[gameIndex];
     });
   } else {
-
-
     collection = {name: ""};
   }
   return {
