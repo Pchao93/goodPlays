@@ -1,7 +1,7 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    @collection = Collection.includes(:games).find_by(id: params[:id])
+    @collection = Collection.includes(games: [:platforms, :developer]).find_by(id: params[:id])
     if @collection
       render :show
     else

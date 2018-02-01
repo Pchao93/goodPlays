@@ -122,7 +122,7 @@ class SideBar extends React.Component {
 
           </form>
           {this.state.inputClass === 'collection-input' &&
-            <div onClick={e => this.closeForm(e)} className='click-handler-div'>
+            <div onClick={e => this.closeForm(e)} id='click-handler-div'>
             </div>
             }
         </div>
