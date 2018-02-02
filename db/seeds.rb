@@ -5,8 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Overwatch 	https://static-cdn.jtvnw.net/ttv-boxart/Overwatch-285x380.jpg	https://www.amazon.com/Overwatch-Game-Year-PlayStation-4/dp/B0733HQQQP/
-# May 23@ 2016	Blizzard Entertainment	Blizzard Entertainment	PC PlayStation 4 Xbox One	General Action Shooter First-Person Tactical	T	Overwatch is a highly stylized team-based shooter set on earth in the near future. Every match is an intense multiplayer showdown pitting a diverse cast of soldiers@ mercenaries@ scientists@ adventurers@ and oddities against each other in an epic@ globe-spanning conflict.
+
 
 require 'csv'
 

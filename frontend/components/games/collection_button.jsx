@@ -50,18 +50,15 @@ class CollectionButton extends React.Component {
     let { game, edit, removeGameCollection, collectionId, collections } = this.props;
 
     let options = collections.map((collection => {
-      console.log("I happen");
       if (collection.id === collectionId) {
         return null;
       }
-      console.log(collection);
       return ( <li>
         <span onClick={(e) => this.handleCreate(e)} className='collection-form-toggle'> + </span>
         <span className='collection-option-label'>{collection.name}</span>
         <span onClick={(e) => this.handleDestroy(e)} className='collection-form-toggle'> - </span>
       </li>);
     }));
-    console.log(options);
 
     options.filter(li => li !== null);
     return (

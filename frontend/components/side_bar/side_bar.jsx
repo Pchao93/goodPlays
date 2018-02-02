@@ -23,12 +23,6 @@ class SideBar extends React.Component {
 
   }
 
-  // componentWillMount() {
-  //   if (this.props.currentUser) {
-  //     this.props.getAllCollections(currentUser.id);
-  //   }
-  // }
-
   componentWillReceiveProps (nextProps) {
     if (nextProps.currentUser && this.props.currentUser !== nextProps.currentUser){
       nextProps.getAllCollections(nextProps.currentUser.id);

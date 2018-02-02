@@ -51,12 +51,20 @@
 .game-index-container .game-list-item {
   width: 240px;
   margin-bottom: 20px;
-  margin-right: 10px;
+  margin-right: 20px;
   background: white;
-  // box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.4);
-  padding: 20px 10px;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
+  // padding: 10px 5px;
+  // padding: 20px 10px;
+  padding-bottom: 10px;
 
 }
+
+.game-index-container .collection-button {
+  width: calc(100% - 10px);
+  margin: 0 5px;
+}
+
 
 .game-index-list {
   display: flex;
