@@ -30,7 +30,7 @@ class SideBar extends React.Component {
   // }
 
   componentWillReceiveProps (nextProps) {
-    if (this.props.currentUser !== nextProps.currentUser){
+    if (nextProps.currentUser && this.props.currentUser !== nextProps.currentUser){
       nextProps.getAllCollections(nextProps.currentUser.id);
     }
   }

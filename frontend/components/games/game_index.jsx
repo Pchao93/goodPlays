@@ -31,6 +31,8 @@ class GameIndexContainer extends React.Component {
 
     if (nextProps.location.pathname !== this.props.location.pathname){
       nextProps.action();
+    } else if (this.props.games.length !== nextProps.games.length){
+      nextProps.action();
     }
     if (nextProps.edit) {
       this.setState({
@@ -53,7 +55,10 @@ class GameIndexContainer extends React.Component {
     this.props.updateCollection({
       id: this.props.collection.id,
       name: this.state.name
-    }).then(() => this.props.history.goBack());
+    }).then(() => this.props.history.goBack(),
+    ()=>(this.setState({
+      name: this.props.collection.name
+    })));
   }
 
   handleDelete(e) {
@@ -86,27 +91,29 @@ class GameIndexContainer extends React.Component {
             <Link to={`/users/${collectionUser.id}`} className='index-user'>{collectionUser.username} </Link>}
             {collectionUser && <span className="pointer">{">"}</span> }
             <span className='index-title'>
-            {edit ? (<div className="edit-collection-form">
+            {edit && !["Want to Play", "Have Played", "Playing"].includes(collection.name) ? (<div className="edit-collection-form">
                 <input
                   ref="input"
                   onChange={this.handleInput('name')}
                   onFocus={()=>this.refs.input.select()}
-                  autoFocus
+
                   className='collection-edit'
                   type='text'
-                  style={{width, 'min-width': '100px'}}
+                  style={{width, 'minWidth': '100px'}}
                   value={this.state.name}></input>
-                <button onClick={this.handleSubmit} className='collection-edit-submit btn' >Update</button>
+                <button onClick={this.handleSubmit} className='collection-edit-submit btn' >Done</button>
             </div>) : (
               headerText) }
             </span>
-          </div>
 
+          </div>
+          {edit && ["Want to Play", "Have Played", "Playing"].includes(collection.name) && <button onClick={this.handleSubmit} className='default collection-edit-submit btn' >Done</button>}
           {!edit && collection && collection.name && currentUser &&
             collection.user_id === currentUser.id &&
               <div className='game-collection-controls'>
                 <Link className='edit-collection btn' to={`${this.props.location.pathname}/edit`}>Edit Collection</Link>
-                <button onClick={this.handleDelete} className='delete-collection btn'>Delete Collection</button>
+                { !["Want to Play", "Have Played", "Playing"].includes(collection.name) &&
+                  <button onClick={this.handleDelete} className='delete-collection btn'>Delete Collection</button>}
 
 
               </div>

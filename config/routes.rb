@@ -18,4 +18,7 @@ Rails.application.routes.draw do
     resources :collection_games, only: [:create, :destroy]
   end
 
+  delete '/api/collection_games', to: "api/collection_games#destroy"
+
+
 end

@@ -10,7 +10,6 @@ class NavBar extends React.Component {
     this.state = {
       userDropdownClass: "user-dropdown hidden",
       searchQuery: "",
-      backgroundClass: ""
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -85,7 +84,7 @@ class NavBar extends React.Component {
             <div className="icon-div">
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
-            
+
             <input
               className={this.state.backgroundClass}
               placeholder="Search"

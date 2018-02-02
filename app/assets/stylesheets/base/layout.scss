@@ -6,13 +6,10 @@ html {
 	height: 100%;
 }
 
-//disable scrollbounce fix from stack overflow:
-// https://stackoverflow.com/questions/21209223/remove-bounce-on-scroll-in-browser-issue-with-positionfixed-div
-//Breaks some hover stuff when scrolling :(
+
 html, body {
     height: 100%;
-    overflow: visible;
-		position: relative;
+
 }
 
 body {

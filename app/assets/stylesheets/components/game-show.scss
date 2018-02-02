@@ -30,6 +30,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  position: relative;
+
 }
 
 
@@ -45,8 +47,10 @@
   font-size: 16px;
   border-radius: 5px 0 0 5px;
 
-
+  position: relative;
 }
+
+
 
 .default-collection-button:hover {
   background: $border-purple;
@@ -65,6 +69,64 @@
 }
 .dropdown-button:hover {
   background: $border-purple;
+}
+
+.default-collection-button.red {
+  background: #aaa;
+}
+
+.dropdown-button.red {
+  background: #aaa;
+}
+
+.default-collection-button.red:hover {
+  background: #999;
+}
+
+.dropdown-button.red:hover {
+  background: #999;
+}
+.collection-button-dropdown {
+  position: absolute;
+  // z-index: 1;
+  background: #fff;
+  width: 187px;
+  top: 40px;
+  left: 5px;
+  transition: height .2s ease-in;
+  // height: 50px;
+  padding: 10px;
+  box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+
+
+  li {
+    margin-top: 10px;
+    height: 30px;
+    transition: height .2s ease-in;
+    // background: black;
+
+
+  }
+  li:hover {
+    background: $button-purple;
+  }
+  input {
+    transition: height .2s ease-in, padding .2s ease-in;
+  }
+}
+.collection-button-dropdown.hidden {
+  height: 0px;
+  overflow: hidden;
+  padding: 0px;
+  li {
+    height: 0px;
+    overflow: hidden;
+  }
+  input {
+    height: 0px;
+    overflow: hidden;
+  }
 }
 
 //CSS triangle taken from CSS Tricks

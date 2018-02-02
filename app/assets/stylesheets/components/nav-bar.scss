@@ -8,6 +8,7 @@ nav {
   top: 0px;
   left: 0px;
   width: 100%;
+  z-index: 1000;
 }
 
 .left-nav {
@@ -80,7 +81,7 @@ a.logo {
 
 .search-container input {
   width: 350px;
-  
+
   height: 28px;
   z-index: 1;
 }

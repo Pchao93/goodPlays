@@ -18,12 +18,12 @@ const mapStateToProps = (state, ownProps) => {
   let edit = false;
   if (collection) {
     if (ownProps.match.path === '/collections/:collectionId/edit' &&
-      collection.user_id === currentUser.id) {
+      collection.user_id === currentUser.id ) {
         edit = true;
     }
     games = collection.games.map(gameIndex => {
       return state.entities.games[gameIndex];
-    });
+    }).sort((a, b) => a.id - b.id);
     if (currentUser && collection.user_id === currentUser.id) {
       collectionUser = {username: "My Games", id: currentUser.id};
     } else {

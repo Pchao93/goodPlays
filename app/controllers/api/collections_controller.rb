@@ -51,6 +51,8 @@ class Api::CollectionsController < ApplicationController
     if @collection
       if @collection.user_id != current_user.id
         render json: ["You do not have permission to delete this collection."], status: 400
+      elsif ["Have Played", "Want to Play", "Playing"].include?(@collection.name)
+        render json: ["You cannot delete a default collection."], status: 400
       else
         @collection.destroy
         render :show

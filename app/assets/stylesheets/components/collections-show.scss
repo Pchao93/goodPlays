@@ -17,11 +17,20 @@
 .collection-edit {
   border: 1px solid $border-purple;
   padding: 5px;
-  font-size: 20px;
+  height: 40px;
+  margin-top: -8px;
   color: $purple-main;
 }
 
 .collection-edit-submit.btn {
   margin-top: 16px;
   margin-left: -162px;
+
+}
+
+.default.collection-edit-submit.btn {
+  margin-top: 20px;
+  width: 32px;
+  margin-left: 0px;
+
 }

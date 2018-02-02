@@ -34,3 +34,19 @@ export const deleteCollection = (collectionId) => (
     method: 'DELETE',
   })
 );
+
+export const createGameCollection = ({ gameId, collectionId}) => (
+  $.ajax({
+    url: `/api/collection_games`,
+    method: 'POST',
+    data: { collection_game: {collection_id: collectionId, game_id: gameId} }
+  })
+);
+
+export const destroyGameCollection = ({ gameId, collectionId}) => (
+  $.ajax({
+    url: `/api/collection_games/`,
+    method: 'DELETE',
+    data: { collection_game: {collection_id: collectionId, game_id: gameId} }
+  })
+);

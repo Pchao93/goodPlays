@@ -16,8 +16,6 @@ export default (state = {}, action) => {
       return merge({}, state, action.users);
     case REMOVE_COLLECTION:
       newState = merge({}, state);
-      console.log(newState);
-      console.log(state);
       let user = newState[action.collection.user_id];
       let index = user.collections.indexOf(action.collection.id);
       user.collections = user.collections.splice(index, 1);
