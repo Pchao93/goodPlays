@@ -6,6 +6,7 @@ import GameShow from './game_show';
 
 const mapStateToProps = (state, ownProps) => ({
   game: state.entities.games[ownProps.match.params.gameId],
+  // currentUser: state.session.currentUser,
 });
 
 

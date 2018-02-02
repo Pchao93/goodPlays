@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 
 class CollectionButton extends React.Component {
   constructor(props) {
@@ -25,13 +25,17 @@ class CollectionButton extends React.Component {
   }
 
   toggleDropdown() {
-    let newClass = this.toggleHelper(
-      'collectionDropdownClass',
-      'collection-button-dropdown hidden',
-      'collection-button-dropdown');
-    this.setState({
-      collectionDropdownClass: newClass
-    });
+    if (!this.props.currentUser) {
+      this.props.history.push(`${this.props.location.pathname}/login`);
+    } else {
+      let newClass = this.toggleHelper(
+        'collectionDropdownClass',
+        'collection-button-dropdown hidden',
+        'collection-button-dropdown');
+      this.setState({
+        collectionDropdownClass: newClass
+      });
+    }
   }
 
   handleInput(type) {
@@ -43,22 +47,24 @@ class CollectionButton extends React.Component {
   }
 
   handleClick(e) {
-    this.props.addGameCollection(this.props.game.id, e.target.value);
+    // this.props.addGameCollection(this.props.game.id, e.target.value);
   }
 
   render () {
     let { game, edit, removeGameCollection, collectionId, collections } = this.props;
-
-    let options = collections.map((collection => {
-      if (collection.id === collectionId) {
-        return null;
-      }
-      return ( <li>
-        <span onClick={(e) => this.handleCreate(e)} className='collection-form-toggle'> + </span>
-        <span className='collection-option-label'>{collection.name}</span>
-        <span onClick={(e) => this.handleDestroy(e)} className='collection-form-toggle'> - </span>
-      </li>);
-    }));
+    let options = [];
+    if (collections) {
+      options = collections.map((collection => {
+        if (collection.id === collectionId) {
+          return null;
+        }
+        return ( <li>
+          <span onClick={(e) => this.handleCreate(e)} className='collection-form-toggle'> + </span>
+          <span className='collection-option-label'>{collection.name}</span>
+          <span onClick={(e) => this.handleDestroy(e)} className='collection-form-toggle'> - </span>
+        </li>);
+      }));
+    }
 
     options.filter(li => li !== null);
     return (

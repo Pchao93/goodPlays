@@ -2,7 +2,7 @@ import React from 'react';
 import GameData from './game_data';
 import GameControls from './game_controls';
 
-const GameInfoBox = ({ game, platforms }) => (
+const GameInfoBox = ({ game, platforms, currentUser}) => (
   <div className='game-info-container'>
 
     <GameControls game={game} />
@@ -20,7 +20,7 @@ const GameInfoBox = ({ game, platforms }) => (
         </img>
       </a>
 
-      
+
 
     </div>
   </div>
