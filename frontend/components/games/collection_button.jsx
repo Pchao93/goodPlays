@@ -9,7 +9,9 @@ class CollectionButton extends React.Component {
       collectionDropdownClass: 'collection-button-dropdown hidden'
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
+    this.handleDestroy = this.handleDestroy.bind(this);
+
   }
 
   closeForm(e) {
@@ -25,7 +27,9 @@ class CollectionButton extends React.Component {
   }
 
   toggleDropdown() {
+
     if (!this.props.currentUser) {
+
       this.props.history.push(`${this.props.location.pathname}/login`);
     } else {
       let newClass = this.toggleHelper(
@@ -46,8 +50,17 @@ class CollectionButton extends React.Component {
     };
   }
 
-  handleClick(e) {
-    // this.props.addGameCollection(this.props.game.id, e.target.value);
+  handleCreate(e, collectionId) {
+    e.preventDefault();
+    this.props.addGameCollection(this.props.game.id, e.target.getAttribute('data'));
+
+  }
+
+  handleDestroy(e) {
+    e.preventDefault();
+    console.log(e.target.props);
+    this.props.removeGameCollection(this.props.game.id, e.target.getAttribute('data'));
+
   }
 
   render () {
@@ -58,10 +71,10 @@ class CollectionButton extends React.Component {
         if (collection.id === collectionId) {
           return null;
         }
-        return ( <li>
-          <span onClick={(e) => this.handleCreate(e)} className='collection-form-toggle'> + </span>
+        return ( <li key={collection.id}>
+          <span onClick={(e) => this.handleCreate(e)} data={collection.id} className='collection-form-toggle'> + </span>
           <span className='collection-option-label'>{collection.name}</span>
-          <span onClick={(e) => this.handleDestroy(e)} className='collection-form-toggle'> - </span>
+          <span onClick={(e) => this.handleDestroy(e)} data={collection.id} className='collection-form-toggle'> - </span>
         </li>);
       }));
     }

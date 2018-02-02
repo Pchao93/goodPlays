@@ -50,3 +50,5 @@ export const destroyGameCollection = ({ gameId, collectionId}) => (
     data: { collection_game: {collection_id: collectionId, game_id: gameId} }
   })
 );
+
+window.createGameCollection = createGameCollection;

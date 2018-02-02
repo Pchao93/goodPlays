@@ -101,7 +101,7 @@ class Session extends React.Component {
             { this.props.type === 'signup' && <label>Email: </label>}
             { this.props.type === 'signup' &&
             <input
-              type="text"
+              type="email"
               value={this.state.email}
               onChange={this.handleInput('email')}/>}
 

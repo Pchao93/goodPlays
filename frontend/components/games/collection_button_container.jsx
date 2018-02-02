@@ -20,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     game: ownProps.game,
     edit,
     collections,
-    collectionId
+    collectionId,
+    currentUser,
   };
 };
 

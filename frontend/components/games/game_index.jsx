@@ -23,7 +23,7 @@ class GameIndexContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.action();
+    // this.props.action();
 
   }
 
@@ -32,7 +32,7 @@ class GameIndexContainer extends React.Component {
     if (nextProps.location.pathname !== this.props.location.pathname){
       nextProps.action();
     } else if (this.props.games.length !== nextProps.games.length){
-      nextProps.action();
+      // nextProps.action();
     }
     if (nextProps.edit) {
       this.setState({
@@ -43,10 +43,15 @@ class GameIndexContainer extends React.Component {
 
   handleInput(type) {
     return (e) => {
-      console.log(e.target.value);
-      this.setState({
+      if ((this.state[type].length < 30)) {
+        this.setState({
           [type]: e.target.value
-      });
+        });
+      } else {
+        this.setState({
+          [type]: e.target.value.substring(0, 15)
+        });
+      }
     };
   }
 

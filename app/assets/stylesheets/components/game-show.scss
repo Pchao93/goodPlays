@@ -90,52 +90,64 @@
 }
 .collection-button-dropdown {
   position: absolute;
-  // z-index: 1;
   background: #fff;
   width: 78%;
   top: 40px;
   left: 5px;
   transition: height .1s ease-in, padding .1s ease-in;
-
-
-  // height: 50px;
   padding: 10px;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
   box-sizing: border-box;
-  height: 200px;
-
-
+  // height: 200px;
   li {
     margin-top: 10px;
     height: 30px;
     transition: height .1s ease-in, padding .1s ease-in;
     transition-delay: .1s;
     display: flex;
-    justify-content: space-between;
+    // align-items: center;
+    // justify-content: space-between;
+    flex-shrink: 0;
     align-items: center;
     font-size: 14px;
-    // background: black;
-
-
   }
-
-
-
   span {
     transition: height .1s ease-in, padding .1s ease-in, color .1s ease-in;
     transition-delay: .2s;
     // color: inherit;
-
   }
 }
+
+.collection-button-dropdown span:nth-child(2) {
+  word-wrap: break-word;
+  // background: black;
+  margin: auto auto;
+  overflow-x: scroll;
+  max-height: 30px;
+  
+  text-align: center;
+
+
+}
+
+.collection-button-dropdown span.collection-form-toggle {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  min-width: 20px;
+}
+
 .collection-button-dropdown.hidden {
   height: 0px;
   overflow: hidden;
   padding: 0px;
   box-shadow: none;
+  transition-delay: .2s;
+
   li {
     height: 0px;
-    overflow: hidden;
+    transition-delay: .1s;
+
   }
   span {
     height: 0px;

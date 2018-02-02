@@ -37,9 +37,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  // flex-wrap: wrap;
+  word-wrap: break-word;
+  width: 220px;
   height: 30px;
 
 }
+
 
 .side-bar .collections-list li:hover {
   background: #2C2640;//#b19dd8;
@@ -48,6 +52,15 @@
 .collection-name, .game-count {
   color: #b8b5c0;
   font-size: 14px;
+  white-space: nowrap;
+  margin-left: 5px;
+  max-width: 140px;
+  overflow-x: scroll;
+}
+
+.side-bar .collections-list span.collections-name {
+  overflow-x: scroll;
+  max-width: 150px;
 }
 
 .new-collection-form {

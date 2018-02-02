@@ -25,6 +25,17 @@ export default (state = {}, action) => {
     case ADD_GAME_COLLECTION:
       newState = merge({}, state);
       newState[action.collectionId].games.push(action.gameId);
+      if (action.addGameToCollectionId) {
+
+        if (!newState[action.addGameToCollectionId].games.includes(action.gameId)) {
+          newState[action.addGameToCollectionId].games.push(action.gameId);
+        }
+
+      } else if (action.removeGameFromCollectionId) {
+        collection = newState[action.removeGameFromCollectionId];
+        index = collection.games.indexOf(action.gameId);
+        collection.games.splice(index, 1);
+      }
       return newState;
     case REMOVE_GAME_COLLECTION:
       newState = merge({}, state);

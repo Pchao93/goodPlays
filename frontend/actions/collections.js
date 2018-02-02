@@ -46,16 +46,20 @@ export const clearCollectionErrors = () => ({
   type: CLEAR_COLLECTION_ERRORS
 });
 
-const addGameToCollection = (gameId, collectionId) => ({
+const addGameToCollection = (gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId) => ({
   type: ADD_GAME_COLLECTION,
   gameId,
-  collectionId
+  collectionId,
+  addGameToCollectionId,
+  removeGameFromCollectionId
 });
 
-const removeGameFromCollection = (gameId, collectionId) => ({
+const removeGameFromCollection = (gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId) => ({
   type: REMOVE_GAME_COLLECTION,
   gameId,
-  collectionId
+  collectionId,
+  addGameToCollectionId,
+  removeGameFromCollectionId,
 });
 
 export const getOneCollection = collectionId => dispatch => getCollection(collectionId)
@@ -79,11 +83,13 @@ export const destroyCollection = (collectionId) => dispatch => deleteCollection(
     dispatch(receiveCollectionErrors(errors)));
 
 export const addGameCollection = (gameId, collectionId) => dispatch => createGameCollection({gameId, collectionId})
-  .then(game => dispatch(addGameToCollection(gameId, collectionId)),
-    errors => dispatch(receiveCollectionErrors));
+  .then(({ addGameToCollectionId, removeGameFromCollectionId }) => dispatch(
+    addGameToCollection(gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId)),
+      errors => dispatch(receiveCollectionErrors));
 
 export const removeGameCollection = (gameId, collectionId) => dispatch => destroyGameCollection({gameId, collectionId})
-  .then(game => dispatch(removeGameFromCollection(gameId, collectionId)),
+  .then(({ addGameToCollectionId, removeGameFromCollectionId }) => dispatch(
+    removeGameFromCollection(gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId)),
     errors => dispatch(receiveCollectionErrors));
 
 window.addGameCollection = addGameCollection;

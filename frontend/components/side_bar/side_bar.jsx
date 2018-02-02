@@ -32,9 +32,15 @@ class SideBar extends React.Component {
 
   update(attribute) {
     return (e) => {
-      this.setState({
-        [attribute]: e.target.value
-      });
+      if ((this.state[attribute].length < 45)) {
+        this.setState({
+          [attribute]: e.target.value
+        });
+      } else {
+        this.setState({
+          [attribute]: e.target.value.substring(0, 45)
+        });
+      }
     };
   }
 

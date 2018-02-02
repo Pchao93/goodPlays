@@ -18,8 +18,10 @@
   border: 1px solid $border-purple;
   padding: 5px;
   height: 40px;
-  margin-top: -8px;
+  margin-left: -6px;
+  margin-top: -10px;
   color: $purple-main;
+  // box-sizing: border-box;
 }
 
 .collection-edit-submit.btn {
