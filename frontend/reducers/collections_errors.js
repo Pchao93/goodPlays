@@ -7,7 +7,7 @@ import  {
 export default (state = [], action) => {
   switch(action.type) {
     case RECEIVE_COLLECTION_ERRORS:
-      return action.errors.responseJSON;
+      return action.errors.responseText;
     case CLEAR_COLLECTION_ERRORS:
       return [];
     default:

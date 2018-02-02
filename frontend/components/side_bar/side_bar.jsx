@@ -18,20 +18,20 @@ class SideBar extends React.Component {
     this.toggleHelper = this.toggleHelper.bind(this);
 
     if (this.props.currentUser) {
-      this.props.getAllCollections();
+      this.props.getAllCollections(this.props.currentUser.id);
     }
 
   }
 
   // componentWillMount() {
   //   if (this.props.currentUser) {
-  //     this.props.getAllCollections();
+  //     this.props.getAllCollections(currentUser.id);
   //   }
   // }
 
   componentWillReceiveProps (nextProps) {
     if (this.props.currentUser !== nextProps.currentUser){
-      this.props.getAllCollections();
+      nextProps.getAllCollections(nextProps.currentUser.id);
     }
   }
 

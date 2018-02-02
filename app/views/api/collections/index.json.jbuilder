@@ -6,9 +6,14 @@ json.collections do
     end
   end
 end
-
-json.games do
-  @collections.each do |collection|
+@collections.each do |collection|
+  json.users do
+    json.set! collection.user_id do
+      json.extract! collection.user, :username
+      json.collections collection.user.collections.pluck(:id)
+    end
+  end
+  json.games do
     collection.games.each do |game|
       json.set! game.id do
         json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date

@@ -1,0 +1,27 @@
+.game-collection-controls {
+  display: flex;
+  margin-top: 20px;
+  // flex-direction: column;
+  // margin-right: 40px;
+
+}
+
+.game-collection-controls
+.edit-collection.btn,
+.delete-collection.btn,
+.collection-edit-submit.btn  {
+  font-size: 14px;
+
+}
+
+.collection-edit {
+  border: 1px solid $border-purple;
+  padding: 5px;
+  font-size: 20px;
+  color: $purple-main;
+}
+
+.collection-edit-submit.btn {
+  margin-top: 16px;
+  margin-left: -162px;
+}

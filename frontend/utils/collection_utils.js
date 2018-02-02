@@ -7,7 +7,7 @@ export const getCollection = collectionId => (
 
 export const getCollections = (userId) => (
   $.ajax({
-    url: `api/collections`,
+    url: `api/users/${userId}/collections`,
     method: 'GET',
   })
 );

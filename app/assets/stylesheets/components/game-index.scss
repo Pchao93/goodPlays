@@ -1,19 +1,43 @@
 .game-index-container {
   padding: 30px;
   width: 100%;
-  
+
 
   // background: $background-gray;
   // background: white;
 
 }
 
+.game-index-title {
+  display: flex;
+}
+
+.game-index-header .index-user {
+  text-transform: capitalize;
+  margin-right: 5px;
+}
+
+.game-index-header .index-user:hover {
+  color: $button-purple;
+}
+
+.game-index-header .pointer {
+  color: $button-purple;
+  margin-right: 5px;
+
+}
+
 .game-index-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   font-size: 28px;
   border-bottom: 1px solid $button-purple;
   padding-bottom: 20px;
   margin-bottom: 20px;
   color: #19171c;
+  width: calc(100% - 40px);
 }
 
 .game-show-link:hover {

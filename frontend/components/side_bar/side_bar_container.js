@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   createCollection: (collection) => dispatch(createCollection(collection)),
-  getAllCollections: () => dispatch(getAllCollections())
+  getAllCollections: (userId) => dispatch(getAllCollections(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

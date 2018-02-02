@@ -10,13 +10,17 @@ export default (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_ONE_COLLECTION:
       newState = merge({}, state);
-      newState[action.collection.id] = action.collection;
+      newState[action.user.id] = action.user;
       return newState;
     case RECEIVE_COLLECTIONS:
-      return merge({}, state, action.collections);
+      return merge({}, state, action.users);
     case REMOVE_COLLECTION:
       newState = merge({}, state);
-      delete newState[action.collection.id];
+      console.log(newState);
+      console.log(state);
+      let user = newState[action.collection.user_id];
+      let index = user.collections.indexOf(action.collection.id);
+      user.collections = user.collections.splice(index, 1);
       return newState;
     default:
       return state;

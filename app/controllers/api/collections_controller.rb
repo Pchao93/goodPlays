@@ -5,12 +5,17 @@ class Api::CollectionsController < ApplicationController
     if @collection
       render :show
     else
-      render json: ["Unable to find that collection."], status: 404
+      render json: ["Unable to find the collection with id #{params[:id]}."], status: 404
     end
   end
 
   def index
-    @collections = current_user.collections.includes(:games)
+    user = User.find_by(id: params[:user_id])
+    if user
+      @collections = user.collections.includes(:games)
+    else
+      render json: ["Unable to find collections for the user with id #{params[:user_id]}."], status: 404
+    end
   end
 
   def create
@@ -29,14 +34,14 @@ class Api::CollectionsController < ApplicationController
 
     if @collection
       if @collection.user_id != current_user.id
-        render json: ["You do not have permission to edit this collection."]
-      elsif @collection.update(Collection.find_by(id: params[:id]))
+        render json: ["You do not have permission to edit this collection."], status: 400
+      elsif @collection.update(collection_params)
         render :show
       else
         render json: @collection.errors.full_messages, status: 400
       end
     else
-      render json: ["Unable to find that collection."], status: 404
+      render json: ["Unable to find the collection with id #{params[:id]}."], status: 404
     end
 
   end
@@ -45,13 +50,13 @@ class Api::CollectionsController < ApplicationController
     @collection = Collection.find_by(id: params[:id])
     if @collection
       if @collection.user_id != current_user.id
-        render json: ["You do not have permission to delete this collection."]
+        render json: ["You do not have permission to delete this collection."], status: 400
       else
         @collection.destroy
         render :show
       end
     else
-      render json: ["Unable to find that collection."], status: 404
+      render json: ["Unable to find the collection with id #{params[:id]}."], status: 404
     end
   end
 

@@ -16,18 +16,21 @@ export const CLEAR_COLLECTION_ERRORS = "CLEAR_COLLECTION_ERRORS";
 const receiveOneCollection = jsonObj => ({
   type: RECEIVE_ONE_COLLECTION,
   collection: jsonObj.collection,
-  games: jsonObj.games
+  games: jsonObj.games,
+  user: jsonObj.user,
 });
 
 const receiveCollections = jsonObj => ({
   type: RECEIVE_COLLECTIONS,
   collections: jsonObj.collections,
-  games: jsonObj.games
+  games: jsonObj.games,
+  users: jsonObj.users,
+
 });
 
 const removeCollection = collection => ({
   type: REMOVE_COLLECTION,
-  collection
+  collection: collection.collection
 });
 
 const receiveCollectionErrors = errors => ({
@@ -42,7 +45,7 @@ export const clearCollectionErrors = () => ({
 export const getOneCollection = collectionId => dispatch => getCollection(collectionId)
   .then(collection => dispatch(receiveOneCollection(collection)), errors => dispatch(receiveCollectionErrors(errors)));
 
-export const getAllCollections = () => dispatch => getCollections()
+export const getAllCollections = (userId) => dispatch => getCollections(userId)
   .then(collections => dispatch(receiveCollections(collections)), errors => dispatch(receiveCollectionErrors(errors)));
 
 export const createCollection = (formCollection) => dispatch => postCollection(formCollection)

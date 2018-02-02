@@ -6,7 +6,7 @@ import NavBarContainer from './navigation/nav_bar_container';
 import SideBarContainer from './side_bar/side_bar_container';
 import GameShowContainer from './games/game_show_container';
 import GameIndexContainer from './games/game_index_container';
-import CollectionShowContainer from './collections/collection_show_container';
+import CollectionShowContainer from './collections/collection_show_container.jsx';
 import NotFound from './not_found';
 
 
@@ -30,6 +30,8 @@ export default (props) => (
       <Route exact path="/games/:gameId/signup" component={GameShowContainer}/>
 
       <Route exact path="/collections/:collectionId" component={CollectionShowContainer}/>
+      <Route exact path="/collections/:collectionId/edit" component={CollectionShowContainer}/>
+
       <Route exact path="/collections/:collectionId/login" component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId/signup" component={CollectionShowContainer}/>
 

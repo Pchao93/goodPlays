@@ -8,9 +8,10 @@ html {
 
 //disable scrollbounce fix from stack overflow:
 // https://stackoverflow.com/questions/21209223/remove-bounce-on-scroll-in-browser-issue-with-positionfixed-div
+//Breaks some hover stuff when scrolling :(
 html, body {
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
 		position: relative;
 }
 
@@ -25,6 +26,7 @@ body {
 
 .btn {
   display: flex;
+	justify-content: center;
   align-items: center;
   height: 28px;
   padding: 0 9px;
@@ -44,13 +46,13 @@ body {
   bottom: 0;
   left: 240px;
   right: 0;
-  overflow: auto;
-	overflow: auto;
+  // overflow: auto;
+	// overflow: auto;
 }
 
 .app-container {
 	display: flex;
-	// flex-wrap: wrap;
+	flex-wrap: wrap;
 	height: 100%;
 }
 
@@ -68,16 +70,7 @@ body {
 // 	text-align: center;
 // }
 //
-// button:hover {
-// 	background-color: $blue;
-// 	border-color: $dark-blue;
-// }
-//
-// a:hover {
-// 	text-decoration: underline;
-// 	cursor: pointer;
-// }
-// /*
+
 // 	Header Rules
 // */
 //
