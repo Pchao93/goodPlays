@@ -10,7 +10,7 @@
 require 'csv'
 
 user = User.new
-user.username = "patrick"
+user.username = "demo"
 user.password = "password"
 user.save
 
@@ -142,7 +142,3 @@ Collection.create(user_id: user.id, name: "My Favorites")
     CollectionGame.create(game_id: game_id, collection_id: collection_id)
   end
 end
-
-
-
-blizzard = Developer.create(name: "Blizzard Entertainment")
