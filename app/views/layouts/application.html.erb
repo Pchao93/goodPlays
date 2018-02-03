@@ -11,7 +11,8 @@
       <script>
         window.currentUser = {
           "id": <%= current_user.id %>,
-          "username": "<%= current_user.username %>"
+          "username": "<%= current_user.username %>",
+          // "collections": <%= current_user.collections.pluck(:id) %>
         };
       </script>
     <% end %>

@@ -69,6 +69,9 @@ class CollectionButton extends React.Component {
     }
     else if (!this.props.defaultCollection) {
       this.props.addGameCollection(this.props.game.id, this.props.collections[0].id);
+    }
+    else if (this.props.defaultCollection) {
+      this.props.removeGameCollection(this.props.game.id, this.props.defaultCollection.id);
 
     }
   }
@@ -76,13 +79,14 @@ class CollectionButton extends React.Component {
   handleCreate(e, collectionId) {
     e.preventDefault();
     this.props.addGameCollection(this.props.game.id, e.target.getAttribute('data'));
+    // this.toggleDropdown(e);
 
   }
 
   handleDestroy(e) {
     e.preventDefault();
-    console.log(e.target.props);
     this.props.removeGameCollection(this.props.game.id, e.target.getAttribute('data'));
+    // this.toggleDropdown(e);
 
   }
 
@@ -91,30 +95,35 @@ class CollectionButton extends React.Component {
       collectionId, collections, addGameCollection, defaultCollection } = this.props;
     let options = [];
     if (collections) {
+      //Recaftor into own component
       options = collections.map((collection => {
-        if (collection.id === collectionId) {
+
+        if (collection.id === parseInt(collectionId)) {
+
           return null;
         }
         return ( <li key={collection.id}>
-          <span
+          { !collection.games.includes(game.id) ? <span
             onClick={(e) => this.handleCreate(e)}
             data={collection.id}
-            className='collection-form-toggle'> + </span>
+            className='collection-form-toggle'> + </span> :
+
+            <span
+              onClick={(e) => this.handleDestroy(e)}
+              data={collection.id}
+              className='collection-form-toggle'> - </span>}
           <span
             className='collection-option-label'>
             {collection.name}
           </span>
-          <span
-            onClick={(e) => this.handleDestroy(e)}
-            data={collection.id}
-            className='collection-form-toggle'> - </span>
+
         </li>);
       }));
     }
 
     options.filter(li => li !== null);
     return (
-      <div className='collection-button'>
+      <div className={edit ? 'collection-button red' : 'collection-button'}>
         <button
           className={edit ?
             'default-collection-button red' :
@@ -133,7 +142,7 @@ class CollectionButton extends React.Component {
           onClick={this.toggleDropdown}
         >
 
-          <div className='arrow-down'></div>
+          <div className={edit ? 'arrow-down red' : 'arrow-down'}></div>
         </button>
         <ul className={this.state.collectionDropdownClass}>
           {options}

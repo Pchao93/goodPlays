@@ -32,7 +32,19 @@ const mapStateToProps = (state, ownProps) => {
     }
   } else {
     if (ownProps.location.pathname === '/collections/all') {
-      games = Object.values(state.entities.games);
+      // if (currentUser)
+      let user = state.entities.users[currentUser.id];
+      if (state.entities.users[currentUser.id]) {
+        user.collections.forEach((collectionId, idx) => {
+          let blockCollection = state.entities.collections[collectionId];
+          if (blockCollection) {
+            if (idx < 3) {
+              blockCollection.games.forEach(gameIdx => games.push(state.entities.games[gameIdx]));
+            }
+          }
+        });
+      }
+
       collection = {name: 'All Games'};
       collectionUser = currentUser;
     } else {

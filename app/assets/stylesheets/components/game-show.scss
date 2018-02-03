@@ -52,7 +52,9 @@
   position: relative;
 }
 
-
+.collection-button.red {
+  // border: 1px solid $border-purple;
+}
 
 .default-collection-button:hover {
   background: $border-purple;
@@ -74,19 +76,29 @@
 }
 
 .default-collection-button.red {
+  border-top: 1px solid $border-purple;
+  border-left: 1px solid $border-purple;
+  border-bottom: 1px solid $border-purple;
+
+
+
+  color: $purple-main;
   background: $background-gray;
 }
 
 .dropdown-button.red {
+  border: 1px solid $border-purple;
+
+  color: $purple-main;
   background: $background-gray;
 }
 
 .default-collection-button.red:hover {
-  background: #999;
+  background: #eee;
 }
 
 .dropdown-button.red:hover {
-  background: #999;
+  background: #eee;
 }
 .collection-button-dropdown {
   position: absolute;
@@ -166,6 +178,10 @@
   border-right: 8px solid transparent;
 
   border-top: 12px solid #fff;
+}
+
+.arrow-down.red {
+  border-top: 12px solid $button-purple;
 }
 
 .selected-collection-button {
