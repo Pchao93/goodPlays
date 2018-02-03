@@ -5,8 +5,11 @@ class CollectionButton extends React.Component {
   constructor(props) {
     super(props);
 
+    let collectionButtonClass;
+
     this.state = {
-      collectionDropdownClass: 'collection-button-dropdown hidden'
+      collectionDropdownClass: 'collection-button-dropdown hidden',
+      collectionButtonClass: this.props.defaultCollection ? 'selected-collection-button' : 'default-collection-button'
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
@@ -53,7 +56,13 @@ class CollectionButton extends React.Component {
   }
 
   handleDefault(e) {
-
+    e.preventDefault();
+    if (!this.props.currentUser) {
+      this.props.history.push(`${this.props.location.pathname}/login`);
+    }
+    else if (!this.props.defaultCollection) {
+      this.props.addGameCollection(this.props.game.id, this.props.collections[0].id);
+    }
   }
 
   handleCreate(e, collectionId) {
@@ -71,7 +80,7 @@ class CollectionButton extends React.Component {
 
   render () {
     let { game, edit, removeGameCollection,
-      collectionId, collections, addGameCollection } = this.props;
+      collectionId, collections, addGameCollection, defaultCollection } = this.props;
     let options = [];
     if (collections) {
       options = collections.map((collection => {
@@ -101,13 +110,14 @@ class CollectionButton extends React.Component {
         <button
           className={edit ?
             'default-collection-button red' :
-              'default-collection-button'}
-          
+              this.state.collectionButtonClass}
+
           onClick={edit ?
             () => removeGameCollection(game.id, collectionId) :
               (e) => this.handleDefault(e)}
         >
-          {edit ? 'Remove from Collection' : 'Want to Play'}
+          {edit ? 'Remove from Collection' :
+            (defaultCollection ? defaultCollection.name : 'Want to Play')}
         </button>
         <button
           className={edit ?

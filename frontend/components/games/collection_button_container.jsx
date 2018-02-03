@@ -6,12 +6,21 @@ import {removeGameCollection, addGameCollection, createCollection } from '../../
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
   let collections;
-
+  let defaultCollection = undefined;
   if (currentUser) {
     currentUser = state.entities.users[state.session.currentUser.id];
     collections = [];
     Object.values(state.entities.collections)
-      .forEach(collectionListItem => collectionListItem.user_id === currentUser.id);
+      .forEach(collectionListItem => {
+        if (collectionListItem.user_id === currentUser.id) {
+          collections.push(collectionListItem);
+          if (!defaultCollection) {
+            if (collectionListItem.games.includes(ownProps.game.id)) {
+              defaultCollection = collectionListItem;
+            }
+          }
+        }
+    });
 
   }
   let edit = ownProps.match.path ===
@@ -19,13 +28,14 @@ const mapStateToProps = (state, ownProps) => {
       state.entities.collections[ownProps.match.params.collectionId].user_id ===
         currentUser.id;
   let collectionId = ownProps.match.params.collectionId;
-  // let collection = state.entities.collections[collectionId];
+  let collection = state.entities.collections[collectionId];
   return {
     game: ownProps.game,
     edit,
     collections,
     collectionId,
     currentUser,
+    defaultCollection,
   };
 };
 

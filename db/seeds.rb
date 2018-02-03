@@ -135,10 +135,10 @@ Collection.create(user_id: user.id, name: "Want to Play")
 Collection.create(user_id: user.id, name: "Have Played")
 Collection.create(user_id: user.id, name: "Playing")
 Collection.create(user_id: user.id, name: "My Favorites")
-
-(1..4).each do |collection_id|
-  10.times do
-    game_id = rand(0..200)
-    CollectionGame.create(game_id: game_id, collection_id: collection_id)
-  end
-end
+# 
+# (1..4).each do |collection_id|
+#   10.times do
+#     game_id = rand(0..200)
+#     CollectionGame.create(game_id: game_id, collection_id: collection_id)
+#   end
+# end
