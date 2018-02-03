@@ -26,8 +26,9 @@ export default (state = {}, action) => {
       return newState;
 
     case RECEIVE_COLLECTIONS:
-      newState = merge({}, state, action.games);
-      return newState;
+      // newState = merge({}, state, action.games);
+      // return newState;
+      return action.games;
     default:
       return state;
   }

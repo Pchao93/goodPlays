@@ -8,7 +8,7 @@ class Api::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.includes(:developer, :platforms).limit(25)
+    @games = Game.includes(:developer, :platforms)
   end
 
   # def game_params

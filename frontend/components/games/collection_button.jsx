@@ -19,6 +19,13 @@ class CollectionButton extends React.Component {
 
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      collectionButtonClass: nextProps.defaultCollection ?
+        'selected-collection-button' : 'default-collection-button'
+    });
+  }
+
   closeForm(e) {
     if (e.currentTarget === e.target) {
       this.props.history.push(this.props.match.params[0]);
@@ -62,6 +69,7 @@ class CollectionButton extends React.Component {
     }
     else if (!this.props.defaultCollection) {
       this.props.addGameCollection(this.props.game.id, this.props.collections[0].id);
+
     }
   }
 

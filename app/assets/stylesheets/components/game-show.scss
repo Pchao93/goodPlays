@@ -74,11 +74,11 @@
 }
 
 .default-collection-button.red {
-  background: #aaa;
+  background: $background-gray;
 }
 
 .dropdown-button.red {
-  background: #aaa;
+  background: $background-gray;
 }
 
 .default-collection-button.red:hover {
@@ -100,10 +100,12 @@
   box-sizing: border-box;
   // height: 200px;
   li {
+    background: #fff;
+
     margin-top: 10px;
     height: 30px;
     transition: height .1s ease-in, padding .1s ease-in;
-    transition-delay: .1s;
+    // transition-delay: .1s;
     display: flex;
     // align-items: center;
     // justify-content: space-between;
@@ -113,7 +115,7 @@
   }
   span {
     transition: height .1s ease-in, padding .1s ease-in, color .1s ease-in;
-    transition-delay: .2s;
+    // transition-delay: .2s;
     // color: inherit;
   }
 }
@@ -122,9 +124,8 @@
   word-wrap: break-word;
   // background: black;
   margin: auto auto;
-  overflow-x: scroll;
   max-height: 30px;
-  
+
   text-align: center;
 
 
@@ -142,11 +143,11 @@
   overflow: hidden;
   padding: 0px;
   box-shadow: none;
-  transition-delay: .2s;
+  // transition-delay: .2s;
 
   li {
     height: 0px;
-    transition-delay: .1s;
+    // transition-delay: .1s;
 
   }
   span {
@@ -167,6 +168,24 @@
   border-top: 12px solid #fff;
 }
 
+.selected-collection-button {
+  border: 1px solid $button-purple;
+  background-color: $background-gray;
+  width: 80%;
+  box-sizing: border-box;
+  height: 40px;
+  color: $purple-main;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+
+  position: relative;
+}
+
+.selected-collection-button:hover {
+  cursor: default;
+}
 
 .rating-button {
   color: #19171c;

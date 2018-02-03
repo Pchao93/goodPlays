@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import React from 'react';
 import {
   getAllGames,
+  getAllCollections,
   getOneCollection,
   destroyCollection,
   updateCollection,
@@ -30,7 +31,13 @@ const mapStateToProps = (state, ownProps) => {
       collectionUser = state.entities.users[collection.user_id];
     }
   } else {
-    collection = {name: ""};
+    if (ownProps.location.pathname === '/collections/all') {
+      games = Object.values(state.entities.games);
+      collection = {name: 'All Games'};
+      collectionUser = currentUser;
+    } else {
+      collection = {name: ""};
+    }
   }
 
 
@@ -46,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  action: () => dispatch(getOneCollection(ownProps.match.params.collectionId)),
+  action: () => ownProps.location.pathname === '/collections/all' ? dispatch(getAllCollections()) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
   destroyCollection: (collectionId) => dispatch(destroyCollection(collectionId)),
   updateCollection: (collection) => dispatch(updateCollection(collection))
 });
