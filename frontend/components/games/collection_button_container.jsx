@@ -6,9 +6,13 @@ import {removeGameCollection, addGameCollection, createCollection } from '../../
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
   let collections;
+
   if (currentUser) {
-    collections = Object.values(state.entities.collections)
-      .filter(collectionListItem => collectionListItem.user_id === currentUser.id);
+    currentUser = state.entities.users[state.session.currentUser.id];
+    collections = [];
+    Object.values(state.entities.collections)
+      .forEach(collectionListItem => collectionListItem.user_id === currentUser.id);
+
   }
   let edit = ownProps.match.path ===
     '/collections/:collectionId/edit' &&

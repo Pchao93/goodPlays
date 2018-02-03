@@ -11,6 +11,8 @@ class CollectionButton extends React.Component {
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
     this.handleDestroy = this.handleDestroy.bind(this);
+    this.handleDefault = this.handleDefault.bind(this);
+
 
   }
 
@@ -50,6 +52,10 @@ class CollectionButton extends React.Component {
     };
   }
 
+  handleDefault(e) {
+
+  }
+
   handleCreate(e, collectionId) {
     e.preventDefault();
     this.props.addGameCollection(this.props.game.id, e.target.getAttribute('data'));
@@ -64,7 +70,8 @@ class CollectionButton extends React.Component {
   }
 
   render () {
-    let { game, edit, removeGameCollection, collectionId, collections } = this.props;
+    let { game, edit, removeGameCollection,
+      collectionId, collections, addGameCollection } = this.props;
     let options = [];
     if (collections) {
       options = collections.map((collection => {
@@ -72,9 +79,18 @@ class CollectionButton extends React.Component {
           return null;
         }
         return ( <li key={collection.id}>
-          <span onClick={(e) => this.handleCreate(e)} data={collection.id} className='collection-form-toggle'> + </span>
-          <span className='collection-option-label'>{collection.name}</span>
-          <span onClick={(e) => this.handleDestroy(e)} data={collection.id} className='collection-form-toggle'> - </span>
+          <span
+            onClick={(e) => this.handleCreate(e)}
+            data={collection.id}
+            className='collection-form-toggle'> + </span>
+          <span
+            className='collection-option-label'>
+            {collection.name}
+          </span>
+          <span
+            onClick={(e) => this.handleDestroy(e)}
+            data={collection.id}
+            className='collection-form-toggle'> - </span>
         </li>);
       }));
     }
@@ -86,8 +102,11 @@ class CollectionButton extends React.Component {
           className={edit ?
             'default-collection-button red' :
               'default-collection-button'}
-          onClick={edit ? () => removeGameCollection(game.id, collectionId) : () => {}}
-              >
+          
+          onClick={edit ?
+            () => removeGameCollection(game.id, collectionId) :
+              (e) => this.handleDefault(e)}
+        >
           {edit ? 'Remove from Collection' : 'Want to Play'}
         </button>
         <button

@@ -42,6 +42,12 @@ export default (state = {}, action) => {
       collection = newState[action.collectionId];
       index = collection.games.indexOf(action.gameId);
       collection.games.splice(index, 1);
+      if (action.removeGamesFromCollectionArray.length > 0) {
+        action.removeGamesFromCollectionArray.forEach(collectionId => {
+          let otherIndex = newState[collectionId].games.indexOf(action.gameId);
+          newState[collectionId].games.splice(otherIndex, 1);
+        });
+      }
       return newState;
     default:
       return state;

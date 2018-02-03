@@ -90,19 +90,21 @@ class SideBar extends React.Component {
     if (!currentUser) {
       return <div></div>;
     }
+    let totalGames = 0;
     let names = collections.map((collection, idx) => {
       if (collection.games === undefined) {
 
         collection.games = [];
-      }
-      return (
-        <li key={collection.id}>
-          <Link to={`/collections/${collection.id}`}>
-            <span className="collection-name">{collection.name}{ idx > 2 && ':'}</span>
-            <span className='game-count'>{collection.games.length} game{collection.games.length !== 1 && 's'}</span>
-          </Link>
-        </li>
-      );
+      } else {
+        totalGames += collection.games.length;
+        return (
+          <li key={collection.id}>
+            <Link to={`/collections/${collection.id}`}>
+              <span className="collection-name">{collection.name}{ idx > 2 && ':'}</span>
+              <span className='game-count'>{collection.games.length} game{collection.games.length !== 1 && 's'}</span>
+            </Link>
+          </li>
+      );}
     });
 
     return (
@@ -110,6 +112,13 @@ class SideBar extends React.Component {
         <div className='side-bar-collections'>
           <div className='side-bar-header'>Collections</div>
           <ul className='collections-list'>
+            <li>
+              <Link to={`/${currentUser.id}/collections/`}>
+                <span className="collection-name">All Games:</span>
+                <span className='game-count'>{totalGames} game{totalGames !== 1 && 's'}</span>
+              </Link>
+
+            </li>
             {names}
           </ul>
           <form className="new-collection-form">

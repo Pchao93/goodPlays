@@ -45,8 +45,19 @@
 }
 
 
-.side-bar .collections-list li:hover {
-  background: #2C2640;//#b19dd8;
+// .side-bar .collections-list li:hover {
+//   background: #2C2640;//#b19dd8;
+// }
+//
+// .side-bar .collections-list li:first-of-type {
+//   font-weight: 700;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+.side-bar .collections-list li:first-of-type:hover {
+  background: none;
 }
 
 .collection-name, .game-count {

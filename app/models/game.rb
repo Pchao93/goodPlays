@@ -15,7 +15,7 @@ class Game < ApplicationRecord
   has_many :collections,
     through: :collection_games
 
-  has_many :players,
+  has_many :users,
     through: :collections,
     source: :user
 
