@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import onClickOutside from 'react-onclickoutside';
 
 class CollectionButton extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class CollectionButton extends React.Component {
     this.handleCreate = this.handleCreate.bind(this);
     this.handleDestroy = this.handleDestroy.bind(this);
     this.handleDefault = this.handleDefault.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+
 
 
   }
@@ -30,6 +33,12 @@ class CollectionButton extends React.Component {
     if (e.currentTarget === e.target) {
       this.props.history.push(this.props.match.params[0]);
       this.props.clearSessionErrors();
+    }
+  }
+
+  handleClickOutside(e) {
+    if (this.state.collectionDropdownClass === 'collection-button-dropdown') {
+      this.toggleDropdown();
     }
   }
 
@@ -152,4 +161,4 @@ class CollectionButton extends React.Component {
   }
 
 }
-export default CollectionButton;
+export default onClickOutside(CollectionButton);
