@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  after_create :create_default_collections
+
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
@@ -35,6 +37,13 @@ class User < ApplicationRecord
     user = User.find_by(username: username)
     return user if user.nil? || user.is_password?(password)
     nil
+  end
+
+  def create_default_collections
+    Collection.create(user_id: self.id, name: "Want to Play")
+    Collection.create(user_id: self.id, name: "Have Played")
+    Collection.create(user_id: self.id, name: "Playing")
+    Collection.create(user_id: self.id, name: "My Favorites")
   end
 
 end

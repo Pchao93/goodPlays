@@ -28,11 +28,6 @@ export default (state = {}, action) => {
     case RECEIVE_COLLECTIONS:
       newState = merge({}, state, action.games);
       return newState;
-      // if (action.games) {
-      //   return action.games;
-      // } else {
-      //   return null;
-      // }
     default:
       return state;
   }

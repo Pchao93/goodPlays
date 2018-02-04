@@ -5,6 +5,9 @@ import {
   ADD_GAME_COLLECTION,
   REMOVE_GAME_COLLECTION,
 } from '../actions/collections';
+import  {
+  LOGOUT_CURRENT_USER,
+} from '../actions/session';
 import {merge} from 'lodash';
 
 export default (state = {}, action) => {
@@ -49,6 +52,8 @@ export default (state = {}, action) => {
         });
       }
       return newState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }
