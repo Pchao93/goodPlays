@@ -46,4 +46,8 @@ class User < ApplicationRecord
     Collection.create(user_id: self.id, name: "My Favorites")
   end
 
+  def default_collections
+    self.collections.includes(:games).limit(3)
+  end
+
 end
