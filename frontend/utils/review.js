@@ -12,7 +12,7 @@ export const getReviews = (gameId) => (
   })
 );
 
-export const postReviews = (gameId, review) => (
+export const postReview = (gameId, review) => (
   $.ajax({
     url: `api/games/${gameId}/reviews`,
     method: 'POST',
@@ -20,7 +20,7 @@ export const postReviews = (gameId, review) => (
   })
 );
 
-export const patchReviews = (gameId, review) => (
+export const patchReview = (gameId, review) => (
   $.ajax({
     url: `api/games/${gameId}/${review.id}`,
     method: 'PATCH',
@@ -28,7 +28,7 @@ export const patchReviews = (gameId, review) => (
   })
 );
 
-export const deleteCollection = (reviewId) => (
+export const deleteReview = (reviewId) => (
   $.ajax({
     url: `api/reviews/${reviewId}`,
     method: 'DELETE',

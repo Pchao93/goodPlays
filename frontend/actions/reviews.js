@@ -15,7 +15,7 @@ export const CLEAR_REVIEW_ERRORS = "CLEAR_REVIEW_ERRORS";
 const receiveOneReview = jsonObj => ({
   type: RECEIVE_ONE_REVIEW,
   review: jsonObj.review,
-  games: jsonObj.games,
+  game: jsonObj.game,
   user: jsonObj.user,
 });
 
@@ -56,3 +56,7 @@ export const updateReview = (gameId, formReview) => dispatch => patchReview(game
 export const destroyReview = (reviewId) => dispatch => deleteReview(reviewId)
   .then(review => dispatch(removeReview(review)), errors =>
     dispatch(receiveReviewErrors(errors)));
+
+window.getAllReviews = getAllReviews;
+window.createReview = createReview;
+window.destroyReview = destroyReview;
