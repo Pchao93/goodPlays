@@ -9,13 +9,19 @@ Rails.application.routes.draw do
 
     resources :users, only: :create do
       resources :collections, only: [:index]
+      resources :reviews, only: :index;
     end
 
     resources :collections, only: [:show, :create, :update, :destroy, :index]
 
-    resources :games, only: [:show, :index]
+    resources :games, only: [:show, :index] do
+      resources :reviews, only: [:index, :create, :update]
+    end
+
+    resources :reviews, only: :destroy
 
     resources :collection_games, only: [:create, :destroy]
+
   end
 
   delete '/api/collection_games', to: "api/collection_games#destroy"

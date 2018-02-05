@@ -2,3 +2,4 @@
 
 json.extract! @user, :id, :username
 json.collections @user.collections.pluck(:id)
+json.reviews @user.reviews.pluck(:id)

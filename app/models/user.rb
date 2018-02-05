@@ -5,6 +5,12 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :collections
+  has_many :reviews
+  has_many :reviewed_games,
+    through: :reviews,
+    source: :game,
+    dependent: :destroy
+    
 
   has_many :games,
     through: :collections

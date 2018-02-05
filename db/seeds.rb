@@ -12,6 +12,7 @@ require 'csv'
 user = User.new
 user.username = "demo"
 user.password = "password"
+user.email = "demo@demo.com"
 user.save
 
 PLATFORMS = {
@@ -117,8 +118,8 @@ csv.each_with_index do |row, idx|
 
   PLATFORMS.each_key do |platform|
     if row['platforms'].include?(platform)
-      platformObj = Platform.find_by(name: platform)
-      PlatformGame.create(game_id: game.id, platform_id: platformObj.id)
+      platform_hash = Platform.find_by(name: platform)
+      PlatformGame.create(game_id: game.id, platform_id: platform_hash.id)
     end
   end
 

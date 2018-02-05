@@ -19,5 +19,11 @@ class Game < ApplicationRecord
     through: :collections,
     source: :user
 
+  has_many :reviews,
+    dependent: :destroy
+
+  has_many :reviewers,
+    through: :reviews,
+    source: :user
 
 end

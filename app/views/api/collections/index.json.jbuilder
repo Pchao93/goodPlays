@@ -11,6 +11,7 @@ end
     json.set! collection.user_id do
       json.extract! collection.user, :username, :id
       json.collections collection.user.collections.pluck(:id)
+      json.reviews collection.user.reviews.pluck(:id)
     end
   end
   json.games do
