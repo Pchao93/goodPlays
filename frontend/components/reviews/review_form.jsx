@@ -6,7 +6,7 @@ class ReviewForm extends React.Component{
     super(props);
 
     this.state=({
-      value: this.props.review.body ? this.props.review.body : '',
+      value: this.props.review && this.props.review.body ? this.props.review.body : '',
     });
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +20,7 @@ class ReviewForm extends React.Component{
       id: this.props.review.id
     });
     this.props.closeForm(e);
+
   }
 
   handleInput(type) {

@@ -26,8 +26,11 @@ class Api::ReviewsController < ApplicationController
 
     if @review
       if current_user.id == @review.user_id
-        @review.update(review_params)
-        render :show
+        if @review.update(review_params)
+          render :show
+        else
+          render json: @review.errors.full_messages, status: 400
+        end
       else
         render json: ['You do not have permission to edit this review'], status: 400
       end

@@ -23,7 +23,7 @@ const receiveOneCollection = jsonObj => ({
   games: jsonObj.games,
   user: jsonObj.user,
   reviews: jsonObj.reviews
-  
+
 });
 
 const receiveCollections = jsonObj => ({
@@ -57,13 +57,14 @@ const addGameToCollection = (gameId, collectionId, addGameToCollectionId, remove
   removeGameFromCollectionId
 });
 
-const removeGameFromCollection = (gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId, removeGamesFromCollectionArray) => ({
+const removeGameFromCollection = (gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId, removeGamesFromCollectionArray, removeReviewId) => ({
   type: REMOVE_GAME_COLLECTION,
   gameId,
   collectionId,
   addGameToCollectionId,
   removeGameFromCollectionId,
   removeGamesFromCollectionArray,
+  removeReviewId,
 });
 
 export const getOneCollection = collectionId => dispatch => getCollection(collectionId)
@@ -92,6 +93,6 @@ export const addGameCollection = (gameId, collectionId) => dispatch => createGam
       errors => dispatch(receiveCollectionErrors));
 
 export const removeGameCollection = (gameId, collectionId) => dispatch => destroyGameCollection({gameId, collectionId})
-  .then(({ addGameToCollectionId, removeGameFromCollectionId, removeGamesFromCollectionArray }) => dispatch(
-    removeGameFromCollection(gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId, removeGamesFromCollectionArray)),
+  .then(({ addGameToCollectionId, removeGameFromCollectionId, removeGamesFromCollectionArray, removeReviewId }) => dispatch(
+    removeGameFromCollection(gameId, collectionId, addGameToCollectionId, removeGameFromCollectionId, removeGamesFromCollectionArray, removeReviewId)),
     errors => dispatch(receiveCollectionErrors));

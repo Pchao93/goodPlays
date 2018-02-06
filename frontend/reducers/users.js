@@ -2,6 +2,7 @@ import {
   REMOVE_COLLECTION,
   RECEIVE_COLLECTIONS,
   RECEIVE_ONE_COLLECTION,
+  REMOVE_GAME_COLLECTION,
 } from '../actions/collections';
 import {
   RECEIVE_ONE_REVIEW,
@@ -45,6 +46,16 @@ export default (state = {}, action) => {
       index = user.reviews.indexOf(action.review.id);
       user.reviews = user.reviews.splice(index, 1);
       return newState;
+    // case REMOVE_GAME_COLLECTION:
+    //   let review = newState[action.removeReviewId];
+    //   index = newState[].reviews.indexOf(action.removeReviewId);
+    //   user.reviews.splice(index, 1);
+    //   if (action.removeGamesFromCollectionArray.length > 0) {
+    //     action.removeGamesFromCollectionArray.forEach(collectionId => {
+    //       let otherIndex = newState[collectionId].games.indexOf(action.gameId);
+    //       newState[collectionId].games.splice(otherIndex, 1);
+    //     });
+    //   }
     default:
       return state;
   }

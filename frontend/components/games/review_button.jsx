@@ -15,13 +15,11 @@ class ReviewButton extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('received props');
-    // console.log(this.props.review);
-    // console.log(nextProps);
-    if (!nextProps.currentUser) {
+    if (!nextProps.currentUser || !nextProps.review) {
       this.setState({
         rating: 0
       });
+      this.action = nextProps.createReview;
     } else if (!this.props.review && nextProps.review) {
 
       this.setState({
@@ -34,7 +32,7 @@ class ReviewButton extends React.Component {
       this.setState({
         rating: nextProps.review.rating
       });
-      this.action = nextProps.review ? nextProps.updateReview : nextProps.createReview;
+      // this.action = nextProps.review ? nextProps.updateReview : nextProps.createReview;
     }
   }
 

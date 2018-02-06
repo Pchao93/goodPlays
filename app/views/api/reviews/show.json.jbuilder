@@ -1,11 +1,11 @@
 json.review do
-  json.extract! @review, :id, :body, :rating
-  json.user @review.user.id
-  json.game_id @review.game.id
+  json.extract! @review, :id, :body, :rating, :created_at
+  json.user_id @review.user_id
+  json.game_id @review.game_id
 end
 
 json.game do
-  json.extract! @review.game, :id, :title, :description, :image_url, :amazon_url, :release_date, :rating
+  json.extract! @review.game, :id, :title, :description, :image_url, :amazon_url, :release_date, :rating, :average_score
   json.developer @review.game.developer.name
   json.platforms @review.game.platforms.pluck(:abreviation)
   json.review @review

@@ -1,9 +1,9 @@
 json.reviews do
   @reviews.each do |review|
     json.set! review.id do
-      json.extract! review, :id, :body, :rating
+      json.extract! review, :id, :body, :rating, :created_at
       json.game_id review.game_id
-      json.user review.user_id
+      json.user_id review.user_id
     end
   end
 end
@@ -19,7 +19,7 @@ end
   end
   json.games do
     json.set! review.game.id do
-      json.extract! review.game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date
+      json.extract! review.game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
       json.developer review.game.developer.name
       json.platforms review.game.platforms.pluck(:abreviation)
       json.review game.reviews.where(user_id: current_user.id)

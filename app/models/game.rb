@@ -26,4 +26,17 @@ class Game < ApplicationRecord
     through: :reviews,
     source: :user
 
+  def average_score
+    if self.reviews.count < 1
+      return 0.0
+    end
+    total = self.reviews.reduce(0) do |sum, review|
+      sum + review.rating
+    end
+    p total
+    p self.reviews.count
+    average = ((total * 1.0)/ self.reviews.count)
+    average.round(1)
+  end
+
 end

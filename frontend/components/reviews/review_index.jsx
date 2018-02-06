@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewForm from './review_form';
-import ScoreStars from '../games/score_stars';
+import ReviewFormContainer from './review_form_container';
+import ReviewListItem from './review_list_item';
 
 class ReviewIndex extends React.Component {
   constructor(props) {
@@ -9,33 +9,53 @@ class ReviewIndex extends React.Component {
     this.state = {
       edit: false
     };
+    this.handleEdit = this.handleEdit.bind(this);
+    this.closeForm = this.closeForm.bind(this);
 
   }
 
+  handleEdit(e) {
+    e.preventDefault();
+    this.setState({
+      edit: true
+    });
+  }
+
+  closeForm(e) {
+    console.log(this);
+    e.preventDefault();
+    this.setState({
+      edit: false
+    });
+  }
 
   render() {
     let {reviews, users, currentUser, game} = this.props;
-    console.log(game);
-    
+
+
     let reviewListItems = game.reviews.map(reviewIdx => {
-      console.log(reviews[reviewIdx]);
-      console.log(users);
-      return ((this.state.edit && reviews[reviewIdx].user_id === currentUser.id) ?
-        (<ReviewForm review={reviews[reviewIdx]}/>) :
-          (<li className='review' key={reviewIdx}>
-            <div className='review-heading'>
-            {reviews[reviewIdx] && users[reviews[reviewIdx].user_id] &&
+      if (reviews[reviewIdx] && reviews[reviewIdx].body) {
 
-                <span className='review-username'>
-                  {users[reviews[reviewIdx].user_id].username}
-                </span>} rated it
-                {reviews[reviewIdx] && <ScoreStars disableScore={true} score={reviews[reviewIdx].rating}/>}
-              </div>
-            <div className='review-body'>
-              {reviews[reviewIdx] && reviews[reviewIdx].body}
-            </div>
 
-          </li>));
+        if (this.state.edit && reviews[reviewIdx].user_id === currentUser.id) {
+            return (<ReviewFormContainer
+                      key={reviewIdx}
+                      edit={true}
+                      game={this.props.game}
+                      closeForm={this.closeForm}
+                      review={reviews[reviewIdx]}/>);
+        } else if (reviews[reviewIdx].body) {
+            return (
+            <ReviewListItem
+              key={reviewIdx}
+              review={reviews[reviewIdx]}
+              currentUser={currentUser}
+              user={users[reviews[reviewIdx].user_id]}
+              handleEdit={this.handleEdit}
+              destroyReview={this.props.destroyReview}/>
+          );
+        }
+      }
     });
 
 

@@ -26,6 +26,10 @@ class GameShow extends React.Component {
     this.setState({displayForm: false});
   }
 
+  handleDelete() {
+
+  }
+
   // componentDidMount() {
   //
   //   this.props.getOneGame(this.props.match.params.gameId);
@@ -40,11 +44,6 @@ class GameShow extends React.Component {
   render() {
     let { game, review, currentUser, reviews } = this.props;
     let platforms;
-
-
-    let reviewListItems = reviews.map(_review => (
-      <ReviewListItem key={_review.id} review={_review} />
-    ));
 
     if (game){
       platforms = game.platforms.slice(0, 4).map(platform => (

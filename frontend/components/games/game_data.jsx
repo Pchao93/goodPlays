@@ -8,7 +8,7 @@ const GameData = ({game, platforms}) => (
     <h1 className="game-title">{game.title}</h1>
     <span className='developer-container'>by <span
       className='developer-name'>{game.developer}</span></span>
-    <ScoreStars score={4.5} />
+    <ScoreStars score={game.average_score} />
     <GameStats game={game} platforms={platforms}/>
   </div>
 

@@ -8,7 +8,7 @@ end
 @collection.games.each do |game|
   json.games do
     json.set! game.id do
-      json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date
+      json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
       json.review game.reviews.where(user_id: current_user.id) if current_user

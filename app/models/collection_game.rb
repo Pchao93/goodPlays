@@ -5,7 +5,7 @@ class CollectionGame < ApplicationRecord
   belongs_to :collection
 
   attr_accessor :to_add, :to_remove, :to_remove_array
-  attr_accessor :default_game_collection
+  attr_accessor :default_game_collection, :removeReviewId
   belongs_to :game
 
   has_one :user,
@@ -68,12 +68,14 @@ class CollectionGame < ApplicationRecord
             collection_id: collection.id,
             game_id: self.game.id).destroy
           self.to_remove_array.push(collection.id)
-          review = Review.find_by(user_id: user.id, game_id: self.game.id)
-          if review
-            review.destroy
-          end
           break
         end
+      end
+      review = Review.find_by(user_id: user.id, game_id: self.game.id)
+      if review
+        p 'review found'
+        review.destroy
+        self.removeReviewId = review.id
       end
     end
   end

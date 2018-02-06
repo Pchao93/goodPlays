@@ -5,7 +5,7 @@ json.games do
   @games.each do |game|
 
     json.set! game.id do
-      json.extract! game, :id, :title, :description, :image_url, :amazon_url, :release_date, :rating
+      json.extract! game, :id, :title, :description, :image_url, :amazon_url, :release_date, :rating, :average_score
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
       json.reviews game.reviews.pluck(:id)

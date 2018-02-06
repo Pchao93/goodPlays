@@ -13,6 +13,7 @@ import {
 import {
   RECEIVE_COLLECTIONS,
   RECEIVE_ONE_COLLECTION,
+  REMOVE_GAME_COLLECTION,
 } from '../actions/collections';
 
 
@@ -20,6 +21,8 @@ import {merge} from 'lodash';
 
 export default (state = {}, action) => {
   let newState;
+  let review;
+  let index;
   switch(action.type) {
     case RECEIVE_ONE_REVIEW:
       newState = merge({}, state);
@@ -39,8 +42,12 @@ export default (state = {}, action) => {
       return merge({}, state, action.reviews);
     case RECEIVE_ONE_COLLECTION:
       return merge({}, state, action.reviews);
-    case LOGOUT_CURRENT_USER:
-      return {};
+    case REMOVE_GAME_COLLECTION:
+      newState = merge({}, state);
+      delete newState[action.removeReviewId];
+      return newState;
+    // case LOGOUT_CURRENT_USER:
+    //   return {};
     default:
       return state;
   }

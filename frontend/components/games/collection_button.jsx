@@ -42,8 +42,8 @@ class CollectionButton extends React.Component {
   }
 
   toggleDropdown(id) {
-    console.log(id);
-    if (id) {
+    
+    if (id && this.props.toggleHover) {
       this.props.toggleHover(id);
     }
     if (!this.props.currentUser) {

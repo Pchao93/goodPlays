@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
-import { getReviews } from '../../actions/reviews';
+import { getReviews, destroyReview } from '../../actions/reviews';
 import { withRouter } from 'react-router-dom';
 import ReviewIndex from './review_index';
 
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
+  
   if (state.session.currentUser) {
     currentUser = state.entities.users[state.session.currentUser.id];
+
   }
   let game = state.entities.games[ownProps.match.params.gameId];
   let reviews = state.entities.reviews;
@@ -32,6 +34,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getReviews: gameId => dispatch(getReviews(gameId)),
+  destroyReview: reviewId => dispatch(destroyReview(reviewId))
+
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReviewIndex));

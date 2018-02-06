@@ -9,18 +9,27 @@
 
 .review-container-title {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid $border-purple;
   width: 765px;
 }
-
 .review-heading {
   display: flex;
+  justify-content: space-between;
+}
+.review-heading-left {
+  display: flex;
   align-items: flex-end;
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 10px;
+}
+
+.review-date {
+  font-size: 18px;
+  color: #ccc
+
 }
 
 .review .score-stars {
@@ -36,4 +45,12 @@
 .review-body {
   font-size: 16px;
   white-space: pre-wrap;
+  margin-bottom: 20px;
+}
+
+.review-controls {
+  display: flex;
+  margin-right: 20px;
+  font-size: 14px;
+  height: 28px;
 }
