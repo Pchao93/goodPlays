@@ -31,7 +31,8 @@ class CollectionButton extends React.Component {
 
   handleClickOutside(e) {
     if (this.state.collectionDropdownClass === 'collection-button-dropdown') {
-      this.toggleDropdown();
+      console.log(this.props.hoverGameId);
+      this.toggleDropdown(this.props.hoverGameId);
     }
   }
 
@@ -40,8 +41,11 @@ class CollectionButton extends React.Component {
       classTwo : classOne;
   }
 
-  toggleDropdown(e) {
-    this.props.toggleHover(e);
+  toggleDropdown(id) {
+    console.log(id);
+    if (id) {
+      this.props.toggleHover(id);
+    }
     if (!this.props.currentUser) {
 
       this.props.history.push(`${this.props.location.pathname}/login`);
@@ -142,12 +146,12 @@ class CollectionButton extends React.Component {
           data={game.id}
           className={edit ?
             'dropdown-button red' : 'dropdown-button'}
-          onClick={this.toggleDropdown}
+          onClick={(e) => this.toggleDropdown(game.id)}
         >
 
           <div
-            data={game.id}
-            onClick={this.toggleDropdown}
+
+            onClick={(e) => this.toggleDropdown(game.id)}
             className={edit ? 'arrow-down red' : 'arrow-down'}></div>
         </button>
         <ul className={this.state.collectionDropdownClass}>

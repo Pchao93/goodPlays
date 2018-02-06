@@ -40,12 +40,12 @@ class GameIndex extends React.Component {
       classTwo : classOne;
   }
 
-  toggleHover(e) {
-    let hoverGameId;
+  toggleHover(id) {
+
     // if (e.target === e.currentTarget) {
-      hoverGameId = parseInt(e.target.getAttribute('data'));
+    let hoverGameId = parseInt(id);
     // }
-    console.error(hoverGameId);
+
 
     let newClass = this.toggleHelper(
       this.state,
@@ -56,7 +56,7 @@ class GameIndex extends React.Component {
       gameHoverClass: newClass,
       hoverGameId
     });
-    console.error(newClass);
+
   }
 
   componentDidMount() {
@@ -131,8 +131,8 @@ class GameIndex extends React.Component {
           let liStyle = {animationDelay: n,};
           // console.log(liStyle);
           let divClass;
-          console.error(this.state.hoverGameId);
-          console.error(game.id);
+          // console.error(this.state.hoverGameId);
+          // console.error(game.id);
           if (this.state.hoverGameId === game.id) {
             divClass = this.state.gameHoverClass;
           } else {
@@ -146,7 +146,10 @@ class GameIndex extends React.Component {
               toggleHover={this.toggleHover}
               divClass={divClass}
               review={reviews.filter(review => review.game_id === game.id)[0]}
-              game={game}/>);
+              game={game}
+              hoverGameId={this.state.hoverGameId}
+              />
+          );
           n += 1;
         }
       });

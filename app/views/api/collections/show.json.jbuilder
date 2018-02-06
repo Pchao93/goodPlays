@@ -16,7 +16,7 @@ end
 
     end
   end
-  review = game.reviews.where(user_id: current_user.id) if current_user
+  review = game.reviews.where(user_id: current_user.id).first if current_user
   json.reviews do
     if review
       json.set! review.id do
