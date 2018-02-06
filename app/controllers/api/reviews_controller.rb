@@ -9,6 +9,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
+    p review_params
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.game_id = params[:game_id]
@@ -16,7 +17,7 @@ class Api::ReviewsController < ApplicationController
     if @review.save
       render :show
     else
-      render json: @review.errors.full_messages
+      render json: @review.errors.full_messages, status: 400
     end
   end
 

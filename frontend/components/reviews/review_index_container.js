@@ -1,14 +1,11 @@
 import { connect } from 'react-redux';
-import { getOneGame } from '../../actions/games';
+import { getReviews } from '../../actions/reviews';
 import { withRouter } from 'react-router-dom';
-import GameShow from './game_show';
+import ReviewIndex from './review_index';
 
 
 const mapStateToProps = (state, ownProps) => {
-  let currentUser;
-  if (state.session.currentUser) {
-    currentUser = state.entities.users[state.session.currentUser.id];
-  }
+  let currentUser = state.entities.users[state.session.currentUser.id];
   let game = state.entities.games[ownProps.match.params.gameId];
   let reviews = Object.values(state.entities.reviews).filter(review => review.game_id === game.id);
   let review;
@@ -30,7 +27,7 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = dispatch => ({
-  getOneGame: gameId => dispatch(getOneGame(gameId)),
+  getReviews: gameId => dispatch(getReviews(gameId)),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameShow));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReviewIndex));

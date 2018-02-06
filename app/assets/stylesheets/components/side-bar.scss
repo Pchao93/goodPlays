@@ -7,7 +7,7 @@
   height: calc(100% - 50px);
   background: $maybe-sidebar;//#19171c;
   position: fixed;
-
+  z-index: 2;
   // padding-top: 60px;
 }
 

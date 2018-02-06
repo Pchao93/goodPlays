@@ -113,8 +113,8 @@ class SideBar extends React.Component {
           <div className='side-bar-header'>Collections</div>
           <ul className='collections-list'>
             <li>
-              <Link to={`/collections/all`}>
-                <span className="collection-name">All Games:</span>
+              <Link to={`/collections/my-games`}>
+                <span className="collection-name">My Games:</span>
                 <span className='game-count'>{totalGames} game{totalGames !== 1 && 's'}</span>
               </Link>
 

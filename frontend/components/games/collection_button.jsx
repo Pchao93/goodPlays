@@ -29,13 +29,6 @@ class CollectionButton extends React.Component {
     });
   }
 
-  closeForm(e) {
-    if (e.currentTarget === e.target) {
-      this.props.history.push(this.props.match.params[0]);
-      this.props.clearSessionErrors();
-    }
-  }
-
   handleClickOutside(e) {
     if (this.state.collectionDropdownClass === 'collection-button-dropdown') {
       this.toggleDropdown();

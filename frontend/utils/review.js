@@ -22,7 +22,7 @@ export const postReview = (gameId, review) => (
 
 export const patchReview = (gameId, review) => (
   $.ajax({
-    url: `api/games/${gameId}/${review.id}`,
+    url: `api/games/${gameId}/reviews/${review.id}`,
     method: 'PATCH',
     data: {review},
   })

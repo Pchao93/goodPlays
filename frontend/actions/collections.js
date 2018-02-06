@@ -22,6 +22,8 @@ const receiveOneCollection = jsonObj => ({
   collection: jsonObj.collection,
   games: jsonObj.games,
   user: jsonObj.user,
+  reviews: jsonObj.reviews
+  
 });
 
 const receiveCollections = jsonObj => ({
@@ -29,6 +31,7 @@ const receiveCollections = jsonObj => ({
   collections: jsonObj.collections,
   games: jsonObj.games,
   users: jsonObj.users,
+  reviews: jsonObj.reviews
 
 });
 

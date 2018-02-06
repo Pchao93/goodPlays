@@ -56,7 +56,3 @@ export const updateReview = (gameId, formReview) => dispatch => patchReview(game
 export const destroyReview = (reviewId) => dispatch => deleteReview(reviewId)
   .then(review => dispatch(removeReview(review)), errors =>
     dispatch(receiveReviewErrors(errors)));
-
-window.getAllReviews = getAllReviews;
-window.createReview = createReview;
-window.destroyReview = destroyReview;

@@ -16,7 +16,7 @@ class Api::CollectionsController < ApplicationController
       user = current_user
     end
     if user
-      @collections = user.collections.includes(:games)
+      @collections = user.collections.includes(games: [:platforms, :developer])
     else
       render json: ["Unable to find collections for the user with id #{params[:user_id]}."], status: 404
     end

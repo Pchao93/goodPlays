@@ -3,12 +3,17 @@ import {Link} from 'react-router-dom';
 import GameControls from './game_controls';
 import GameIndexItem from './game_index_item';
 
-class GameIndexContainer extends React.Component {
+class GameIndex extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.props.action();
+    // console.log(this.props.currentUser.id);
+    // console.log(this.props.action);
+    if (this.props.currentUser) {
+      this.props.action(this.props.currentUser.id);
+    } else {
+      this.props.action();
+    }
 
     if (this.props.edit) {
       this.state = {
@@ -30,7 +35,10 @@ class GameIndexContainer extends React.Component {
   componentWillReceiveProps (nextProps) {
 
     if (nextProps.location.pathname !== this.props.location.pathname){
-      nextProps.action();
+      // console.log(this.props.currentUser);
+      if (nextProps.currentUser) {
+        nextProps.action(nextProps.currentUser.id);
+      }
     } else if (this.props.games.length !== nextProps.games.length){
       // nextProps.action();
     }
@@ -73,14 +81,15 @@ class GameIndexContainer extends React.Component {
   }
 
   render() {
-    let {collection, headerText, collectionUser, currentUser, edit} = this.props;
+    let {collection, headerText, collectionUser, currentUser, edit, reviews} = this.props;
     let gamesListItems = [];
+    reviews = reviews ? reviews : [];
     if (this.props.games.length > 0) {
       gamesListItems = [];
       this.props.games.forEach((game) =>{
 
         if (game !== undefined) {
-          gamesListItems.push(<GameIndexItem key={game.id} game={game}/>);
+          gamesListItems.push(<GameIndexItem key={game.id} review={reviews.filter(review => review.game_id === game.id)[0]} game={game}/>);
         }
       });
     }
@@ -134,4 +143,4 @@ class GameIndexContainer extends React.Component {
   }
 }
 
-export default GameIndexContainer;
+export default GameIndex;

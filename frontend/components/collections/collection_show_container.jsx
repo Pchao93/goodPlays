@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   let headerText;
   let collectionUser;
   let edit = false;
+  let reviews;
   if (collection) {
     if (ownProps.match.path === '/collections/:collectionId/edit' &&
       collection.user_id === currentUser.id ) {
@@ -25,16 +26,22 @@ const mapStateToProps = (state, ownProps) => {
     games = collection.games.map(gameIndex => {
       return state.entities.games[gameIndex];
     }).sort((a, b) => a.id - b.id);
+
+    // if (state.entities.reviews) {
+      reviews = Object.values(state.entities.reviews).filter(review => collection.games.includes(review.game_id));
+    // }
     if (currentUser && collection.user_id === currentUser.id) {
       collectionUser = {username: "My Games", id: currentUser.id};
     } else {
       collectionUser = state.entities.users[collection.user_id];
     }
   } else {
-    if (ownProps.location.pathname === '/collections/all') {
+    if (ownProps.location.pathname === '/collections/my-games') {
       // if (currentUser) {
         let user = state.entities.users[currentUser.id];
         if (state.entities.users[currentUser.id]) {
+          reviews = Object.values(state.entities.reviews).filter(review => user.games.includes(review.game_id));
+
           user.collections.forEach((collectionId, idx) => {
             let blockCollection = state.entities.collections[collectionId];
             if (blockCollection) {
@@ -46,8 +53,8 @@ const mapStateToProps = (state, ownProps) => {
         }
       // }
 
-      collection = {name: 'All Games'};
-      collectionUser = currentUser;
+      collection = {name: 'My Games'};
+
     } else {
       collection = {name: ""};
     }
@@ -62,11 +69,12 @@ const mapStateToProps = (state, ownProps) => {
     collectionUser,
     currentUser,
     edit,
+    reviews
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  action: () => ownProps.location.pathname === '/collections/all' ? dispatch(getAllCollections()) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
+  action: (userId) => ownProps.location.pathname === '/collections/all' ? dispatch(getAllCollections(userId)) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
   destroyCollection: (collectionId) => dispatch(destroyCollection(collectionId)),
   updateCollection: (collection) => dispatch(updateCollection(collection))
 });

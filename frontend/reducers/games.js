@@ -16,11 +16,8 @@ export default (state = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_ONE_GAME:
-      newState = merge({}, state);
-
-      newState[action.game.id] = action.game;
-
-      return newState;
+    newState = merge({}, state, action.games);
+    return newState;
     case RECEIVE_GAMES:
       newState = merge({}, state, action.games);
       return newState;

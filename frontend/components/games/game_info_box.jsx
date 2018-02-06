@@ -2,10 +2,13 @@ import React from 'react';
 import GameData from './game_data';
 import GameControls from './game_controls';
 
-const GameInfoBox = ({ game, platforms, currentUser}) => (
+const GameInfoBox = ({ game, platforms, currentUser, openForm, review}) => (
   <div className='game-info-container'>
 
-    <GameControls game={game} />
+    <GameControls
+      openForm={openForm}
+      game={game}
+      review={review}/>
 
     <div className='game-data-container'>
 

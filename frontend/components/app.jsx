@@ -29,7 +29,7 @@ export default (props) => (
       <Route exact path="/games/:gameId/login" component={GameShowContainer}/>
       <Route exact path="/games/:gameId/signup" component={GameShowContainer}/>
 
-      <ProtectedRoute exact path='/collections/all' component={CollectionShowContainer}/>
+      <ProtectedRoute exact path='/collections/my-games' component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId" component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId/edit" component={CollectionShowContainer}/>
 
@@ -40,6 +40,7 @@ export default (props) => (
       <Route path="*" component={NotFound}/>
 
     </Switch>
+
 
   </div>
 );
