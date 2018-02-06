@@ -15,7 +15,8 @@ class ReviewIndex extends React.Component {
 
   render() {
     let {reviews, users, currentUser, game} = this.props;
-
+    console.log(game);
+    
     let reviewListItems = game.reviews.map(reviewIdx => {
       console.log(reviews[reviewIdx]);
       console.log(users);
