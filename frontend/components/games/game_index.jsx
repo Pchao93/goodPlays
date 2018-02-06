@@ -9,26 +9,63 @@ class GameIndex extends React.Component {
     super(props);
     // console.log(this.props.currentUser.id);
     // console.log(this.props.action);
-    if (this.props.currentUser) {
-      this.props.action(this.props.currentUser.id);
-    } else {
-      this.props.action();
-    }
+    // if (this.props.currentUser.id) {
+    //   this.props.action(this.props.currentUser.id);
+    // } else {
+    //   this.props.action();
+    // }
 
     if (this.props.edit) {
       this.state = {
-        name: this.props.collection.name
+        name: this.props.collection.name,
+        gameHoverClass: 'game-list-item',
+        hoverGameId: 0
+      };
+    } else {
+      this.state = {
+        gameHoverClass: 'game-list-item'
       };
     }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleHover = this.toggleHover.bind(this);
 
+
+  }
+
+  toggleHelper(state, toggleClass, classOne, classTwo) {
+    return state[toggleClass] === classOne ?
+      classTwo : classOne;
+  }
+
+  toggleHover(e) {
+    let hoverGameId;
+    // if (e.target === e.currentTarget) {
+      hoverGameId = parseInt(e.target.getAttribute('data'));
+    // }
+    console.error(hoverGameId);
+
+    let newClass = this.toggleHelper(
+      this.state,
+      'gameHoverClass',
+      'game-list-item',
+      'game-list-item dropdown-open');
+    this.setState({
+      gameHoverClass: newClass,
+      hoverGameId
+    });
+    console.error(newClass);
   }
 
   componentDidMount() {
     // this.props.action();
+    if (this.props.currentUser) {
+      this.props.action(this.props.currentUser.id);
+    } else {
+      this.props.action();
+    }
 
   }
 
@@ -85,11 +122,32 @@ class GameIndex extends React.Component {
     let gamesListItems = [];
     reviews = reviews ? reviews : [];
     if (this.props.games.length > 0) {
-      gamesListItems = [];
+      gamesListItems = {};
+      let n = 0;
       this.props.games.forEach((game) =>{
 
         if (game !== undefined) {
-          gamesListItems.push(<GameIndexItem key={game.id} review={reviews.filter(review => review.game_id === game.id)[0]} game={game}/>);
+          // console.log(n);
+          let liStyle = {animationDelay: n,};
+          // console.log(liStyle);
+          let divClass;
+          console.error(this.state.hoverGameId);
+          console.error(game.id);
+          if (this.state.hoverGameId === game.id) {
+            divClass = this.state.gameHoverClass;
+          } else {
+            divClass = 'game-list-item';
+          }
+
+          gamesListItems[game.id] = (
+            <GameIndexItem
+              key={game.id}
+              style={liStyle}
+              toggleHover={this.toggleHover}
+              divClass={divClass}
+              review={reviews.filter(review => review.game_id === game.id)[0]}
+              game={game}/>);
+          n += 1;
         }
       });
     }
@@ -136,7 +194,7 @@ class GameIndex extends React.Component {
 
         </div>
         <ul className='game-index-list'>
-          {gamesListItems}
+          {Object.values(gamesListItems)}
         </ul>
       </div>
     );

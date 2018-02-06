@@ -17,6 +17,8 @@ const receiveOneReview = jsonObj => ({
   review: jsonObj.review,
   game: jsonObj.game,
   user: jsonObj.user,
+  addGameToCollectionId: jsonObj.to_add,
+  gameId: jsonObj.game.id
 });
 
 const receiveReviews = jsonObj => ({

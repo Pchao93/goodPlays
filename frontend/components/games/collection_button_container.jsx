@@ -36,6 +36,7 @@ const mapStateToProps = (state, ownProps) => {
     collectionId,
     currentUser,
     defaultCollection,
+    toggleHover: ownProps.toggleHover,
   };
 };
 

@@ -5,22 +5,26 @@ import ReviewIndex from './review_index';
 
 
 const mapStateToProps = (state, ownProps) => {
-  let currentUser = state.entities.users[state.session.currentUser.id];
-  let game = state.entities.games[ownProps.match.params.gameId];
-  let reviews = Object.values(state.entities.reviews).filter(review => review.game_id === game.id);
-  let review;
-  if (currentUser) {
-    currentUser.reviews.forEach(reviewIdx =>{
-      if (state.entities.reviews[reviewIdx] && state.entities.reviews[reviewIdx].game_id === game.id) {
-        review = state.entities.reviews[reviewIdx];
-      }
-    });
+  let currentUser;
+  if (state.session.currentUser) {
+    currentUser = state.entities.users[state.session.currentUser.id];
   }
+  let game = state.entities.games[ownProps.match.params.gameId];
+  let reviews = state.entities.reviews;
+  let users = state.entities.users;
+  // if (currentUser) {
+  //   currentUser.reviews.forEach(reviewIdx =>{
+  //     if (state.entities.reviews[reviewIdx] && state.entities.reviews[reviewIdx].game_id === game.id) {
+  //       review = state.entities.reviews[reviewIdx];
+  //     }
+  //   });
+  // }
   return ({
     game,
     currentUser,
-    review,
+    // review,
     reviews,
+    users,
   });
   // currentUser: state.session.currentUser,
 };

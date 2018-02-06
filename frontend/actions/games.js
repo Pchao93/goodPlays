@@ -6,7 +6,8 @@ export const RECEIVE_GAMES = "RECEIVE_GAMES";
 const receiveOneGame = jsonObj => ({
   type: RECEIVE_ONE_GAME,
   games: jsonObj.games,
-  reviews: jsonObj.reviews
+  reviews: jsonObj.reviews,
+  users: jsonObj.users
 });
 
 const receiveGames = jsonObj => ({

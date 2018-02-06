@@ -39,7 +39,7 @@ const mapStateToProps = (state, ownProps) => {
     if (ownProps.location.pathname === '/collections/my-games') {
       // if (currentUser) {
         let user = state.entities.users[currentUser.id];
-        if (state.entities.users[currentUser.id]) {
+        if (user) {
           reviews = Object.values(state.entities.reviews).filter(review => user.games.includes(review.game_id));
 
           user.collections.forEach((collectionId, idx) => {
@@ -74,7 +74,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  action: (userId) => ownProps.location.pathname === '/collections/all' ? dispatch(getAllCollections(userId)) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
+  action: (userId) => ownProps.location.pathname === '/collections/my-games' ? dispatch(getAllCollections(userId)) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
   destroyCollection: (collectionId) => dispatch(destroyCollection(collectionId)),
   updateCollection: (collection) => dispatch(updateCollection(collection))
 });

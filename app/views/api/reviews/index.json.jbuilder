@@ -23,6 +23,7 @@ end
       json.developer review.game.developer.name
       json.platforms review.game.platforms.pluck(:abreviation)
       json.review game.reviews.where(user_id: current_user.id)
+      json.reviews game.reviews.pluck(:id)
 
     end
 

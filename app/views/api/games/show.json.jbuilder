@@ -3,13 +3,24 @@ json.games do
     json.extract! @game, :id, :title, :description, :image_url, :amazon_url, :release_date, :rating
     json.developer @game.developer.name
     json.platforms @game.platforms.pluck(:abreviation)
+    json.reviews @game.reviews.pluck(:id)
   end
 end
 
-json.reviews do
-  @game.reviews.each do |review|
+
+@game.reviews.each do |review|
+  json.reviews do
     json.set! review.id do
       json.extract! review, :id, :rating, :body, :game_id, :user_id
+    end
+  end
+  json.users do
+    json.set! review.user.id do
+      json.extract! review.user, :id, :username
+      json.games review.user.games.pluck(:id)
+      json.collections review.user.collections.pluck(:id)
+      json.reviews review.user.reviews.pluck(:id)
+
     end
   end
 end

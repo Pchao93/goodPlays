@@ -8,6 +8,9 @@ import {
   RECEIVE_REVIEWS,
   REMOVE_REVIEW
 } from '../actions/reviews';
+import {
+  RECEIVE_ONE_GAME,
+} from '../actions/games';
 
 import {merge} from 'lodash';
 
@@ -16,6 +19,8 @@ export default (state = {}, action) => {
   let user;
   let index;
   switch(action.type) {
+    case RECEIVE_ONE_GAME:
+      return merge({}, state, action.users);
     case RECEIVE_ONE_COLLECTION:
       newState = merge({}, state);
       newState[action.user.id] = action.user;

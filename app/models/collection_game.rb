@@ -68,6 +68,10 @@ class CollectionGame < ApplicationRecord
             collection_id: collection.id,
             game_id: self.game.id).destroy
           self.to_remove_array.push(collection.id)
+          review = Review.find_by(user_id: user.id, game_id: self.game.id)
+          if review
+            review.destroy
+          end
           break
         end
       end

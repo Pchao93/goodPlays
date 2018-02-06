@@ -5,6 +5,7 @@ import {
   ADD_GAME_COLLECTION,
   REMOVE_GAME_COLLECTION,
 } from '../actions/collections';
+import {RECEIVE_ONE_REVIEW} from '../actions/reviews';
 import  {
   LOGOUT_CURRENT_USER,
 } from '../actions/session';
@@ -50,6 +51,12 @@ export default (state = {}, action) => {
           let otherIndex = newState[collectionId].games.indexOf(action.gameId);
           newState[collectionId].games.splice(otherIndex, 1);
         });
+      }
+      return newState;
+    case RECEIVE_ONE_REVIEW:
+      newState = merge({}, state);
+      if (newState[action.addGameToCollectionId] && !newState[action.addGameToCollectionId].games.includes(action.gameId)) {
+        newState[action.addGameToCollectionId].games.push(action.gameId);
       }
       return newState;
     case LOGOUT_CURRENT_USER:

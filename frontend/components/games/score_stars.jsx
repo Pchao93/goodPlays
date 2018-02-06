@@ -5,7 +5,7 @@ import React from 'react';
 //figure out the half star
 
 
-const ScoreStars = ({ score }) => {
+const ScoreStars = ({ disableScore, score }) => {
   let i = score;
   const stars = {
     1: (<i className="fa fa-star" aria-hidden="true"></i>),
@@ -13,7 +13,7 @@ const ScoreStars = ({ score }) => {
     0.5: (<i className="fa fa-star-half-o" aria-hidden="true"></i>)
   };
   const starValues = [];
-  while (i > 1) {
+  while (i >= 1) {
     starValues.push(1);
     i -= 1;
   }
@@ -42,7 +42,7 @@ const ScoreStars = ({ score }) => {
         {stars[starValues.shift()]}
       </li>
       <li className='score'>
-        { score }
+        { !disableScore && score }
       </li>
     </ul>
   );

@@ -7,14 +7,25 @@ class Session extends React.Component {
     this.state = {
       username: "",
       password: '',
+      email: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeForm = this.closeForm.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.gameId !== this.props.match.params.gameId) {
+      this.setState({
+        email: ''
+      });
+    }
+  }
+
   handleInput(type) {
     return (e) => {
+      console.log(type);
+      console.log(e.target.value);
       this.setState({
           [type]: e.target.value
       });
@@ -23,6 +34,7 @@ class Session extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state);
     this.props.action(this.state)
       .then( () => this.props.history.push(this.props.match.params[0]));
   }

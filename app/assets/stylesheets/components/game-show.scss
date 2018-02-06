@@ -36,7 +36,9 @@
   // margin: 0 5px;
 
 }
-
+.default-collection-button:hover {
+  cursor: pointer;
+}
 
 
 .default-collection-button {
@@ -51,10 +53,6 @@
   border-radius: 5px 0 0 5px;
 
   position: relative;
-}
-
-.collection-button.red {
-  // border: 1px solid $border-purple;
 }
 
 .default-collection-button:hover {
@@ -111,6 +109,8 @@
   padding: 10px;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
   box-sizing: border-box;
+  z-index: 10;
+
   // height: 200px;
   li {
     background: #fff;
@@ -156,6 +156,7 @@
   overflow: hidden;
   padding: 0px;
   box-shadow: none;
+  // z-index: 10;
   // transition-delay: .2s;
 
   li {
@@ -201,7 +202,7 @@
 }
 
 .selected-collection-button:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 .rating-button {
@@ -222,13 +223,14 @@
   margin: 0 auto;
 
   display: flex;
+  cursor: pointer;
 
 }
 
 .rating-stars .star {
   color: #19171c;
   font-size: 14px;
-  padding: 0 4px;
+  padding: 4px 4px;
 }
 .rating-stars .star i {
   color: $button-purple;

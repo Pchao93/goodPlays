@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import GameInfoBox from './game_info_box';
 import ReviewFormContainer from '../reviews/review_form_container';
 import ReviewListItem from '../reviews/review_list_item';
+import ReviewIndexContainer from '../reviews/review_index_container';
 
 class GameShow extends React.Component {
 
@@ -39,7 +40,7 @@ class GameShow extends React.Component {
   render() {
     let { game, review, currentUser, reviews } = this.props;
     let platforms;
-    
+
 
     let reviewListItems = reviews.map(_review => (
       <ReviewListItem key={_review.id} review={_review} />
@@ -62,6 +63,7 @@ class GameShow extends React.Component {
             closeForm={(e) => this.closeForm(e)}
             game={game}
             review={review}/> }
+        <ReviewIndexContainer />
       </div>
     );
   }

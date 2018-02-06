@@ -40,8 +40,8 @@ class CollectionButton extends React.Component {
       classTwo : classOne;
   }
 
-  toggleDropdown() {
-
+  toggleDropdown(e) {
+    this.props.toggleHover(e);
     if (!this.props.currentUser) {
 
       this.props.history.push(`${this.props.location.pathname}/login`);
@@ -139,12 +139,16 @@ class CollectionButton extends React.Component {
             (defaultCollection ? defaultCollection.name : 'Want to Play')}
         </button>
         <button
+          data={game.id}
           className={edit ?
             'dropdown-button red' : 'dropdown-button'}
           onClick={this.toggleDropdown}
         >
 
-          <div className={edit ? 'arrow-down red' : 'arrow-down'}></div>
+          <div
+            data={game.id}
+            onClick={this.toggleDropdown}
+            className={edit ? 'arrow-down red' : 'arrow-down'}></div>
         </button>
         <ul className={this.state.collectionDropdownClass}>
           {options}

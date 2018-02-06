@@ -78,6 +78,12 @@ class NavBar extends React.Component {
             <span>good</span><span>Plays</span>
           </Link>
           <ul className="nav-button-list">
+            <li>
+              <Link to='/directory'>Browse</Link>
+            </li>
+            <li>
+              <Link to='/collections/my-games'>My Games</Link>
+            </li>
           </ul>
           <div className="search-container">
             <div className="icon-div">

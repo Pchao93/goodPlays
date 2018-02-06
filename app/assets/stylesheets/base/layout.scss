@@ -4,13 +4,15 @@
 html {
 	position: relative;
 	height: 100%;
-	// z-index: -1;
+
 	// background: $purple-main;
 }
 
 
 html, body {
     height: 100%;
+
+
 
 }
 
@@ -47,6 +49,8 @@ body {
   right: 0;
   // overflow: auto;
 	// overflow: auto;
+
+
 }
 
 .app-container {
@@ -54,6 +58,8 @@ body {
 	flex-wrap: wrap;
 	// height: 100%;
 	flex-direction: column;
+	
+
 }
 
 // button {

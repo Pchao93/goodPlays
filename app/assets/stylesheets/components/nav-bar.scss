@@ -14,6 +14,7 @@ nav {
 .left-nav {
   display: flex;
   align-items: center;
+  height: 50px;
 }
 .logo span:first-child {
 
@@ -30,19 +31,30 @@ nav {
 
 a.logo {
   background: $purple-main;
-  margin-left: 10px;
+  padding: 0 15px;
 }
+
+
 
 .nav-button-list {
   display: flex;
   width: 400px;
 }
 
-.nav-button-list li {
+.nav-button-list li a {
   font-size: 14px;
   color: #b8b5c0;
-  margin-left: 30px;
-  // color: #19171c;
+  padding: 0 15px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.nav-button-list li a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .search-container {
@@ -124,6 +136,10 @@ a.logo {
   border: 1px solid $purple-main;
 }
 
+.user-info:hover {
+  cursor: pointer;
+}
+
 .user-info i {
   color: #b8b5c0;
   font-size: 20px;
@@ -154,6 +170,7 @@ a.logo {
   height: 30px;
   padding-left: 20px;
   width: 100%;
+
   // right: 0px;
   // line-height: 1;
   // transition: 4s;
@@ -161,7 +178,9 @@ a.logo {
 
 }
 
-
+.user-info button:hover {
+  cursor: pointer;
+}
 
 .user-info .user-dropdown {
   top: 50px;

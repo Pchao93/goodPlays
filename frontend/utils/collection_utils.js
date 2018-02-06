@@ -5,12 +5,13 @@ export const getCollection = collectionId => (
   })
 );
 
-export const getCollections = (userId) => (
-  $.ajax({
+export const getCollections = (userId) => {
+  let url = userId ? `api/users/${userId}/collections` : `api/users/${userId}/collections`;
+  return $.ajax({
     url: `api/users/${userId}/collections`,
     method: 'GET',
-  })
-);
+  });
+};
 
 export const postCollection = (collection) => (
   $.ajax({

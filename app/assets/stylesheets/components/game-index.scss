@@ -1,7 +1,7 @@
 .game-index-container {
   padding: 30px;
   width: 100%;
-  
+
 
   // background: $background-gray;
   // background: white;
@@ -41,6 +41,11 @@
   width: calc(100% - 40px);
 }
 
+.game-show-link {
+  display: block;
+  height: 365px;
+}
+
 .game-show-link:hover {
   .game-title-container {
     color: $border-purple;
@@ -50,6 +55,7 @@
 
 .game-index-container .game-list-item {
   width: 240px;
+  height: 465;
   margin-bottom: 20px;
   margin-right: 20px;
   background: white;
@@ -57,7 +63,27 @@
   // padding: 10px 5px;
   // padding: 20px 10px;
   padding-bottom: 10px;
+  transition: transform .2s, box-shadow .2s;
+  position: relative;
 
+  // z-index: 1;
+
+}
+
+.game-index-container .game-list-item .game-title-container {
+  position: absolute;
+  top: 320px;
+  left: 0;
+  right: 0;
+}
+
+.game-index-container .game-list-item:hover, .dropdown-open {
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.08);
+  z-index: 1;
+  .collection-button-dropdown {
+    z-index: 20;
+  }
 }
 
 .game-index-container .collection-button {
@@ -98,4 +124,49 @@
 .game-index-list .game-index-item .review_button .rating-stars {
   display: flex;
   background: black;
+}
+
+// Animation code taken from stack overflow. Staggered transitions by me.
+// https://stackoverflow.com/questions/11679567/using-css-for-fade-in-effect-on-page-load
+.game-index-container .game-list-item {
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+            -webkit-animation-fill-mode: none; //Changed from both to initial
+            animation-fill-mode: none; /*Changed from both to initial */
+            -webkit-backface-visibility: hidden;
+            // z-index: -10;
+
+
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyeframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

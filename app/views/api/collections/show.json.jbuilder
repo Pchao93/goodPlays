@@ -12,6 +12,8 @@ end
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
       json.review game.reviews.where(user_id: current_user.id) if current_user
+      json.reviews game.reviews.pluck(:id)
+
     end
   end
   review = game.reviews.where(user_id: current_user.id) if current_user
@@ -29,7 +31,7 @@ json.user do
     json.extract! @collection.user, :id, :username
     json.collections @collection.user.collections.pluck(:id)
     json.reviews @collection.user.reviews.pluck(:id)
-    json.reviewedGames @collection.user.reviewed_games.pluck(:id)
+    json.games @collection.user.games.pluck(:id)
 
   # end
 end
