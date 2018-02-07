@@ -33,19 +33,20 @@ class ReviewIndex extends React.Component {
     let {reviews, users, currentUser, game} = this.props;
 
 
-    let reviewListItems = game.reviews.map(reviewIdx => {
+    let reviewListItems = [];
+    game.reviews.forEach(reviewIdx => {
       if (reviews[reviewIdx] && reviews[reviewIdx].body) {
 
 
         if (this.state.edit && reviews[reviewIdx].user_id === currentUser.id) {
-            return (<ReviewFormContainer
+            reviewListItems.push(<ReviewFormContainer
                       key={reviewIdx}
                       edit={true}
                       game={this.props.game}
                       closeForm={this.closeForm}
                       review={reviews[reviewIdx]}/>);
         } else if (reviews[reviewIdx].body) {
-            return (
+            reviewListItems.push(
             <ReviewListItem
               key={reviewIdx}
               review={reviews[reviewIdx]}
