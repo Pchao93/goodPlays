@@ -5,7 +5,7 @@ class CollectionGame < ApplicationRecord
   belongs_to :collection
 
   attr_accessor :to_add, :to_remove, :to_remove_array
-  attr_accessor :default_game_collection, :removeReviewId
+  attr_accessor :default_game_collection, :removeReviewId, :is_straightforward
   belongs_to :game
 
   has_one :user,
@@ -16,10 +16,11 @@ class CollectionGame < ApplicationRecord
   # at any given point in time.
 
   def handle_save
-    if self.valid?
+    if self.valid? && !self.is_straightforward
       user = self.collection.user
       # user.default_collections = user.collections.includes(:games).limit(3)
       # Search default collections for the game
+      p user.default_collections
       user.default_collections.each do |collection|
         if collection.id == self.collection_id
           next
@@ -38,15 +39,21 @@ class CollectionGame < ApplicationRecord
       # is also default, destroy the previous association.
       if self.default_game_collection
         if user.default_collections.pluck(:id).include?(self.collection_id)
+          p default_game_collection
+          p self
+          default_game_collection.is_straightforward = true
           default_game_collection.destroy
           self.to_remove = default_game_collection.collection_id
         end
       #If the game is not yet in the defaults, and the target collection
       #is not a default, create a new association in the defaults
-    elsif !user.default_collections.pluck(:id).include?(self.collection_id)
-        CollectionGame.create!(
+    elsif !user.default_collections.pluck(:id).include?(self.collection_id) &&
+      !self.is_straightforward
+        cg = CollectionGame.new(
           collection_id: user.default_collections[1].id,
           game_id: self.game_id)
+        cg.is_straightforward = true
+        cg.save!
         self.to_add = user.default_collections[1].id
       end
     end
@@ -56,25 +63,29 @@ class CollectionGame < ApplicationRecord
   #Each and every one of the user's collections.
 
   def handle_destroy
-    self.to_remove_array = []
-    user = self.collection.user
-    # user.default_collections = user.collections.includes(:games).limit(3)
-    #Check if the target collection is in the user's defaults
-    if user.default_collections.include?(self.collection)
-      user.collections.each do |collection|
-        if collection.id != self.collection_id &&
-          collection.games.include?(self.game)
-          CollectionGame.find_by(
-            collection_id: collection.id,
-            game_id: self.game.id).destroy
-          self.to_remove_array.push(collection.id)
-          break
+    if !self.is_straightforward
+
+
+      self.to_remove_array = []
+      user = self.collection.user
+      # user.default_collections = user.collections.includes(:games).limit(3)
+      #Check if the target collection is in the user's defaults
+      if user.default_collections.include?(self.collection)
+        user.collections.each do |collection|
+          if collection.id != self.collection_id &&
+            collection.games.include?(self.game)
+            CollectionGame.find_by(
+              collection_id: collection.id,
+              game_id: self.game.id).destroy
+            self.to_remove_array.push(collection.id)
+            break
+          end
         end
-      end
-      review = Review.find_by(user_id: user.id, game_id: self.game.id)
-      if review
-        review.destroy
-        self.removeReviewId = review.id
+        review = Review.find_by(user_id: user.id, game_id: self.game.id)
+        if review
+          review.destroy
+          self.removeReviewId = review.id
+        end
       end
     end
   end
