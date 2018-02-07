@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     resources :games, only: [:show, :index] do
       resources :reviews, only: [:index, :create, :update]
+      get "search", on: :collection
     end
 
     resources :reviews, only: :destroy

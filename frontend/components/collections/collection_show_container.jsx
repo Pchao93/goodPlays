@@ -53,7 +53,8 @@ const mapStateToProps = (state, ownProps) => {
         }
       // }
 
-      collection = {name: 'My Games'};
+      collectionUser = {username: 'My Games'};
+      collection = {name: ''};
 
     } else {
       collection = {name: ""};

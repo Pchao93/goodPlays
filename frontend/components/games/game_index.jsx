@@ -7,13 +7,6 @@ class GameIndex extends React.Component {
 
   constructor(props) {
     super(props);
-    // console.log(this.props.currentUser.id);
-    // console.log(this.props.action);
-    // if (this.props.currentUser.id) {
-    //   this.props.action(this.props.currentUser.id);
-    // } else {
-    //   this.props.action();
-    // }
 
     if (this.props.edit) {
       this.state = {
@@ -23,7 +16,8 @@ class GameIndex extends React.Component {
       };
     } else {
       this.state = {
-        gameHoverClass: 'game-list-item'
+        gameHoverClass: 'game-list-item',
+        hoverGameId: 0
       };
     }
 
@@ -139,13 +133,14 @@ class GameIndex extends React.Component {
             divClass = 'game-list-item';
           }
 
+
           gamesListItems[game.id] = (
             <GameIndexItem
               key={game.id}
               style={liStyle}
               toggleHover={this.toggleHover}
               divClass={divClass}
-              review={reviews.filter(review => review.game_id === game.id)[0]}
+              review={currentUser ? reviews.filter(review => review.game_id === game.id && review.user_id === currentUser.id)[0] : undefined}
               game={game}
               hoverGameId={this.state.hoverGameId}
               />
@@ -164,7 +159,7 @@ class GameIndex extends React.Component {
         <div className='game-index-header'>
           <div className='game-index-title'>{collectionUser &&
             <Link to={`/users/${collectionUser.id}`} className='index-user'>{collectionUser.username} </Link>}
-            {collectionUser && <span className="pointer">{">"}</span> }
+            {collectionUser && headerText && <span className="pointer">{">"}</span> }
             <span className='index-title'>
             {edit && !["Want to Play", "Have Played", "Playing"].includes(collection.name) ? (<div className="edit-collection-form">
                 <input

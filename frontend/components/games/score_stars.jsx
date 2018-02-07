@@ -17,7 +17,7 @@ const ScoreStars = ({ disableScore, score }) => {
     starValues.push(1);
     i -= 1;
   }
-  if (i > 0.5) {
+  if (i >= 0.5) {
     starValues.push(0.5);
   }
   while (starValues.length < 5) {

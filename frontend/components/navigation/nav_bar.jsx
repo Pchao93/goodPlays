@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../../utils/route_utils';
 import SessionContainer from '../session/session_container';
 
+
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -14,22 +15,15 @@ class NavBar extends React.Component {
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   update(attribute) {
     return (e) => {
-
-      if (e.target.value) {
-        this.setState({
-          backgroundClass: 'white',
-          [attribute]: e.target.value
-        });
-      } else {
-        this.setState({
-          backgroundClass: '',
-          [attribute]: e.target.value
-        });
-      }
+      this.setState({
+        [attribute]: e.target.value
+      });
     };
   }
 
@@ -46,6 +40,12 @@ class NavBar extends React.Component {
     this.setState({
       userDropdownClass: newClass
     });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.searchGames(this.state.searchQuery);
+    this.props.history.push('/directory/search');
   }
 
   render() {
@@ -85,17 +85,19 @@ class NavBar extends React.Component {
               <Link to='/collections/my-games'>My Games</Link>
             </li>
           </ul>
-          <div className="search-container">
+          <form
+            onSubmit={this.handleSubmit}
+            className="search-container">
             <div className="icon-div">
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
 
             <input
-              className={this.state.backgroundClass}
+
               placeholder="Search"
               onChange={this.update("searchQuery")} type="search"
               value={this.state.searchQuery}></input>
-          </div>
+          </form>
         </ul>
 
           {display}

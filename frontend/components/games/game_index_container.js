@@ -5,7 +5,7 @@ import GameIndex from './game_index';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+  let currentUser = state.session.currentUser;
   let games = [];
   let reviews = [];
   if (state.entities.games) {
@@ -18,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     games,
     headerText: "Top Games",
-    reviews
+    reviews,
+    currentUser,
   };
 };
 
