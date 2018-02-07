@@ -32,7 +32,7 @@ class TwitchDisplay extends React.Component {
     let streamListItems = this.props.streams.map(stream => (
       <li key={stream.id} className='twitch-list-item'>
         <iframe
-          src={`http://player.twitch.tv/?channel=${stream.channel.display_name}&muted=true&autoplay=false`}
+          src={`https://player.twitch.tv/?channel=${stream.channel.display_name}&muted=true&autoplay=false`}
           height="180"
           width="320"
           frameborder="0"

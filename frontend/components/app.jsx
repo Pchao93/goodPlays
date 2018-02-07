@@ -23,8 +23,14 @@ export default (props) => (
     <SideBarContainer />
     <Switch>
       <Route exact path='/directory' component={GameIndexContainer} />
+      <Route exact path='/directory/login' component={GameIndexContainer} />
+      <Route exact path='/directory/signup' component={GameIndexContainer} />
+
       <Route exact path='/directory/search' component={SearchContainer} />
       <Route exact path="/games/:gameId" component={GameShowContainer}/>
+      <Route exact path="/games/:gameId/login" component={GameShowContainer}/>
+      <Route exact path="/games/:gameId/signup" component={GameShowContainer}/>
+
       <ProtectedRoute exact path='/collections/my-games' component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId" component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId/login" component={CollectionShowContainer}/>
@@ -39,8 +45,7 @@ export default (props) => (
       <Route path="*" component={NotFound}/>
 
     </Switch>
-    <Route path='*/signup' component={GameIndexContainer} />
-    <Route path='*/login' component={GameIndexContainer} />
+
 
 
   </div>
