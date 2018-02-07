@@ -9,9 +9,12 @@ const mapStateToProps = state => ({
   currentUser: state.session.currentUser
 });
 
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
-  searchGames: query => dispatch(searchGames(query)),
-});
+const mapDispatchToProps = dispatch => {
+  console.log(searchGames);
+  return {
+    logout: () => dispatch(logout()),
+    searchGames: query => dispatch(searchGames(query)),
+  };
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

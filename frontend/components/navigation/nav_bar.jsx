@@ -44,8 +44,8 @@ class NavBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.searchGames(this.state.searchQuery);
-    this.props.history.push('/directory/search');
+    this.props.searchGames(this.state.searchQuery).then(()=>
+    this.props.history.push('/directory/search'));
   }
 
   render() {

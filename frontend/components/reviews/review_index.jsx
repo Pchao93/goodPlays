@@ -62,7 +62,13 @@ class ReviewIndex extends React.Component {
     return (
       <ul className='review-container'>
         <h1 className='review-container-title'>Reviews</h1>
-        {reviewListItems}
+        {reviewListItems.length > 0 && reviewListItems}
+        {reviewListItems.length === 0 &&
+          <h1 className='no-reviews-message'>
+            Be the first to review this game!
+          </h1>
+        }
+
       </ul>
     );
   }

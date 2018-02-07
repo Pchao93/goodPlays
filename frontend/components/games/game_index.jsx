@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import GameControls from './game_controls';
 import GameIndexItem from './game_index_item';
+import GameIndexContainer from './game_index_item';
 
 class GameIndex extends React.Component {
 
   constructor(props) {
     super(props);
-
     if (this.props.edit) {
       this.state = {
         name: this.props.collection.name,
@@ -65,7 +65,7 @@ class GameIndex extends React.Component {
 
   componentWillReceiveProps (nextProps) {
 
-    if (nextProps.location.pathname !== this.props.location.pathname){
+    if (!this.props.search && nextProps.location.pathname !== this.props.location.pathname){
       // console.log(this.props.currentUser);
       if (nextProps.currentUser) {
         nextProps.action(nextProps.currentUser.id);
@@ -112,6 +112,7 @@ class GameIndex extends React.Component {
   }
 
   render() {
+    
     let {collection, headerText, collectionUser, currentUser, edit, reviews} = this.props;
     let gamesListItems = [];
     reviews = reviews ? reviews : [];

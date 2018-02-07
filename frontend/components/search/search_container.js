@@ -8,26 +8,36 @@ import GameIndex from '../games/game_index.jsx';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
-  let games = state.search.games;
-  let reviews = state.search.reviews;
+  let games = Object.values(state.search.games);
+  let reviews = Object.values(state.search.reviews);
   if (state.session.currentUser) {
     currentUser = state.entities.users[currentUser.id];
   }
+  let headerText;
+  if (state.search.query) {
+    headerText = `Search Results for "${state.search.query}"`;
+  } else {
+    headerText = 'No results :(';
+  }
   let collectionUser = {username: 'Top Games'};
   let collection = {name: ''};
+  let search = true;
+
   return {
-    headerText: `Search Results for ${state.search.query}`,
+    headerText,
     games,
     query: state.search.query,
     collection,
     collectionUser,
     currentUser,
-    reviews
+    reviews,
+    search,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  searchGames: query => dispatch(searchGames(query)),
+  // action: query => dispatch(searchGames(query)),
+  action: ()=> {}
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameIndex));

@@ -2,7 +2,7 @@
 
 export const getGames = query => (
   $.ajax({
-    url: '/games/search',
+    url: '/api/games/search',
     method: 'GET',
     data: { query }
   })

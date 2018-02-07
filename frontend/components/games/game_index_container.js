@@ -17,9 +17,10 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     games,
-    headerText: "Top Games",
+    collectionUser: {username: "Top Games"},
     reviews,
     currentUser,
+    
   };
 };
 

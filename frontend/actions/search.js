@@ -12,6 +12,6 @@ export const receiveSearchResults = jsonObj => ({
   games: jsonObj.games,
 });
 
-export const searchGames = query => dispatch => searchGames(query)
+export const searchGames = query => dispatch => getGames(query)
     .then(games => dispatch(receiveSearchResults(games)),
-    errors => console.errors(errors));
+    errors => console.error(errors));
