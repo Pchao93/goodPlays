@@ -35,6 +35,8 @@ export default (state = {}, action) => {
       return newState;
     case RECEIVE_ONE_REVIEW:
       newState = merge({}, state);
+      if (newState[action.game.id] && newState[action.game.id].streams)
+      action.game.streams = newState[action.game.id].streams;
       newState[action.game.id] = action.game;
       return newState;
     case RECEIVE_STREAMS:

@@ -5,6 +5,7 @@ class Session extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      sessionAction: this.props.sessionAction,
       username: "",
       password: '',
       email: '',
@@ -12,20 +13,19 @@ class Session extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeForm = this.closeForm.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
+    this.toggleAction = this.toggleAction.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.gameId !== this.props.match.params.gameId) {
-      this.setState({
-        email: ''
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.match.params.gameId !== this.props.match.params.gameId) {
+  //     this.setState({
+  //       email: ''
+  //     });
+  //   }
+  // }
 
   handleInput(type) {
     return (e) => {
-      console.log(type);
-      console.log(e.target.value);
       this.setState({
           [type]: e.target.value
       });
@@ -35,25 +35,36 @@ class Session extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
-    this.props.action(this.state)
-      .then( () => this.props.history.push(this.props.match.params[0]));
+    if (this.state.sessionAction === 'signup') {
+      this.props.signup(this.state).then(this.props.closeForm());
+    } else {
+      this.props.login(this.state).then(this.props.closeForm());
+    }
+
   }
 
   handleDemo(e) {
     console.log("demo submit!");
     e.preventDefault();
     this.props.login({username: 'demo', password: 'password'})
-      .then( () => this.props.history.push(this.props.match.params[0]));
+      .then(this.props.closeForm());
   }
 
   closeForm(e) {
     if (e.currentTarget === e.target) {
-      this.props.history.push(this.props.match.params[0]);
+      this.setState({
+        sessionAction: false
+      });
+      this.props.closeForm();
       this.props.clearSessionErrors();
     }
   }
 
-  clearErrors(e) {
+  toggleAction(e) {
+    e.preventDefault();
+    this.setState({
+      sessionAction: this.state.sessionAction === 'signup' ? 'login' : 'signup'
+    });
     this.props.clearSessionErrors();
   }
 
@@ -64,10 +75,12 @@ class Session extends React.Component {
     ));
 
     let errorsBool = (this.props.errors.length > 0);
-
+    if (!this.state.sessionAction) {
+      return null;
+    }
     return (
       <div onClick={e => this.closeForm(e)} className='session-form-background'>
-        <form className='session-form-modal'>
+        <form onSubmit={this.handleSubmit}className='session-form-modal'>
           <div className='logo-container'>
             <div className='logo'>
               <span>good</span><span>Plays</span>
@@ -76,21 +89,21 @@ class Session extends React.Component {
 
           <ul className='tabs'>
             <li
-              onClick={ this.props.type === 'signup' ?
-                () => this.props.clearSessionErrors() : () => {}}
-              className={this.props.type === 'signup' ? '' : 'target'}>
-              <Link to={`${this.props.match.params[0]}/login`}>
+              onClick={ this.state.sessionAction === 'signup' ?
+                this.toggleAction : () => {}}
+              className={this.state.sessionAction === 'signup' ? '' : 'target'}>
+              <button >
                 Log In
-              </Link>
+              </button>
             </li>
 
             <li
-              onClick={ this.props.type === 'signup' ? () => {} :
-                () => this.props.clearSessionErrors()}
-              className={this.props.type === 'signup' ? 'target' : ''}>
-              <Link to={`${this.props.match.params[0]}/signup`}>
+              onClick={ this.state.sessionAction === 'signup' ? () => {} :
+                this.toggleAction}
+              className={this.state.sessionAction === 'signup' ? 'target' : ''}>
+              <button >
                 Sign Up
-              </Link>
+              </button>
             </li>
 
           </ul>
@@ -110,24 +123,23 @@ class Session extends React.Component {
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')}/>
-            { this.props.type === 'signup' && <label>Email: </label>}
-            { this.props.type === 'signup' &&
+            { this.state.sessionAction === 'signup' && <label>Email: </label>}
+            { this.state.sessionAction === 'signup' &&
             <input
               type="email"
               value={this.state.email}
               onChange={this.handleInput('email')}/>}
 
           <div className="submit-container">
-            <button className="btn" onClick={this.handleSubmit}>{this.props.type === 'signup' ? 'Sign Up' : 'Log In'}</button>
+            <button className="btn">{this.state.sessionAction === 'signup' ? 'Sign Up' : 'Log In'}</button>
             <button className="btn demo" onClick={this.handleDemo}>Demo</button>
           </div>
         </form>
         <div className="close-form-button">
-          <Link
-            onClick={() => this.props.clearSessionErrors()}
-            to={this.props.match.params[0]}>
+          <a
+            onClick={this.closeForm}>
             x
-          </Link>
+          </a>
         </div>
       </div>
     );

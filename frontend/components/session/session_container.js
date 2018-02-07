@@ -5,7 +5,7 @@ import Session from './session';
 const mapStateToProps = (state, ownProps) => {
   let errors = state.errors.session;
   let type = 'signup';
-  if (ownProps.match.path === '*/login') {
+  if (ownProps.sessionAction === 'login') {
     type = 'login';
   }
   return ({
@@ -16,15 +16,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   let action;
-  if (ownProps.match.path === '*/login') {
-    action = formUser => (dispatch(login(formUser)));
-  } else {
-    action = formUser => dispatch(createNewUser(formUser));
-  }
+
+
   return ({
     action,
     clearSessionErrors: () => dispatch(clearSessionErrors()),
-    login: (user) => dispatch(login(user))
+    login: formUser => (dispatch(login(formUser))),
+    signup: formUser => dispatch(createNewUser(formUser)),   
 
   });
 };

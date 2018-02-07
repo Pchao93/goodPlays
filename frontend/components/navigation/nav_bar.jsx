@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../../utils/route_utils';
 import SessionContainer from '../session/session_container';
 
-
 class NavBar extends React.Component {
 
   constructor(props) {
@@ -11,11 +10,14 @@ class NavBar extends React.Component {
     this.state = {
       userDropdownClass: "user-dropdown hidden",
       searchQuery: "",
+      sessionAction: false,
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+
 
   }
 
@@ -26,6 +28,13 @@ class NavBar extends React.Component {
       });
     };
   }
+
+  closeForm() {
+    this.setState({
+      sessionAction: false
+    });
+  }
+
 
   toggleHelper(toggleClass, classOne, classTwo) {
     return this.state[toggleClass] === classOne ?
@@ -66,13 +75,14 @@ class NavBar extends React.Component {
     </div>
   ) : (
     <div className="session-controls">
-      <Link className="btn" to={`${this.props.location.pathname}/login/`}>Log in</Link>
-      <Link className="btn" to={`${this.props.location.pathname}/signup/`}>Sign up</Link>
+      <button className="btn" onClick={() => this.setState({sessionAction: 'login'})} >Log in</button>
+      <button className="btn" onClick={() => this.setState({sessionAction: 'signup'})}>Sign up</button>
     </div>
   );
 
     return (
       <nav>
+        {this.state.sessionAction && <SessionContainer closeForm={this.closeForm} sessionAction={this.state.sessionAction}/>}
         <ul className="left-nav">
           <Link className='logo' to='/directory'>
             <span>good</span><span>Plays</span>
@@ -101,8 +111,6 @@ class NavBar extends React.Component {
         </ul>
 
           {display}
-        <AuthRoute path={`*/login`} component={SessionContainer} />
-        <AuthRoute path={`*/signup`} component={SessionContainer} />
       </nav>
     );
   }

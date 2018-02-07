@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser = state.entities.users[state.session.currentUser.id];
   }
   let game = ownProps.game;
-  if (ownProps.game && game.streams) {
+  if (game.streams) {
      game.streams.forEach(streamId => {
        if (state.entities.streams[streamId]) {
          streams.push(state.entities.streams[streamId]);
