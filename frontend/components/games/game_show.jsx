@@ -4,6 +4,7 @@ import GameInfoBox from './game_info_box';
 import ReviewFormContainer from '../reviews/review_form_container';
 import ReviewListItem from '../reviews/review_list_item';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import TwitchDisplayContainer from '../twitch/twitch_display_container';
 
 class GameShow extends React.Component {
 
@@ -51,18 +52,24 @@ class GameShow extends React.Component {
       ));
     }
     return  game === undefined ? '' : (
-      <div className='game-show-container'>
-        <GameInfoBox
-          openForm={this.openForm}
-          platforms={platforms}
-          game={game}
-          review={review}/>
-        {this.state.displayForm &&
-          <ReviewFormContainer
-            closeForm={(e) => this.closeForm(e)}
+      <div className='show-plus-streams'>
+        <div className='game-show-container'>
+          <GameInfoBox
+            openForm={this.openForm}
+            platforms={platforms}
             game={game}
-            review={review}/> }
-        <ReviewIndexContainer />
+            review={review}/>
+          {this.state.displayForm &&
+            <ReviewFormContainer
+              closeForm={(e) => this.closeForm(e)}
+              game={game}
+              review={review}/> }
+          <ReviewIndexContainer />
+
+
+        </div>
+        
+        <TwitchDisplayContainer game={game} />
       </div>
     );
   }

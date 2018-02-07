@@ -4,6 +4,7 @@ import errorsReducer from './errors';
 import sessionReducer from './session';
 import searchReducer from './search';
 
+
 export default combineReducers({
   entities: entitiesReducer,
   session: sessionReducer,

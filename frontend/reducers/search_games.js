@@ -7,7 +7,7 @@ export default (state = {}, action) => {
       if (action.games) {
         return action.games;
       } else {
-        return state;
+        return {};
       }
     default:
       return state;

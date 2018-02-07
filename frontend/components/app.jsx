@@ -27,7 +27,15 @@ export default (props) => (
       <Route exact path="/games/:gameId" component={GameShowContainer}/>
       <ProtectedRoute exact path='/collections/my-games' component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId" component={CollectionShowContainer}/>
+      <Route exact path="/collections/:collectionId/login" component={CollectionShowContainer}/>
+      <Route exact path="/collections/:collectionId/signup" component={CollectionShowContainer}/>
+
       <Route exact path="/collections/:collectionId/edit" component={CollectionShowContainer}/>
+      <Route exact path="/collections/:collectionId/edit/login" component={CollectionShowContainer}/>
+      <Route exact path="/collections/:collectionId/edit/signup" component={CollectionShowContainer}/>
+
+
+
       <Route path="*" component={NotFound}/>
 
     </Switch>

@@ -31,7 +31,6 @@ class CollectionButton extends React.Component {
 
   handleClickOutside(e) {
     if (this.state.collectionDropdownClass === 'collection-button-dropdown') {
-      console.log(this.props.hoverGameId);
       this.toggleDropdown(this.props.hoverGameId);
     }
   }
@@ -42,7 +41,7 @@ class CollectionButton extends React.Component {
   }
 
   toggleDropdown(id) {
-    
+
     if (id && this.props.toggleHover) {
       this.props.toggleHover(id);
     }

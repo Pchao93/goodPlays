@@ -73,7 +73,6 @@ class CollectionGame < ApplicationRecord
       end
       review = Review.find_by(user_id: user.id, game_id: self.game.id)
       if review
-        p 'review found'
         review.destroy
         self.removeReviewId = review.id
       end

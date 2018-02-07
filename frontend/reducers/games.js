@@ -10,6 +10,9 @@ import {
   RECEIVE_ONE_REVIEW,
   RECEIVE_REVIEWS
 } from '../actions/reviews';
+import {
+  RECEIVE_STREAMS,
+} from '../actions/twitch';
 import { merge } from 'lodash';
 
 export default (state = {}, action) => {
@@ -21,11 +24,9 @@ export default (state = {}, action) => {
     case RECEIVE_GAMES:
       newState = merge({}, state, action.games);
       return newState;
-
     case RECEIVE_ONE_COLLECTION:
       newState = merge({}, state, action.games);
       return newState;
-
     case RECEIVE_COLLECTIONS:
       newState = merge({}, state, action.games);
       return newState;
@@ -35,6 +36,12 @@ export default (state = {}, action) => {
     case RECEIVE_ONE_REVIEW:
       newState = merge({}, state);
       newState[action.game.id] = action.game;
+      return newState;
+    case RECEIVE_STREAMS:
+      newState = merge({}, state);
+      if (action.streams) {
+        newState[action.gameId].streams = action.streams.map(stream => stream._id);
+      }
       return newState;
     default:
       return state;

@@ -10,7 +10,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  console.log(searchGames);
   return {
     logout: () => dispatch(logout()),
     searchGames: query => dispatch(searchGames(query)),
