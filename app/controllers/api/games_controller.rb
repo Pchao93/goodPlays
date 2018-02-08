@@ -11,7 +11,7 @@ class Api::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.includes(:developer, :genres, :platforms, reviews: [:user]).limit(100)
+    @games = Game.includes(:developer, :genres, :platforms, reviews: [:user]).order(id: :asc).limit(100)
     @reviews = current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)) if current_user
 
 
