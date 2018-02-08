@@ -23,9 +23,11 @@ export default (props) => (
     <SideBarContainer />
     <Switch>
       <Route exact path='/directory' component={GameIndexContainer} />
-      <Route exact path='/directory/search' component={SearchContainer} />
-      <Route exact path="/games/:gameId" component={GameShowContainer}/>
 
+      <Route exact path='/directory/search' component={SearchContainer} />
+      <Route path='/directory/search/:searchQuery' component={SearchContainer} />
+
+      <Route exact path="/games/:gameId" component={GameShowContainer}/>
       <ProtectedRoute exact path='/collections/my-games' component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId" component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId/edit" component={CollectionShowContainer}/>

@@ -8,6 +8,13 @@ class GameIndex extends React.Component {
 
   constructor(props) {
     super(props);
+    if (props.match.params.searchQuery) {
+
+
+      let query = props.match.params.searchQuery.split('+').join(' ');
+      props.action(query);
+    }
+
     if (this.props.edit) {
       this.state = {
         name: this.props.collection.name,
@@ -66,7 +73,7 @@ class GameIndex extends React.Component {
   componentWillReceiveProps (nextProps) {
 
     if (!this.props.search && nextProps.location.pathname !== this.props.location.pathname){
-      
+
       if (nextProps.currentUser) {
         nextProps.action(nextProps.currentUser.id);
       }

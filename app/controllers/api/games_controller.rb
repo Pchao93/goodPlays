@@ -3,7 +3,7 @@ class Api::GamesController < ApplicationController
   def show
     @game = Game.includes(:developer, :platforms, reviews: [:user]).find_by(id: params[:id])
     @reviews = @game.reviews
-    
+
     if @game.nil?
       render :json ["Game not found"], status: 404
     end
@@ -19,7 +19,9 @@ class Api::GamesController < ApplicationController
     if params[:query].present?
       @query = params[:query]
       @games = Game.includes(:developer, :platforms, reviews: [:user]).where("lower(title) ~ ?", params[:query].downcase)
+      p 'querytime'
       @reviews = current_user.reviews
+
 
     else
       @games = Game.none

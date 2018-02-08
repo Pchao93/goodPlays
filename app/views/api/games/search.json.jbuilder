@@ -1,4 +1,4 @@
-reviews = {}
+
 
 json.games do
 
@@ -9,15 +9,18 @@ json.games do
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
       json.reviews game.reviews.pluck(:id)
-      user_review = current_user.reviews.where(game_id: game.id).first if current_user
-      if user_review
-        json.review user_review.id
-        reviews[user_review.id] = user_review
-      end
     end
   end
 end
 
 json.query @query
 
-json.reviews reviews
+if @reviews
+  json.reviews do
+    @reviews.each do |review|
+      json.set! review.id do
+        json.extract! review, :id, :rating, :body, :game_id, :user_id, :created_at
+      end
+    end
+  end
+end

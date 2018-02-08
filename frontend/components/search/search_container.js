@@ -37,7 +37,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   // action: query => dispatch(searchGames(query)),
-  action: ()=> {}
+  action: query => dispatch(searchGames(query))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameIndex));
