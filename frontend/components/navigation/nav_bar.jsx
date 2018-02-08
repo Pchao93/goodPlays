@@ -10,13 +10,15 @@ class NavBar extends React.Component {
     this.state = {
       userDropdownClass: "user-dropdown hidden",
       searchQuery: "",
-      sessionAction: false,
+      sessionAction: !this.props.forms,
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeForm = this.closeForm.bind(this);
+    this.handleFormButtons = this.handleFormButtons.bind(this);
+
 
 
   }
@@ -30,9 +32,7 @@ class NavBar extends React.Component {
   }
 
   closeForm() {
-    this.setState({
-      sessionAction: false
-    });
+    this.props.closeSessionForm();
   }
 
 
@@ -61,6 +61,12 @@ class NavBar extends React.Component {
     });
   }
 
+  handleFormButtons(action) {
+    console.log('click!');
+    this.setState({sessionAction: action});
+    this.props.openSessionForm();
+  }
+
   render() {
     const display = this.props.currentUser ? (
     <div className="user-info" onClick={this.toggleDropdown}>
@@ -79,14 +85,14 @@ class NavBar extends React.Component {
     </div>
   ) : (
     <div className="session-controls">
-      <button className="btn" onClick={() => this.setState({sessionAction: 'login'})} >Log in</button>
-      <button className="btn" onClick={() => this.setState({sessionAction: 'signup'})}>Sign up</button>
+      <button className="btn" onClick={() => this.handleFormButtons('login')} >Log in</button>
+      <button className="btn" onClick={() => this.handleFormButtons('signup')}>Sign up</button>
     </div>
   );
 
     return (
       <nav>
-        {this.state.sessionAction && <SessionContainer closeForm={this.closeForm} sessionAction={this.state.sessionAction}/>}
+        {this.props.forms && <SessionContainer closeForm={this.closeForm} sessionAction={this.state.sessionAction}/>}
         <ul className="left-nav">
           <Link className='logo' to='/directory'>
             <span>good</span><span>Plays</span>

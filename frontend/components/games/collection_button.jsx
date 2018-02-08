@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import SessionContainer from '../session/session_container';
 import onClickOutside from 'react-onclickoutside';
 
 class CollectionButton extends React.Component {
@@ -10,13 +11,16 @@ class CollectionButton extends React.Component {
 
     this.state = {
       collectionDropdownClass: 'collection-button-dropdown hidden',
-      collectionButtonClass: this.props.defaultCollection ? 'selected-collection-button' : 'default-collection-button'
+      collectionButtonClass: this.props.defaultCollection ? 'selected-collection-button' : 'default-collection-button',
+      auth: false,
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
     this.handleDestroy = this.handleDestroy.bind(this);
     this.handleDefault = this.handleDefault.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    
+
 
 
 
@@ -45,10 +49,7 @@ class CollectionButton extends React.Component {
     if (id && this.props.toggleHover) {
       this.props.toggleHover(id);
     }
-    if (!this.props.currentUser) {
-
-      this.props.history.push(`${this.props.location.pathname}/login`);
-    } else {
+    if (this.props.currentUser) {
       let newClass = this.toggleHelper(
         'collectionDropdownClass',
         'collection-button-dropdown hidden',
@@ -56,6 +57,9 @@ class CollectionButton extends React.Component {
       this.setState({
         collectionDropdownClass: newClass
       });
+    } else {
+      this.props.openSessionForm();
+
     }
   }
 
@@ -70,12 +74,11 @@ class CollectionButton extends React.Component {
   handleDefault(e) {
     e.preventDefault();
     if (!this.props.currentUser) {
-      this.props.history.push(`${this.props.location.pathname}/login`);
-    }
-    else if (!this.props.defaultCollection) {
+      console.log("I happen");
+      this.props.openSessionForm();
+    } else if (!this.props.defaultCollection) {
       this.props.addGameCollection(this.props.game.id, this.props.collections[0].id);
-    }
-    else if (this.props.defaultCollection) {
+    } else if (this.props.defaultCollection) {
       this.props.removeGameCollection(this.props.game.id, this.props.defaultCollection.id);
 
     }
@@ -129,6 +132,7 @@ class CollectionButton extends React.Component {
     options.filter(li => li !== null);
     return (
       <div className={edit ? 'collection-button red' : 'collection-button'}>
+
         <button
           className={edit ?
             'default-collection-button red' :

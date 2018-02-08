@@ -1,7 +1,7 @@
 .session-form-background {
   background: rgba(23,20,31,.6);
   z-index: 100;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   top: 0px;
   bottom: 0px;
@@ -49,13 +49,18 @@ div.logo {
   margin-bottom: -1px;
 }
 
-.tabs li a {
+.tabs li span {
   color: $button-purple;
+}
+
+.tabs li span:hover {
+  cursor: pointer;
 }
 
 .tabs li:hover {
   border-bottom: 1px solid $button-purple;
   color: $purple-main;
+  cursor: pointer;
 
 }
 
@@ -70,7 +75,7 @@ div.logo {
   margin-bottom: 10px;
   display: block;
 }
-.tabs li.target a {
+.tabs li.target span {
   color: #444;
 }
 

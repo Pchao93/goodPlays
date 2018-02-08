@@ -39,7 +39,7 @@ class ReviewButton extends React.Component {
   handleClick(e) {
     let id;
     if (!this.props.currentUser) {
-      this.props.history.push(`${this.props.location.pathname}/login`);
+      this.props.openSessionForm();
     } else {
       if (this.props.review) {
         id = this.props.review.id;

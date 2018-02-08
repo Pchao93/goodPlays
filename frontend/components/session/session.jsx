@@ -90,18 +90,18 @@ class Session extends React.Component {
               onClick={ this.state.sessionAction === 'signup' ?
                 this.toggleAction : () => {}}
               className={this.state.sessionAction === 'signup' ? '' : 'target'}>
-              <button >
+              <span >
                 Log In
-              </button>
+              </span>
             </li>
 
             <li
               onClick={ this.state.sessionAction === 'signup' ? () => {} :
                 this.toggleAction}
               className={this.state.sessionAction === 'signup' ? 'target' : ''}>
-              <button >
+              <span >
                 Sign Up
-              </button>
+              </span>
             </li>
 
           </ul>

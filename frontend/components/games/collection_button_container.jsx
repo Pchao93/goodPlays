@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import CollectionButton from './collection_button';
+import { openSessionForm } from '../../actions/session';
+
 import {removeGameCollection, addGameCollection, createCollection } from '../../actions/collections';
 
 const mapStateToProps = (state, ownProps) => {
@@ -49,6 +51,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(removeGameCollection(gameId, collectionId))),
     createCollection: (formCollection) => (
       dispatch(createCollection(formCollection))),
+    openSessionForm: () => dispatch(openSessionForm()),
+
   });
 
 };
