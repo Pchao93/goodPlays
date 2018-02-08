@@ -9,6 +9,7 @@ json.games do
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
       json.reviews game.reviews.pluck(:id)
+      json.genres game.genres.pluck(:name)
     end
   end
 end

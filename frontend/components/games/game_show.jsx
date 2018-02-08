@@ -23,7 +23,6 @@ class GameShow extends React.Component {
   }
 
   closeForm(e) {
-    e.preventDefault();
     this.setState({displayForm: false});
   }
 
@@ -45,11 +44,16 @@ class GameShow extends React.Component {
   render() {
     let { game, review, currentUser, reviews } = this.props;
     let platforms;
-
+    let genres;
     if (game){
+      console.log(game.genres);
       platforms = game.platforms.slice(0, 4).map(platform => (
         <li className='platform-badge' key={platform}>{platform}</li>
       ));
+      genres = game.genres.slice(0, 4).map((genre, idx) => (
+        <li className='platform-badge' key={idx}>{genre}</li>
+      ));
+      console.log(genres);
     }
     return  game === undefined ? '' : (
       <div className='show-plus-streams'>
@@ -57,6 +61,7 @@ class GameShow extends React.Component {
           <GameInfoBox
             openForm={this.openForm}
             platforms={platforms}
+            genres={genres}
             game={game}
             review={review}/>
           {this.state.displayForm &&

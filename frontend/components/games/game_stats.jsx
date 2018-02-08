@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const GameStats = ({game, platforms}) => (
+const GameStats = ({game, platforms, genres}) => (
   <div className="stats">
     <div className='stats-top-row'>
       <ul className="platform-badges">
@@ -15,7 +15,7 @@ const GameStats = ({game, platforms}) => (
     <div className='stats-bottom-row'>
       <ul className="genre-list">
         <label className='game-label'>Genres: </label>
-        <span className="placeholder-text">Placeholder text</span>
+        {game && genres}
       </ul>
       <span className='release_date'>
         <span className='game-label'>Rating: </span>

@@ -10,6 +10,8 @@ json.game do
   json.platforms @review.game.platforms.pluck(:abreviation)
   json.review @review
   json.reviews @review.game.reviews.pluck(:id)
+  json.genres @review.game.genres.pluck(:name)
+
 
 end
 
@@ -19,7 +21,6 @@ json.user do
   json.collections @review.user.collections.pluck(:id)
   json.reviews @review.user.reviews.pluck(:id)
   json.games @review.user.games.pluck(:id)
-
 end
 
 json.to_add @review.to_add

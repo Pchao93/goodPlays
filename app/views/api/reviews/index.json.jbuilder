@@ -24,7 +24,7 @@ end
       json.platforms review.game.platforms.pluck(:abreviation)
       json.review review.game.reviews.where(user_id: current_user.id)
       json.reviews review.game.reviews.pluck(:id)
-
+      json.genres review.game.genres.pluck(:name)
     end
 
   end

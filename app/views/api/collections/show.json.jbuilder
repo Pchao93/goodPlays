@@ -6,18 +6,21 @@ end
 
 
 @collection.games.each do |game|
-  review = @reviews.where(user_id: current_user.id) if current_user
+  review = game.reviews.where(user_id: current_user.id).first if current_user
+
   json.games do
     json.set! game.id do
       json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
-      json.review game.reviews.where(user_id: current_user.id) if current_user
+      json.review do
+        json.extract! review, :id, :user_id, :game_id, :rating, :body)
+      end
       json.reviews game.reviews.pluck(:id)
+      json.genres game.genres.pluck(:name)
 
     end
   end
-  review = game.reviews.where(user_id: current_user.id).first if current_user
   json.reviews do
     if review
       json.set! review.id do

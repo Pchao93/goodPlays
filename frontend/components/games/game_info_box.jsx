@@ -2,7 +2,7 @@ import React from 'react';
 import GameData from './game_data';
 import GameControls from './game_controls';
 
-const GameInfoBox = ({ game, platforms, currentUser, openForm, review}) => (
+const GameInfoBox = ({ game, platforms, currentUser, openForm, review, genres}) => (
   <div className='game-info-container'>
 
     <GameControls
@@ -12,7 +12,7 @@ const GameInfoBox = ({ game, platforms, currentUser, openForm, review}) => (
 
     <div className='game-data-container'>
 
-      <GameData game={game} platforms={platforms}/>
+      <GameData game={game} genres={genres} platforms={platforms}/>
 
       <div className='game-description'>
         <span className='game-label'>Summary:</span> {game.description}

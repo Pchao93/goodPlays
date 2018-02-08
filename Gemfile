@@ -10,6 +10,7 @@ end
 ruby '2.3.1'
 gem 'rails', '~> 5.1.4'
 gem 'figaro'
+gem 'redis-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewButtonContainer from '../games/review_button_container';
+import onClickOutside from 'react-onclickoutside';
 
 class ReviewForm extends React.Component{
   constructor(props) {
@@ -29,6 +30,12 @@ class ReviewForm extends React.Component{
           [type]: e.target.value
       });
     };
+  }
+
+  handleClickOutside(e) {
+    console.log("click!");
+    // e.preventDefault();
+    this.props.closeForm(e);
   }
 
   render() {
@@ -62,4 +69,4 @@ class ReviewForm extends React.Component{
   );}
 }
 
-export default ReviewForm;
+export default onClickOutside(ReviewForm);

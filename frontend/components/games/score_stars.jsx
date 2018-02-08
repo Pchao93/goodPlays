@@ -7,6 +7,10 @@ import React from 'react';
 
 const ScoreStars = ({ disableScore, score }) => {
   let i = score;
+  if (score === null) {
+    i = 0;
+    score = 0.0;
+  }
   const stars = {
     1: (<i className="fa fa-star" aria-hidden="true"></i>),
     0: (<i className="fa fa-star-o" aria-hidden="true"></i>),
@@ -17,7 +21,7 @@ const ScoreStars = ({ disableScore, score }) => {
     starValues.push(1);
     i -= 1;
   }
-  if (i != 0) {
+  if (i !== 0) {
     starValues.push(0.5);
   }
   while (starValues.length < 5) {

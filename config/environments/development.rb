@@ -4,6 +4,9 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:9df860e4dcc643af03078f282b45705a@soldierfish.redistogo.com:11102/'
+  uri = URI.parse(ENV["REDISTOGO_URL"])
+  REDIS = Redis.new(:url => uri)
   config.cache_classes = false
 
   # Do not eager load code on boot.

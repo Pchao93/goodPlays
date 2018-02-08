@@ -34,6 +34,21 @@ const Bool = ({ bool, path, component: Component, redirectPath}) => (
   />
 );
 
+class ScrollToTop extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+
+export default withRouter(ScrollToTop);
+
+
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
 export const BoolRoute = withRouter(connect()(Bool));

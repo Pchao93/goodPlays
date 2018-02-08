@@ -27,7 +27,7 @@ class Review < ApplicationRecord
       if game.num_reviews && game.num_reviews != 0
         total_score = game.average_score * game.num_reviews
         game.num_reviews += 1
-        self.average_score = ((total_score + (self.rating.to_f)) / game.num_reviews)
+        game.average_score = ((total_score + (self.rating.to_f)) / game.num_reviews)
         game.average_score = game.average_score.round(1)
       else
         game.num_reviews = 1

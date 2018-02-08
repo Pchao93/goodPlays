@@ -23,7 +23,6 @@ class ReviewIndex extends React.Component {
 
   closeForm(e) {
     
-    e.preventDefault();
     this.setState({
       edit: false
     });
