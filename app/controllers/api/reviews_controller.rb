@@ -2,14 +2,13 @@ class Api::ReviewsController < ApplicationController
 
   def index
     if params[:user_id]
-      @reviews = User.find_by(id: params[:user_id]).reviews.includes(:game)
+      @reviews = User.includes(:reviews).find_by(id: params[:user_id]).reviews.includes(:user, :game)
     elsif params[:game_id]
-      @reviews = Game.find_by(id: params[:game_id]).reviews.includes(:user)
+      @reviews = Game.includes(:reviews).find_by(id: params[:game_id]).reviews.includes(:user, :game)
     end
   end
 
   def create
-    p review_params
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.game_id = params[:game_id]
@@ -23,7 +22,7 @@ class Api::ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id])
-
+    @review.old_rating = @review.rating
     if @review
       if current_user.id == @review.user_id
         if @review.update(review_params)

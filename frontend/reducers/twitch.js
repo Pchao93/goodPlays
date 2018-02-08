@@ -8,7 +8,7 @@ export default (state = {}, action) => {
       newState = merge({}, state);
       action.streams.forEach(stream => {
 
-        console.log('stream', stream);
+        
         newState[stream._id] = stream;
       });
       return newState;

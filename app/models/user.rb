@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def default_collections
-    self.collections.includes(:games).limit(3)
+    self.collections.includes(:games).order(id: :asc).limit(3)
   end
 
 end

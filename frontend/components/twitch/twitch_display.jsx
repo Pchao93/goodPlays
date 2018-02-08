@@ -4,11 +4,11 @@ class TwitchDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {streams: undefined};
-    this.props.fetchStreams(this.props.game);
+
   }
 
   componentDidMount() {
-    // this.props.fetchStreams(this.props.game);
+    this.props.fetchStreams(this.props.game);
 
   }
 
@@ -30,22 +30,21 @@ class TwitchDisplay extends React.Component {
   }
 
   render() {
-    console.log(this.props.streams);
     let streams = this.state.streams ? this.state.streams : this.props.streams;
 
     let streamListItems = this.props.streams.map(stream => (
       <li key={stream._id} className='twitch-list-item'>
         <iframe
           src={`https://player.twitch.tv/?channel=${stream.channel.display_name}&muted=true&autoplay=false`}
-          height="180"
-          width="320"
+          height="270"
+          width="480"
           frameBorder="0"
           scrolling="no"
           allowFullScreen="true">
         </iframe>
-        <div className='stream information'>
-          <span className='display-name'>Channel: {stream.channel.display_name}</span>
-          <span className='stream-viwers'>Viewers: {stream.viewers}</span>
+        <div className='stream-information'>
+          <span className='channel-label'>Channel: </span><span className='display-name'>{stream.channel.display_name}</span>
+          <span className='channel-label'>Viewers: </span><span className='stream-viwers'>{stream.viewers}</span>
         </div>
       </li>));
 

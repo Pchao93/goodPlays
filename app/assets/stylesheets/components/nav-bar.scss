@@ -5,8 +5,12 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  top: 0px;
-  left: 0px;
+  padding: 0 100px;
+  padding-top: 500px;
+
+  top: -500px;
+  left: -100px;
+  right: -100px;
   width: 100%;
   z-index: 1000;
 }
@@ -183,12 +187,13 @@ a.logo {
 }
 
 .user-info .user-dropdown {
-  top: 50px;
+  top: 550px;
   position: absolute;
   // height: 1000px;
   background: $background-dark-purple;
   transition: height .2s ease-out;
   height: 50px;
+  z-index: 3;
 
 }
 // .user-dropdown.active {
@@ -197,7 +202,7 @@ a.logo {
 //
 // }
 .user-dropdown.hidden {
-  top: 50px;
+  top: 550px;
 	height: 0px;
 	overflow: hidden;
   // transition: height 2s ease-out;

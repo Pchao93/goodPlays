@@ -5,7 +5,7 @@ export const RECEIVE_STREAM_ERRORS = 'RECEIVE_STREAM_ERRORS';
 export const CLEAR_STREAM_ERRORS = 'CLEAR_STREAM_ERRORS';
 
 const receiveStreams = (payload, gameId) => {
-  console.log(payload);
+  
   return {
     type: RECEIVE_STREAMS,
     streams: payload.streams,

@@ -34,6 +34,7 @@
   justify-content: center;
   border-radius: 5px;
   position: relative;
+  margin-bottom: 10px;
   // margin: 0 5px;
 
 }
@@ -231,18 +232,13 @@
 
 .rating-stars .star {
   color: #19171c;
-  font-size: 14px;
+  font-size: 18px;
   padding: 4px 4px;
 }
 .rating-stars .star i {
   color: $button-purple;
 }
 
-.rating-stars .star:last-child {
-
-  font-size: 14px;
-  margin-right: 0px;
-}
 
 .game-info-header {
   display: flex;

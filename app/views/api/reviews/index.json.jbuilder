@@ -22,8 +22,8 @@ end
       json.extract! review.game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
       json.developer review.game.developer.name
       json.platforms review.game.platforms.pluck(:abreviation)
-      json.review game.reviews.where(user_id: current_user.id)
-      json.reviews game.reviews.pluck(:id)
+      json.review review.game.reviews.where(user_id: current_user.id)
+      json.reviews review.game.reviews.pluck(:id)
 
     end
 

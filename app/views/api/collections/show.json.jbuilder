@@ -6,6 +6,7 @@ end
 
 
 @collection.games.each do |game|
+  review = @reviews.where(user_id: current_user.id) if current_user
   json.games do
     json.set! game.id do
       json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score

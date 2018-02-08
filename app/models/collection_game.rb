@@ -20,7 +20,7 @@ class CollectionGame < ApplicationRecord
       user = self.collection.user
       # user.default_collections = user.collections.includes(:games).limit(3)
       # Search default collections for the game
-      p user.default_collections
+      user.default_collections
       user.default_collections.each do |collection|
         if collection.id == self.collection_id
           next
@@ -39,8 +39,6 @@ class CollectionGame < ApplicationRecord
       # is also default, destroy the previous association.
       if self.default_game_collection
         if user.default_collections.pluck(:id).include?(self.collection_id)
-          p default_game_collection
-          p self
           default_game_collection.is_straightforward = true
           default_game_collection.destroy
           self.to_remove = default_game_collection.collection_id

@@ -1,7 +1,7 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    @collection = Collection.includes(games: [:platforms, :developer]).find_by(id: params[:id])
+    @collection = Collection.includes(games: [:platforms, :developer, reviews:[:user]]).find_by(id: params[:id])
     if @collection
       render :show
     else
@@ -16,7 +16,9 @@ class Api::CollectionsController < ApplicationController
       user = current_user
     end
     if user
-      @collections = user.collections.includes(games: [:platforms, :developer])
+      @collections = user.collections.includes(user: [:reviews], games: [:platforms, :developer, reviews: [:user]])
+
+      @reviews = @collections[0].user.reviews
     else
       render json: ["Unable to find collections for the user with id #{params[:user_id]}."], status: 404
     end

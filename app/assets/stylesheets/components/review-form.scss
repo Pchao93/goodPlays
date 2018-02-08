@@ -29,6 +29,8 @@
   background: $button-purple;
   border-radius: 5px;
   color: #fff;
+  padding: 0 1px;
+  padding-bottom: 2px;
 
 }
 
@@ -50,4 +52,9 @@
 
 .no-reviews-message {
   font-size: 28px;
+  cursor: pointer;
+}
+
+.no-reviews-message:hover {
+  color: $purple-main;
 }

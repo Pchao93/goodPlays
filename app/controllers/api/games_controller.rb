@@ -1,22 +1,25 @@
 class Api::GamesController < ApplicationController
 
   def show
-    @game = Game.includes(:developer, :platforms, :reviews).find_by(id: params[:id])
+    @game = Game.includes(:developer, :platforms, reviews: [:user]).find_by(id: params[:id])
+    @reviews = @game.reviews
+    
     if @game.nil?
       render :json ["Game not found"], status: 404
     end
   end
 
   def index
-    @games = Game.includes(:developer, :platforms, :reviews).limit(100)
-    @reviews = current_user.reviews.where(game: @games) if current_user
+    @games = Game.includes(:developer, :platforms, reviews: [:user]).limit(100)
+    @reviews = current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)) if current_user
   end
 
   def search
     #In the future, will add games by title, games by platform, and games by genre
     if params[:query].present?
       @query = params[:query]
-      @games = Game.where("lower(title) ~ ?", params[:query].downcase)
+      @games = Game.includes(:developer, :platforms, reviews: [:user]).where("lower(title) ~ ?", params[:query].downcase)
+      @reviews = current_user.reviews
 
     else
       @games = Game.none

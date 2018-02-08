@@ -34,7 +34,6 @@ class Session extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     if (this.state.sessionAction === 'signup') {
       this.props.signup(this.state).then(this.props.closeForm());
     } else {
@@ -44,7 +43,6 @@ class Session extends React.Component {
   }
 
   handleDemo(e) {
-    console.log("demo submit!");
     e.preventDefault();
     this.props.login({username: 'demo', password: 'password'})
       .then(this.props.closeForm());

@@ -66,7 +66,7 @@ class GameIndex extends React.Component {
   componentWillReceiveProps (nextProps) {
 
     if (!this.props.search && nextProps.location.pathname !== this.props.location.pathname){
-      // console.log(this.props.currentUser);
+      
       if (nextProps.currentUser) {
         nextProps.action(nextProps.currentUser.id);
       }
@@ -112,7 +112,7 @@ class GameIndex extends React.Component {
   }
 
   render() {
-    
+
     let {collection, headerText, collectionUser, currentUser, edit, reviews} = this.props;
     let gamesListItems = [];
     reviews = reviews ? reviews : [];

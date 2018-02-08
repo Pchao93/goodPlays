@@ -4,11 +4,13 @@ json.games do
     json.developer @game.developer.name
     json.platforms @game.platforms.pluck(:abreviation)
     json.reviews @game.reviews.pluck(:id)
+    # json.review @game.reviews.where(user_id: current_user.id)
+
   end
 end
 
 
-@game.reviews.each do |review|
+@reviews.each do |review|
   json.reviews do
     json.set! review.id do
       json.extract! review, :id, :rating, :body, :game_id, :user_id, :created_at

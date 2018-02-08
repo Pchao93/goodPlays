@@ -22,7 +22,7 @@ class ReviewIndex extends React.Component {
   }
 
   closeForm(e) {
-    console.log(this);
+    
     e.preventDefault();
     this.setState({
       edit: false
@@ -64,9 +64,15 @@ class ReviewIndex extends React.Component {
       <ul className='review-container'>
         <h1 className='review-container-title'>Reviews</h1>
         {reviewListItems.length > 0 && reviewListItems}
-        {reviewListItems.length === 0 &&
-          <h1 className='no-reviews-message'>
-            Be the first to review this game!
+        {reviewListItems.length === 0 && !this.props.edit &&
+          <h1
+            onClick={(e) => {
+              this.props.toggleEdit(e);
+              this.props.handleEdit;
+
+            }}
+            className='no-reviews-message'>
+            Be the first to write a review!
           </h1>
         }
 

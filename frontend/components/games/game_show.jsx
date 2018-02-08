@@ -64,11 +64,11 @@ class GameShow extends React.Component {
               closeForm={(e) => this.closeForm(e)}
               game={game}
               review={review}/> }
-          <ReviewIndexContainer />
+          <ReviewIndexContainer toggleEdit={this.openForm} />
 
 
         </div>
-        
+
         <TwitchDisplayContainer game={game} />
       </div>
     );

@@ -1,7 +1,7 @@
 import {receiveStreams} from '../actions/twitch';
 
 export const getStreams = game => {
-  console.log(game.title.split(' ').join('+'));
+  
   return $.ajax({
       type: 'GET',
       url: `https://api.twitch.tv/kraken/streams/?game=${game.title.split(' ').join('+')}&limit=5&`,

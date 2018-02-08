@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205055949) do
+ActiveRecord::Schema.define(version: 20180207234607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,26 @@ ActiveRecord::Schema.define(version: 20180205055949) do
     t.datetime "updated_at", null: false
     t.string "release_date", null: false
     t.string "rating", null: false
+    t.integer "num_reviews"
+    t.float "average_score"
     t.index ["developer_id"], name: "index_games_on_developer_id"
     t.index ["title"], name: "index_games_on_title", unique: true
+  end
+
+  create_table "genre_games", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id", "genre_id"], name: "index_genre_games_on_game_id_and_genre_id", unique: true
+    t.index ["game_id"], name: "index_genre_games_on_game_id"
+    t.index ["genre_id"], name: "index_genre_games_on_genre_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "platform_games", force: :cascade do |t|
