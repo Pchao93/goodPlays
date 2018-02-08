@@ -13,8 +13,10 @@ end
       json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
-      json.review do
-        json.extract! review, :id, :user_id, :game_id, :rating, :body)
+      if review
+        json.review do
+          json.extract! review, :id, :user_id, :game_id, :rating, :body
+        end
       end
       json.reviews game.reviews.pluck(:id)
       json.genres game.genres.pluck(:name)

@@ -121,7 +121,7 @@ class SideBar extends React.Component {
             </li>
             {names}
           </ul>
-          <form className="new-collection-form">
+          <form onSubmit={(e) => this.toggleForm(e)} className="new-collection-form">
             <div className={this.state.inputClass}>
 
               <input
@@ -130,14 +130,10 @@ class SideBar extends React.Component {
                 placeholder="New Collection"
                 value={this.state.value}></input>
             </div>
-            <span onClick={(e) => this.toggleForm(e)} className='collection-form-toggle'> + </span>
+            <button><span className='collection-form-toggle'> + </span></button>
               {false && <p className={this.state.inputClass}>Add a Collection</p> }
 
           </form>
-          {this.state.inputClass === 'collection-input' &&
-            <div onClick={e => this.closeForm(e)} id='click-handler-div'>
-            </div>
-            }
         </div>
       </div>
     );

@@ -22,7 +22,7 @@ class Api::GamesController < ApplicationController
     if params[:query].present?
       @query = params[:query]
       @games = Game.includes(:developer, :genres, :platforms, reviews: [:user]).where("lower(title) ~ ?", params[:query].downcase)
-      @reviews = current_user.reviews
+      @reviews = current_user.reviews if current_user
 
 
     else

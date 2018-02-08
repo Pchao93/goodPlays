@@ -57,7 +57,9 @@ class NavBar extends React.Component {
       let query = this.state.searchQuery;
       query = this.state.searchQuery.split(' ').join('+');
       this.props.history.push(`/directory/search/${query}`);
-
+      this.setState({
+        searchQuery: ''
+      });
     });
   }
 

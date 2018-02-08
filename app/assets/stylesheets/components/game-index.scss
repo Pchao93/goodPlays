@@ -8,6 +8,18 @@
 
 }
 
+.index-spinner {
+  margin: 200px 500px;
+  width: 200px;
+  height: 200px;
+}
+
+.index-spinner div {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
 .game-index-title {
   display: flex;
   // align-items: center;
@@ -134,6 +146,16 @@
 .game-index-list .game-index-item .review_button .rating-stars {
   display: flex;
   background: black;
+}
+
+.empty-index-message {
+  font-size: 36px;
+
+}
+
+a.empty-index-message:hover {
+  cursor: pointer;
+  color: $button-purple;
 }
 
 // Animation code taken from stack overflow. Staggered transitions by me.

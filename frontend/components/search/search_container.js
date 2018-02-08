@@ -17,12 +17,12 @@ const mapStateToProps = (state, ownProps) => {
   if (state.search.query) {
     headerText = `Search Results for "${state.search.query}"`;
   } else {
-    headerText = 'No results :(';
+    headerText = '';
   }
   let collectionUser = {username: 'Top Games'};
   let collection = {name: ''};
   let search = true;
-
+  console.log(state.search.query);
   return {
     headerText,
     games,
@@ -37,7 +37,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   // action: query => dispatch(searchGames(query)),
-  action: query => dispatch(searchGames(query))
+  search: query => dispatch(searchGames(query))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameIndex));
