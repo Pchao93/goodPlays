@@ -46,14 +46,14 @@ class GameShow extends React.Component {
     let platforms;
     let genres;
     if (game){
-      console.log(game.genres);
+
       platforms = game.platforms.slice(0, 4).map(platform => (
         <li className='platform-badge' key={platform}>{platform}</li>
       ));
-      genres = game.genres.slice(0, 4).map((genre, idx) => (
+      genres = game.genres.slice(0, 3).map((genre, idx) => (
         <li className='platform-badge' key={idx}>{genre}</li>
       ));
-      console.log(genres);
+
     }
     return  game === undefined ? '' : (
       <div className='show-plus-streams'>
