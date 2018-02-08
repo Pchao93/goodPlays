@@ -10,7 +10,10 @@ const mapStateToProps = (state, ownProps) => {
     currentUser = state.entities.users[state.session.currentUser.id];
   }
   let game = state.entities.games[ownProps.match.params.gameId];
-  let reviews = Object.values(state.entities.reviews).filter(review => review.game_id === game.id);
+  let reviews
+  if (game && review) {
+    reviews = Object.values(state.entities.reviews).filter(review => review.game_id === game.id);
+  }
   let review;
   if (currentUser) {
     currentUser.reviews.forEach(reviewIdx =>{
