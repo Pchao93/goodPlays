@@ -1,0 +1,8 @@
+lol = Game.includes(:genres).find(20)
+
+Game.includes(:genres).map do |game|
+  game.genres.length
+  a = game.title
+  b = lol.calculate_relation(game)
+  [b, a, game.genres.length]
+end.sort

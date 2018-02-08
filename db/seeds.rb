@@ -15,7 +15,7 @@ user.password = "password"
 user.email = "demo@demo.com"
 user.save
 
-10.times do |num|
+50.times do |num|
   tempuser = User.new
   tempuser.username = "test#{num}"
   tempuser.password = "password"
@@ -173,7 +173,7 @@ BODY = {
 #
 User.all.each do |user|
   user.collections.each do |collection|
-    5.times do
+    25.times do
       game_id = rand(1..208)
       game = Game.find_by(id: game_id)
       rating = rand(2..5)

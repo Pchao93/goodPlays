@@ -35,7 +35,7 @@ class Game < ApplicationRecord
 
   def calculate_relation(game)
     dif_genres = (self.genres - game.genres).length
-    dif_genres += (self.genres.length - game.genres.length).abs
+    dif_genres / 2
 
 
   end

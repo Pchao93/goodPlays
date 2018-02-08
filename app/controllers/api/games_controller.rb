@@ -19,7 +19,6 @@ class Api::GamesController < ApplicationController
     if params[:query].present?
       @query = params[:query]
       @games = Game.includes(:developer, :platforms, reviews: [:user]).where("lower(title) ~ ?", params[:query].downcase)
-      p 'querytime'
       @reviews = current_user.reviews
 
 
