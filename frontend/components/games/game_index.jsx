@@ -61,8 +61,12 @@ class GameIndex extends React.Component {
   componentDidMount() {
     // this.props.action();
     if (this.props.currentUser && !this.props.search) {
+      this.setState({loading:true});
+
       this.props.action(this.props.currentUser.id).then(()=> this.setState({loading:false}));
     } else if ( !this.props.search ) {
+      this.setState({loading:true});
+
       this.props.action().then(()=> this.setState({loading:false}));
     }
 
@@ -122,7 +126,14 @@ class GameIndex extends React.Component {
   }
 
   render() {
-
+    if (this.state.loading) {
+      return (<div className='index-spinner'>
+        <CircleLoader
+          color={'#4b367c'}
+          loading={this.state.loading}
+        />
+    </div>);
+    }
     let {collection, headerText, collectionUser, currentUser, edit, reviews} = this.props;
     let gamesListItems = [];
     reviews = reviews ? reviews : [];
@@ -165,14 +176,7 @@ class GameIndex extends React.Component {
     if (edit) {
       width = (this.state.name.length * 13.5) + 'px';
     }
-    if (this.state.loading) {
-      return (<div className='index-spinner'>
-        <CircleLoader
-          color={'#4b367c'}
-          loading={this.state.loading}
-        />
-    </div>);
-    }
+
     let display = Object.values(gamesListItems).length > 0 ? Object.values(gamesListItems) :
         (this.props.search ? (<span className='empty-index-message' >No results found :(</span>) :
           <Link to='/directory' className='empty-index-message' >No games yet, why don't you take a look?</Link>);

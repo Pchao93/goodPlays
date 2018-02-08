@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CircleLoader } from 'react-spinners';
+
 import GameInfoBox from './game_info_box';
 import ReviewFormContainer from '../reviews/review_form_container';
 import ReviewListItem from '../reviews/review_list_item';
@@ -12,8 +14,9 @@ class GameShow extends React.Component {
     super(props);
     this.state = ({
       displayForm: false,
+      loading: true
     });
-    this.props.getOneGame(this.props.match.params.gameId);
+    this.props.getOneGame(this.props.match.params.gameId).then(()=> this.setState({loading:false}));
     this.openForm = this.openForm.bind(this);
   }
 
@@ -37,11 +40,20 @@ class GameShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.gameId !== this.props.match.params.gameId) {
-      this.props.getOneGame(nextProps.match.params.gameId);
+      this.setState({loading:true});
+      this.props.getOneGame(nextProps.match.params.gameId).then(()=> this.setState({loading:false}));
     }
   }
 
   render() {
+    if (this.state.loading) {
+      return (<div className='index-spinner'>
+        <CircleLoader
+          color={'#4b367c'}
+          loading={this.state.loading}
+        />
+    </div>);
+    }
     let { game, review, currentUser, reviews } = this.props;
     let platforms;
     let genres;

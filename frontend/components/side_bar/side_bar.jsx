@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 
 class SideBar extends React.Component {
 
@@ -9,7 +10,7 @@ class SideBar extends React.Component {
     this.state = {
       inputClass: "collection-input hidden",
       value: "",
-
+      loading: true,
     };
 
     this.toggleForm = this.toggleForm.bind(this);
@@ -18,14 +19,15 @@ class SideBar extends React.Component {
     this.toggleHelper = this.toggleHelper.bind(this);
 
     if (this.props.currentUser) {
-      this.props.getAllCollections(this.props.currentUser.id);
+      this.props.getAllCollections(this.props.currentUser.id).then(()=> this.setState({loading: false}));
     }
 
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.currentUser && this.props.currentUser !== nextProps.currentUser){
-      nextProps.getAllCollections(nextProps.currentUser.id);
+      this.setState({loading: true});
+      nextProps.getAllCollections(nextProps.currentUser.id).then(()=> this.setState({loading: false}));
     }
   }
 
@@ -115,7 +117,15 @@ class SideBar extends React.Component {
             <li>
               <Link to={`/collections/my-games`}>
                 <span className="collection-name">My Games:</span>
-                <span className='game-count'>{totalGames} game{totalGames !== 1 && 's'}</span>
+                {!this.state.loading && <span className='game-count'>{totalGames} game{totalGames !== 1 && 's'}</span>}
+                {this.state.loading && <div className='side-bar-spinner'>
+                  <BeatLoader
+                    size={5}
+                    color={'#4b367c'}
+                    loading={this.state.loading}
+                  />
+              </div>}
+
               </Link>
 
             </li>

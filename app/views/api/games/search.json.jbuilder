@@ -16,9 +16,9 @@ end
 
 json.query @query
 
-if @reviews
+if @user_reviews
   json.reviews do
-    @reviews.each do |review|
+    @user_reviews.each do |review|
       json.set! review.id do
         json.extract! review, :id, :rating, :body, :game_id, :user_id, :created_at
       end

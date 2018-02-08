@@ -23,7 +23,7 @@ end
   end
 end
 
-@reviews.each do |review|
+@user_reviews.each do |review|
   json.reviews do
     json.set! review.id do
       json.extract! review, :id, :user_id, :game_id, :rating, :body, :created_at
