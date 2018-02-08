@@ -94,20 +94,17 @@ class SideBar extends React.Component {
     }
     let totalGames = 0;
     let names = collections.map((collection, idx) => {
-      if (collection.games === undefined) {
-
-        collection.games = [];
-      } else {
-        if (idx < 3) {totalGames += collection.games.length;}
-        return (
-          <li key={collection.id}>
-            <Link to={`/collections/${collection.id}`}>
-              <span className="collection-name">{collection.name}{ idx > 2 && ':'}</span>
-              <span className='game-count'>{collection.games.length} game{collection.games.length !== 1 && 's'}</span>
-            </Link>
-          </li>
-      );}
+      if (idx < 3) {totalGames += collection.count;}
+      return (
+        <li key={collection.id}>
+          <Link to={`/collections/${collection.id}`}>
+            <span className="collection-name">{collection.name}{ idx > 2 && ':'}</span>
+            <span className='game-count'>{collection.count} game{collection.count !== 1 && 's'}</span>
+          </Link>
+        </li>
+      );
     });
+
 
     return (
       <div className='side-bar'>

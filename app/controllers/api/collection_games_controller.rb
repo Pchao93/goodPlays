@@ -7,7 +7,7 @@ class Api::CollectionGamesController < ApplicationController
     if @collection_game.save
       render :show
     else
-      render json: @collection_game.errors.full_messages, status: 401
+      p render json: @collection_game.errors.full_messages, status: 401
     end
 
   end
@@ -22,10 +22,6 @@ class Api::CollectionGamesController < ApplicationController
     end
   end
 
-
-  def destroy_all
-
-  end
 
   private
 

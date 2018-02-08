@@ -1,34 +1,30 @@
 json.collection do
-  json.extract! @collection, :id, :name, :user_id
+  json.extract! @collection, :id, :name, :user_id, :count
   json.games @collection.games.pluck(:id)
 
 end
 
 
-@collection.games.each do |game|
-  review = game.reviews.where(user_id: current_user.id).first if current_user
-
+@collection_games.each do |game|
   json.games do
     json.set! game.id do
       json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
       json.developer game.developer.name
       json.platforms game.platforms.pluck(:abreviation)
-      if review
-        json.review do
-          json.extract! review, :id, :user_id, :game_id, :rating, :body
-        end
-      end
       json.reviews game.reviews.pluck(:id)
       json.genres game.genres.pluck(:name)
 
     end
   end
+end
+
+@user_reviews.each do |review|
   json.reviews do
-    if review
-      json.set! review.id do
-        json.extract! review, :id, :user_id, :game_id, :rating, :body
-      end
+
+    json.set! review.id do
+      json.extract! review, :id, :user_id, :game_id, :rating, :body
     end
+
   end
 end
 

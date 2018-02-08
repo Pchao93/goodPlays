@@ -2,11 +2,16 @@ class CollectionGame < ApplicationRecord
   validates :game_id, uniqueness: { scope: :collection_id }
   before_save :handle_save
   before_destroy :handle_destroy
-  belongs_to :collection
+
 
   attr_accessor :to_add, :to_remove, :to_remove_array
   attr_accessor :default_game_collection, :removeReviewId, :is_straightforward
   belongs_to :game
+
+
+  belongs_to :collection,
+  touch: true
+
 
   has_one :user,
     through: :game
@@ -45,16 +50,20 @@ class CollectionGame < ApplicationRecord
         end
       #If the game is not yet in the defaults, and the target collection
       #is not a default, create a new association in the defaults
-    elsif !user.default_collections.pluck(:id).include?(self.collection_id) &&
-      !self.is_straightforward
-        cg = CollectionGame.new(
-          collection_id: user.default_collections[1].id,
-          game_id: self.game_id)
-        cg.is_straightforward = true
-        cg.save!
-        self.to_add = user.default_collections[1].id
+      elsif !user.default_collections.pluck(:id).include?(self.collection_id) &&
+        !self.is_straightforward
+          cg = CollectionGame.new(
+            collection_id: user.default_collections[1].id,
+            game_id: self.game_id)
+          cg.save!
+          self.to_add = user.default_collections[1].id
       end
+    elsif self.valid?
+      self.collection.count += 1
+      self.collection.save
     end
+
+
   end
 
   #If a game is removed from a default collection, it is then removed from
@@ -75,6 +84,8 @@ class CollectionGame < ApplicationRecord
             CollectionGame.find_by(
               collection_id: collection.id,
               game_id: self.game.id).destroy
+            collection.count -= 1
+            collection.save
             self.to_remove_array.push(collection.id)
             break
           end
@@ -86,6 +97,9 @@ class CollectionGame < ApplicationRecord
         end
       end
     end
+    self.collection.count -= 1
+    self.collection.save
   end
+
 
 end

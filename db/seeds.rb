@@ -6,22 +6,42 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# setup vars
+skip_games = true
+num_users = 0
+num_reviews = 5
 
+
+
+User.delete_all
+Collection.delete_all
+Game.delete_all if skip_games == false
+Genre.delete_all if skip_games == false
+CollectionGame.delete_all
+GenreGame.delete_all if skip_games == false
+PlatformGame.delete_all if skip_games == false
+Developer.delete_all if skip_games == false
+Review.delete_all
 require 'csv'
 
+p 'done destroying old data'
+
+p 'creating new users'
 user = User.new
 user.username = "demo"
 user.password = "password"
 user.email = "demo@demo.com"
 user.save
 
-50.times do |num|
+num_users.times do |num|
   tempuser = User.new
   tempuser.username = "test#{num}"
   tempuser.password = "password"
   tempuser.email="test#{num}@test.com"
   tempuser.save
 end
+
+p'platforms'
 
 PLATFORMS = {
   'PlayStation 4' => 'PS4',
@@ -48,6 +68,8 @@ PLATFORMS.each do |platform, abreviation|
   Platform.create(name: platform, abreviation: abreviation)
 end
 
+
+p'genres'
 GENRES = {
   'Role-Playing' => 'RPG',
 
@@ -96,58 +118,65 @@ end
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'seeddata.csv')).scrub
 csv = CSV.parse(csv_text, headers: true, encoding: 'UTF-8')
 
-csv.each_with_index do |row, idx|
-  if idx == 208
-    break
-  end
-  game = Game.new
-  row
-  game.title = row['title'][0...-1]
 
-  if row['release date'].include?('@')
-    game.release_date = row['release date'].gsub!('@', ',')
-  else
-    game.release_date = row['release date']
-  end
+if skip_games == false
+  p'games'
 
-  if row['description'].include?('@')
-    game.description = row['description'].gsub!('@', ',')
-  else
-    game.description = row['description']
-  end
-
-  game.image_url = row['image_url']
-  game.amazon_url = row['amazon url']
-  game.rating = row['rating']
-
-  developer = Developer.find_by(name: row['developer'])
-  if developer
-    game.developer_id = developer.id
-  else
-    developer = Developer.create(name: row['developer'])
-    game.developer_id = developer.id
-  end
-  if !game.save
-    p game
-    p game.errors.full_messages
-  end
-
-  PLATFORMS.each_key do |platform|
-    if row['platforms'].include?(platform)
-      platform_hash = Platform.find_by(name: platform)
-      PlatformGame.create(game_id: game.id, platform_id: platform_hash.id)
+  csv.each_with_index do |row, idx|
+    p 'game'
+    if idx == 208
+      break
     end
-  end
+    game = Game.new
+    row
+    game.title = row['title'][0...-1]
 
-  GENRES.each do |genre, name|
-    if row['genres'].include?(genre)
-      genre_hash = Genre.find_by(name: name)
-      GenreGame.create(game_id: game.id, genre_id: genre_hash.id)
+    if row['release date'].include?('@')
+      game.release_date = row['release date'].gsub!('@', ',')
+    else
+      game.release_date = row['release date']
     end
-  end
 
+    if row['description'].include?('@')
+      game.description = row['description'].gsub!('@', ',')
+    else
+      game.description = row['description']
+    end
+
+    game.image_url = row['image_url']
+    game.amazon_url = row['amazon url']
+    game.rating = row['rating']
+
+    developer = Developer.find_by(name: row['developer'])
+    if developer
+      game.developer_id = developer.id
+    else
+      developer = Developer.create(name: row['developer'])
+      game.developer_id = developer.id
+    end
+    if !game.save
+      p game
+      p game.errors.full_messages
+    end
+    p 'platforms'
+    PLATFORMS.each_key do |platform|
+      if row['platforms'].include?(platform)
+        p 'add platform'
+        platform_hash = Platform.find_by(name: platform)
+        PlatformGame.create(game_id: game.id, platform_id: platform_hash.id)
+      end
+    end
+    p 'genres'
+    GENRES.each do |genre, name|
+      if row['genres'].include?(genre)
+        p 'add genre'
+        genre_hash = Genre.find_by(name: name)
+        GenreGame.create(game_id: game.id, genre_id: genre_hash.id)
+      end
+    end
+
+  end
 end
-
 BODY = {
   1 => "This series is a great franchise because it gives you a sense of 'pride and accomplishment' when you play. If you're all about the gameplay, then %{game} is the game for you.\n\nI am 60 hours into the %{game}, and` I think they did a great job of letting the players do what they want in the immersive environment. Don't expect it to be like other %{genre} games because this one is special. They may have similarities at some levels, but this is a great game.\n\nIn addition, you could also have the option to enjoy the game in solo mode. If internet connection not your thing, then you could play it offline. Is it fun playing alone? Of course! Is it fun playing online with friends? Absolutely! Mounting a monster always satisfies me and the combat system is great. The atmosphere and the environment are just gorgeous. I was stunned by the beautiful ecosystem and looking at what's around me. You will enjoy every cutscene you encounter. The story is engaging, and it makes you feel that you are actually in the game. At this point, there is nothing to complain about with the game. Veterans will love this game, but for newcomers, they will somewhat complain about it. However, there is a learning curve. If you are interested in it and willing to put the time and effort then this is the game for you.",
   2 => "%{game} is amazing, easily one of the best games of this generation in my opinion. From the addictive gameplay to the great graphics, this is easily the best %{genre} game to date. The multiplayer is the best thing in this game, I did not face any connectivity issues worth mentioning. Though it can get a bit confusing sometimes, especially when trying to join a friend, but I think it will be solved in the future.",
@@ -170,11 +199,14 @@ BODY = {
   # 19 => ,
   # 20 => ,
 }
+
+p 'reviews and collections'
 #
 User.all.each do |user|
   user.collections.each do |collection|
-    25.times do
-      game_id = rand(1..208)
+    p 'collection'
+    num_reviews.times do
+      game_id = rand(Game.first.id..Game.last.id)
       game = Game.find_by(id: game_id)
       rating = rand(2..5)
       if rating > 3
@@ -182,8 +214,10 @@ User.all.each do |user|
       else
         body_key = rand(6..10)
       end
+      p 'collecting'
       CollectionGame.create(game_id: game_id, collection_id: collection.id)
-      if game.genres.first
+      if game && game.genres.first
+        p 'review'
         Review.create(
           rating: rating,
           game_id: game_id,
@@ -194,7 +228,7 @@ User.all.each do |user|
             genre: game.genres.first.name}))
       else
         p game
-        p game.genres
+        p game.genres if game
       end
     end
   end

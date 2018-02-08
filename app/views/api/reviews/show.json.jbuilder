@@ -5,14 +5,7 @@ json.review do
 end
 
 json.game do
-  json.extract! @review.game, :id, :title, :description, :image_url, :amazon_url, :release_date, :rating, :average_score
-  json.developer @review.game.developer.name
-  json.platforms @review.game.platforms.pluck(:abreviation)
-  json.review @review
-  json.reviews @review.game.reviews.pluck(:id)
-  json.genres @review.game.genres.pluck(:name)
-
-
+  
 end
 
 json.user do

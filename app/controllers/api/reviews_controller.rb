@@ -4,7 +4,10 @@ class Api::ReviewsController < ApplicationController
     if params[:user_id]
       @reviews = User.includes(:reviews).find_by(id: params[:user_id]).reviews.includes(:user, :game)
     elsif params[:game_id]
-      @reviews = Game.includes(:reviews).find_by(id: params[:game_id]).reviews.includes(:user, :game)
+      @game = Game.find_by(id: params[:game_id])
+      @reviews = Rails.cache.fetch("game-reviews-#{params[:game_id]}-#{@game.updated_at}") do
+        @game.reviews.includes(:user).load
+      end
     end
   end
 

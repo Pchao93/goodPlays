@@ -5,8 +5,10 @@ class Review < ApplicationRecord
   validates :rating, inclusion: {in: 1..5 }
   attr_accessor :to_add
   attr_accessor :old_rating
-  belongs_to :user
-  belongs_to :game
+  belongs_to :user,
+  touch: true
+  belongs_to :game,
+  touch: true
   before_save :handle_save
   before_create :handle_create
   before_destroy :handle_destroy
@@ -41,6 +43,8 @@ class Review < ApplicationRecord
           collection_id: user.default_collections[1].id,
           game_id: self.game_id)
         self.to_add = user.default_collections[1].id
+        user.default_collections[1].count += 1
+        user.default_collections[1].save
       end
     end
   end

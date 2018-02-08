@@ -1,10 +1,19 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    @collection = Rails.cache.fetch("collection-#{params[:id]}") do
-      Collection.includes(games: [:platforms, :developer, :genres, reviews:[:user]]).find_by(id: params[:id])
-    end
+    # @collection = Rails.cache.fetch("collection-#{params[:id]}") do
+      @collection = Collection.includes(games: [:platforms, :developer, :genres, reviews:[:user]]).find_by(id: params[:id])
+    # end
     if @collection
+      @collection_games = Rails.cache.fetch("collection-games-#{params[:id]}=#{@collection.updated_at}") do
+        @collection.games.load
+      end
+      if current_user
+        @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}") do
+          p 'cache miss'
+          current_user.reviews.includes(:game).where(game_id: @collection_games.pluck(:id)).load
+        end
+      end
       render :show
     else
       render json: ["Unable to find the collection with id #{params[:id]}."], status: 404
@@ -18,14 +27,9 @@ class Api::CollectionsController < ApplicationController
       user = current_user
     end
     if user
-      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}") do
+      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{current_user.updated_at}") do
         p 'cache miss'
         user.collections.includes(:user, games: [:platforms, :developer, :genres, :reviews]).load
-      end
-
-      @user_reviews = Rails.cache.fetch("user-reviews-#{params[:user_id]}") do
-        p 'cache miss'
-        @collections[0].user.reviews.load
       end
     else
       render json: ["Unable to find collections for the user with id #{params[:user_id]}."], status: 404

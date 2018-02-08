@@ -1,12 +1,14 @@
 class Api::GamesController < ApplicationController
 
   def show
-    @game = Rails.cache.fetch("game-#{params[:id]}") do
-      Game.includes(:developer, :genres, :platforms, reviews: [:user]).find_by(id: params[:id])
-    end
+    # @game = Rails.cache.fetch("game-#{params[:id]}") do
+      @game = Game.includes(:developer, :genres, :platforms).find_by(id: params[:id])
+    # end
 
-    @reviews = Rails.cache.fetch("game-reviews-#{@game.id}") do
-      @game.reviews.includes(:user).load
+    if @game
+      @reviews = Rails.cache.fetch("game-reviews-#{@game.id}-#{@game.updated_at}") do
+        @game.reviews.includes(:user).load
+      end
     end
 
 
@@ -24,7 +26,7 @@ class Api::GamesController < ApplicationController
     end
     # @game_reviews = Rails.cache.fetch("game-reviews-#{}")
     if current_user
-      @user_reviews = Rails.cache.fetch("user-#{current_user.id}") do
+      @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}") do
         p 'cache miss'
         current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load
       end
@@ -42,7 +44,7 @@ class Api::GamesController < ApplicationController
         Game.includes(:developer, :genres, :platforms, reviews: [:user]).where("lower(title) ~ ?", params[:query].downcase).load
       end
       if current_user
-        @user_reviews = Rails.cache.fetch("user-#{current_user.id}") do
+        @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}") do
           p 'cache miss'
           current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load
         end
