@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # setup vars
-skip_games = true
+skip_games = false
 num_users = 10
 num_reviews = 10
 
