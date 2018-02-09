@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
     resources :users, only: :create do
       resources :collections, only: [:index]
-      resources :reviews, only: :index;
+      resources :reviews, only: :index
+      resources :games, only: :index
     end
 
     resources :collections, only: [:show, :create, :update, :destroy, :index]

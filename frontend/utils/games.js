@@ -11,3 +11,10 @@ export const getGames = (user) => (
     method: 'GET',
   })
 );
+
+export const getUserGames = (userId) => (
+  $.ajax({
+    url: `api/users/${userId}/games`,
+    method: 'GET',
+  })
+);

@@ -7,8 +7,6 @@ export default (state = {}, action) => {
     case RECEIVE_STREAMS:
       newState = merge({}, state);
       action.streams.forEach(stream => {
-
-        
         newState[stream._id] = stream;
       });
       return newState;

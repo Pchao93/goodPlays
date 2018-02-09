@@ -9,8 +9,7 @@ class CollectionGame < ApplicationRecord
   belongs_to :game
 
 
-  belongs_to :collection,
-  touch: true
+  belongs_to :collection
 
 
   has_one :user,
@@ -58,10 +57,8 @@ class CollectionGame < ApplicationRecord
           cg.save!
           self.to_add = user.default_collections[1].id
       end
-    elsif self.valid?
-      self.collection.count += 1
-      self.collection.save
     end
+
 
 
   end
@@ -84,7 +81,6 @@ class CollectionGame < ApplicationRecord
             CollectionGame.find_by(
               collection_id: collection.id,
               game_id: self.game.id).destroy
-            collection.count -= 1
             collection.save
             self.to_remove_array.push(collection.id)
             break
@@ -97,8 +93,6 @@ class CollectionGame < ApplicationRecord
         end
       end
     end
-    self.collection.count -= 1
-    self.collection.save
   end
 
 

@@ -1,4 +1,4 @@
-import { getGame, getGames } from '../utils/games';
+import { getGame, getGames, getUserGames } from '../utils/games';
 
 export const RECEIVE_ONE_GAME = "RECEIVE_ONE_GAME";
 export const RECEIVE_GAMES = "RECEIVE_GAMES";
@@ -21,3 +21,6 @@ export const getOneGame = gameId => dispatch => getGame(gameId)
 
 export const getAllGames = () => dispatch => getGames()
     .then(games => dispatch(receiveGames(games)));
+
+export const fetchUserGames = () => dispatch => getUserGames()
+  .then(games => dispatch(receiveGames(games)));

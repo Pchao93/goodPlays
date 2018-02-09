@@ -15,10 +15,10 @@ export const CLEAR_REVIEW_ERRORS = "CLEAR_REVIEW_ERRORS";
 const receiveOneReview = jsonObj => ({
   type: RECEIVE_ONE_REVIEW,
   review: jsonObj.review,
-  game: jsonObj.game,
+  // game: jsonObj.game,
   user: jsonObj.user,
   addGameToCollectionId: jsonObj.to_add,
-  gameId: jsonObj.game.id
+  gameId: jsonObj.review.game_id
 });
 
 const receiveReviews = jsonObj => ({

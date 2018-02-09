@@ -43,8 +43,6 @@ class Review < ApplicationRecord
           collection_id: user.default_collections[1].id,
           game_id: self.game_id)
         self.to_add = user.default_collections[1].id
-        user.default_collections[1].count += 1
-        user.default_collections[1].save
       end
     end
   end

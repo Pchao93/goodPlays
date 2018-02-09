@@ -8,6 +8,7 @@ import {
   destroyCollection,
   updateCollection,
 } from '../../actions/collections';
+import {fetchUserGames} from '../../actions/games';
 import GameIndex from '../games/game_index.jsx';
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
           user.collections.forEach((collectionId, idx) => {
             let blockCollection = state.entities.collections[collectionId];
             if (blockCollection) {
-              if (idx < 3) {
+              if (["Want to Play", "Have Played", "Playing"].includes(blockCollection.name)) {
                 blockCollection.games.forEach(gameIdx => games.push(state.entities.games[gameIdx]));
               }
             }
@@ -75,7 +76,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  action: (userId) => ownProps.location.pathname === '/collections/my-games' ? dispatch(getAllCollections(userId)) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
+  action: (userId) => ownProps.location.pathname === '/collections/my-games' ? dispatch(fetchUserGames(userId)) : dispatch(getOneCollection(ownProps.match.params.collectionId)),
   destroyCollection: (collectionId) => dispatch(destroyCollection(collectionId)),
   updateCollection: (collection) => dispatch(updateCollection(collection))
 });

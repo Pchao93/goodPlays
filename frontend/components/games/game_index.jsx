@@ -68,6 +68,10 @@ class GameIndex extends React.Component {
       this.setState({loading:true});
 
       this.props.action().then(()=> this.setState({loading:false}));
+    } else if (this.props.location.pathname === '/collections/my-games') {
+      this.setState({loading:true});
+      this.props.action(this.props.currentUser.id).then(()=> this.setState({loading:false}));
+
     }
 
   }
@@ -82,11 +86,14 @@ class GameIndex extends React.Component {
     if (!this.props.search && nextProps.location.pathname !== this.props.location.pathname){
 
       if (!nextProps.search && nextProps.currentUser) {
-        nextProps.action(nextProps.currentUser.id);
+        this.setState({loading:true});
+
+        nextProps.action(nextProps.currentUser.id).then(()=> this.setState({loading:false}));
       }
-    } else if (!this.props.search && this.props.games.length !== nextProps.games.length){
-      nextProps.action();
     }
+    // else if (!this.props.search && this.props.games.length !== nextProps.games.length){
+    //   nextProps.action().then(()=> this.setState({loading:false}));
+    // }
     if (nextProps.edit) {
       this.setState({
         name: nextProps.collection.name

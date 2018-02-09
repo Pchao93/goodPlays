@@ -1,19 +1,22 @@
 json.collection do
-  json.extract! @collection, :id, :name, :user_id, :count
+  json.extract! @collection, :id, :name, :user_id
   json.games @collection.games.pluck(:id)
+  json.count @collection.games.count
 
 end
 
 
-@collection_games.each do |game|
-  json.games do
-    json.set! game.id do
-      json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
-      json.developer game.developer.name
-      json.platforms game.platforms.pluck(:abreviation)
-      json.reviews game.reviews.pluck(:id)
-      json.genres game.genres.pluck(:name)
+if @collection_games
+  @collection_games.each do |game|
+    json.games do
+      json.set! game.id do
+        json.extract! game, :id, :title, :image_url, :description, :amazon_url, :rating, :release_date, :average_score
+        json.developer game.developer.name
+        json.platforms game.platforms.pluck(:abreviation)
+        json.reviews game.reviews.pluck(:id)
+        json.genres game.genres.pluck(:name)
 
+      end
     end
   end
 end
