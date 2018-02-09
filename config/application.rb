@@ -14,9 +14,9 @@ module Goodgames
       'X-Frame-Options' => 'ALLOWALL'
     }
 
-    if ENV["REDISTOGO_URL"]
+    if ENV["REDIS_URL"]
       config = Goodgames::Application.config
-      uri = URI.parse(ENV["REDISTOGO_URL"])
+      uri = URI.parse(ENV["REDIS_URL"])
 
       config.cache_store = [
         :redis_store, {
