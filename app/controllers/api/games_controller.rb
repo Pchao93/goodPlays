@@ -29,13 +29,13 @@ class Api::GamesController < ApplicationController
 
           current_user.games.includes(:developer, :genres, :platforms, reviews: [:user]).load
         end
-        p @games.uniq.count
+        
       end
     else
       @games = Rails.cache.fetch("games-#{Game.last.id}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
-        Game.includes(:developer, :genres, :platforms, reviews: [:user]).load
+        Game.includes(:developer, :genres, :platforms, reviews: [:user]).limit(100).load
       end
     end
       # @game_reviews = Rails.cache.fetch("game-reviews-#{}")
@@ -73,7 +73,5 @@ class Api::GamesController < ApplicationController
     render :search
   end
 
-  # def game_params
-  #   params.requre(:game).permit(:pagination)
-  # end
+  
 end

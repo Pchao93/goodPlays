@@ -33,7 +33,7 @@ class ReviewForm extends React.Component{
   }
 
   handleClickOutside(e) {
-    console.log("click!");
+    
     // e.preventDefault();
     this.props.closeForm(e);
   }

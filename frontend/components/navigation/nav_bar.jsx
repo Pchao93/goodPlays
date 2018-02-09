@@ -64,7 +64,7 @@ class NavBar extends React.Component {
   }
 
   handleFormButtons(action) {
-    console.log('click!');
+    
     this.setState({sessionAction: action});
     this.props.openSessionForm();
   }

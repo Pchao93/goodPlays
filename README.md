@@ -47,46 +47,25 @@ goodPlays is a web application for collecting and rating games. As games have ce
   The collection button is the component that gives users both convenience and full autonomy over their collections. The button either displays the default collection option ("want to play") for easy addition, or shows the current played status of the game. Changes made with this button or the accompanying dropdown menu occur immediately, and the backend CollectionGame model handles the logic for allowing a game to appear in only one default collection. 
  
  #### Review Ratings
-   The review rating component was designed to allow users to easily rate games outside of the individual game view. As users may or may not have rated a game, each rating component contains conditional logic to either update or create a review. The rating component is wrapped in a container that *connects* it to the store (using react-redux) where it will find a game and associated reviews using a bookId prop passed down from its parent, the BookItemDetails component. In the case of reviews, a selector was defined to pull out the current user's reviews, based on the bookId and the state's currentUser data:
+   The review button is designed for intuitive rating, allowing users to select a star rating out of five. As the user hover's over the button, different numbers of stars are highlighted, representing the intended score with no text. The interface also allows users to edit their reviews simply by clicking the button once again. The review backend model also contains logic to insert the game into a default collection if the user has not already done so, as well as destroy a review if the user deletes the game from their colelction. The game views always display both the user's review, and the average rating. 
+
+  ### Twitch Integration
+  	Twitch is one of the largest cross-platform gaming communities in the world. goodPlays uses Twitch's kraken API to identify top streamers for each game and embed them directly into the site using interactive inline frames. The goal of this feature is to provide users with a new kind of review: a live stream. Through Twitch, users are able to get a sense of a game far better than through scores and reviews alone, and the site would feel incomplete without it. 
+
+  ### Redis Caching
+  	With over 200 games and almost 5,000 reviews, managing the backend data flow is critical to ensuring a smooth user experience on the front end. Every significant data pull from the backend is cached using keys based on the entity being cached, unique ids, and a timestamp to ensure freshness of cached data. Users read many more game reviews than they write, so reviews, collections, and the game index are cached heavily. 
    
-   
-    Passed-in state:
-    
-      ```game: state.entities.games[ownProps.bookId],
-      currentUser: state.session.currentUser,
-      review: selectBookReview(state, ownProps.bookId, state.session.currentUser.id),```
-       
-       
-     Review selector (creates either a blank review template for the *create* review action, or the user review for the *update* action:
-     
-     ```selectBookReview = (state, bookId, userId) => {
-           let game = state.entities.games[bookId];
-           let blankReview = {
-             book_id: bookId,
-             user_id: userId,
-             rating: 0,
-             title: "",
-             body: "",
-           };
-           if (game) {
-             let review = game.reviews.filter( (review) => {
-               return review.user_id === userId;
-             })[0];
-             if (review) {
-               return review;
-             } else {
-               return blankReview;
-             }
-           } else {
-             return blankReview;
-           }
-         };```
+
          
 ## Project Plan
 
 Future updates to the app will include:
-  * A tag show view, which groups together all games with matching tags
-  * Tracking individual user tags, allowing users to keep a collection of their own tags, and displaying only the most common tags on the game show page
-  * User profiles (including a user profile photo and recent activity)
-  * User friend feed, showing users a list of their friends' recent game activities
+  * Expanding search to cover developers, genres, and more
+  * Allow users to give their own tags, ultimately building towards user based relevance search. 
+  * Creating user profiles and friend relationships to make sharing even easier than ever. 
+  * Background tasks to keep caches warm during lower traffic periods. 
+  * Add pagination or infinite scrolling to game index view
+  * Add messaging and chat through websocket or the Twitch API. 
+  * Notifications and timelines based on community happenings. 
+
     

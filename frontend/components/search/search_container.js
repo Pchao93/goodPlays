@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
   let collectionUser = {username: 'Top Games'};
   let collection = {name: ''};
   let search = true;
-  console.log(state.search.query);
+
   return {
     headerText,
     games,

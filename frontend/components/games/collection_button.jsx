@@ -19,7 +19,7 @@ class CollectionButton extends React.Component {
     this.handleDestroy = this.handleDestroy.bind(this);
     this.handleDefault = this.handleDefault.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    
+
 
 
 
@@ -74,7 +74,7 @@ class CollectionButton extends React.Component {
   handleDefault(e) {
     e.preventDefault();
     if (!this.props.currentUser) {
-      console.log("I happen");
+      
       this.props.openSessionForm();
     } else if (!this.props.defaultCollection) {
       this.props.addGameCollection(this.props.game.id, this.props.collections[0].id);
