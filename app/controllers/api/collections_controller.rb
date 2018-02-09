@@ -1,16 +1,16 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    # @collection = Rails.cache.fetch("collection-#{params[:id]}", force: true) do
+    # @collection = Rails.cache.fetch("collection-#{params[:id]}", force: false) do
       @collection = Collection.includes(games: [:platforms, :developer, :genres, reviews:[:user]]).find_by(id: params[:id])
     # end
     if @collection
-      @collection_games = Rails.cache.fetch("collection-games-#{params[:id]}-#{@collection.updated_at}", force: true) do
+      @collection_games = Rails.cache.fetch("collection-games-#{params[:id]}-#{@collection.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
         @collection.games.load
       end
       if current_user
-        @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: true) do
+        @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
           p ["CACHE MISS CACHE MISS"]
 
           current_user.reviews.includes(:game).where(game_id: @collection_games.pluck(:id)).load
@@ -29,7 +29,7 @@ class Api::CollectionsController < ApplicationController
       user = current_user
     end
     if user
-      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{current_user.updated_at}", force: true) do
+      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{current_user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
         user.collections.includes(:user, games: [:platforms, :developer, :genres, :reviews]).load
