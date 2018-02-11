@@ -27,8 +27,7 @@ class ReviewButton extends React.Component {
       });
       this.action = nextProps.review ? nextProps.updateReview : nextProps.createReview;
     } else if (this.props.review && nextProps.review && this.props.review.rating != nextProps.review.rating) {
-      // console.log('I happen');
-      // console.log(nextProps.review);
+      
       this.setState({
         rating: nextProps.review.rating
       });
@@ -43,7 +42,6 @@ class ReviewButton extends React.Component {
     } else {
       if (this.props.review) {
         id = this.props.review.id;
-        // console.log(this.props.review.id);
       }
       this.action({
         rating: this.state.rating,

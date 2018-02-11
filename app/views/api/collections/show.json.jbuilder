@@ -21,13 +21,15 @@ if @collection_games
   end
 end
 
-@user_reviews.each do |review|
-  json.reviews do
+if @user_reviews
+  @user_reviews.each do |review|
+    json.reviews do
 
-    json.set! review.id do
-      json.extract! review, :id, :user_id, :game_id, :rating, :body
+      json.set! review.id do
+        json.extract! review, :id, :user_id, :game_id, :rating, :body
+      end
+
     end
-
   end
 end
 

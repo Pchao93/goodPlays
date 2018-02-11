@@ -54,7 +54,5 @@ class Review < ApplicationRecord
     game.average_score = ((total_score - self.rating.to_f) / game.num_reviews)
     game.average_score = game.average_score.round(1)
     game.save
-
-
   end
 end

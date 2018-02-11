@@ -35,9 +35,9 @@ class Session extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.sessionAction === 'signup') {
-      this.props.signup(this.state).then(this.props.closeForm());
+      this.props.signup(this.state);
     } else {
-      this.props.login(this.state).then(this.props.closeForm());
+      this.props.login(this.state);
     }
 
   }

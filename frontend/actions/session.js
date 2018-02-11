@@ -34,10 +34,16 @@ export const closeSessionForm = () => ({
 });
 
 export const createNewUser = formUser => dispatch => postUser(formUser)
-  .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveSessionErrors(errors)));
+  .then(user => {
+    dispatch(receiveCurrentUser(user));
+    dispatch(closeSessionForm());
+  }, errors => dispatch(receiveSessionErrors(errors)));
 
 export const login = formUser => dispatch => postSession(formUser)
-  .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveSessionErrors(errors)));
+  .then(user => {
+    dispatch(receiveCurrentUser(user));
+    dispatch(closeSessionForm());
+  }, errors => dispatch(receiveSessionErrors(errors)));
 
 export const logout = () => dispatch => deleteSession()
   .then(() => dispatch(logoutCurrentUser()));

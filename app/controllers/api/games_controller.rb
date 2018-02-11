@@ -7,29 +7,25 @@ class Api::GamesController < ApplicationController
 
     if @game
       @reviews = Rails.cache.fetch("game-reviews-#{@game.id}-#{@game.updated_at}", force: false) do
-
         p ["CACHE MISS CACHE MISS"]
-
         @game.reviews.includes(:user).load
       end
     end
 
-
     if @game.nil?
       render :json ["Game not found"], status: 404
     end
-
   end
 
   def index
     if params[:user_id]
-      if current_user
-        @games = Rails.cache.fetch("user-games-#{current_user.id}") do
+      if User.find_by(id: params[:user_id])
+        @games = Rails.cache.fetch("user-games-#{params[:user_id]}") do
           p ["CACHE MISS CACHE MISS"]
 
           current_user.games.includes(:developer, :genres, :platforms, reviews: [:user]).load
         end
-        
+
       end
     else
       @games = Rails.cache.fetch("games-#{Game.last.id}", force: false) do
@@ -38,7 +34,7 @@ class Api::GamesController < ApplicationController
         Game.includes(:developer, :genres, :platforms, reviews: [:user]).limit(100).load
       end
     end
-      # @game_reviews = Rails.cache.fetch("game-reviews-#{}")
+
     if current_user
       @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
@@ -46,10 +42,6 @@ class Api::GamesController < ApplicationController
         current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load
       end
     end
-
-
-
-
   end
 
   def search
@@ -73,5 +65,5 @@ class Api::GamesController < ApplicationController
     render :search
   end
 
-  
+
 end
