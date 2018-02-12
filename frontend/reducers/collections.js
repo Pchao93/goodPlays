@@ -29,6 +29,8 @@ export default (state = {}, action) => {
     case ADD_GAME_COLLECTION:
       newState = merge({}, state);
       newState[action.collectionId].games.push(action.gameId);
+      newState[action.collectionId].count += 1;
+
       if (action.addGameToCollectionId) {
 
         if (!newState[action.addGameToCollectionId].games.includes(action.gameId)) {
