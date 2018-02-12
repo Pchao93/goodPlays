@@ -27,17 +27,18 @@ class ReviewButton extends React.Component {
       });
       this.action = nextProps.review ? nextProps.updateReview : nextProps.createReview;
     } else if (this.props.review && nextProps.review && this.props.review.rating != nextProps.review.rating) {
-      
+
       this.setState({
         rating: nextProps.review.rating
       });
-      // this.action = nextProps.review ? nextProps.updateReview : nextProps.createReview;
+      this.action = nextProps.review ? nextProps.updateReview : nextProps.createReview;
     }
   }
 
   handleClick(e) {
     let id;
     if (!this.props.currentUser) {
+      this.props.receiveSessionErrors({responseJSON: ["You must be signed in to review a game."]});
       this.props.openSessionForm();
     } else {
       if (this.props.review) {

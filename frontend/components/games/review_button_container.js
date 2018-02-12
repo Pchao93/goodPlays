@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createReview, updateReview } from '../../actions/reviews';
-import { openSessionForm } from '../../actions/session';
+import { openSessionForm, receiveSessionErrors } from '../../actions/session';
 
 import ReviewButton from './review_button';
 
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createReview: (review) => dispatch(createReview(ownProps.game.id, review)),
     updateReview: (review) => dispatch(updateReview(ownProps.game.id, review)),
     openSessionForm: () => dispatch(openSessionForm()),
-    
+    receiveSessionErrors: (errors) => dispatch(receiveSessionErrors(errors)),
     openForm: ownProps.openForm,
   };
 };

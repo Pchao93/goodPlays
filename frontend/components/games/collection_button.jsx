@@ -58,6 +58,7 @@ class CollectionButton extends React.Component {
         collectionDropdownClass: newClass
       });
     } else {
+      this.props.receiveSessionErrors({responseJSON: ["You must be signed in to add a game to a collection."]});
       this.props.openSessionForm();
 
     }
@@ -74,7 +75,7 @@ class CollectionButton extends React.Component {
   handleDefault(e) {
     e.preventDefault();
     if (!this.props.currentUser) {
-      
+      this.props.receiveSessionErrors({responseJSON: ["You must be signed in to add a game to a collection."]});
       this.props.openSessionForm();
     } else if (!this.props.defaultCollection) {
       this.props.addGameCollection(this.props.game.id, this.props.collections[0].id);

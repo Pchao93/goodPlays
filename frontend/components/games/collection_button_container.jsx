@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import CollectionButton from './collection_button';
-import { openSessionForm } from '../../actions/session';
+import { openSessionForm , receiveSessionErrors } from '../../actions/session';
+
 
 import {removeGameCollection, addGameCollection, createCollection } from '../../actions/collections';
 
@@ -52,6 +53,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createCollection: (formCollection) => (
       dispatch(createCollection(formCollection))),
     openSessionForm: () => dispatch(openSessionForm()),
+    receiveSessionErrors: (errors) => dispatch(receiveSessionErrors(errors)),
 
   });
 

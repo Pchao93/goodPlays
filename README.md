@@ -46,8 +46,7 @@ goodPlays is a web application for collecting and rating games. As games have ce
 
   The collection button is the component that gives users both convenience and full autonomy over their collections. The button either displays the default collection option ("want to play") for easy addition, or shows the current played status of the game. Changes made with this button or the accompanying dropdown menu occur immediately, and the backend CollectionGame model handles the logic for allowing a game to appear in only one default collection.
 
-  ```
-  def handle_save
+  ```def handle_save
     if self.valid? && !self.is_straightforward
       user = self.collection.user
       # user.default_collections = user.collections.includes(:games).limit(3)
@@ -92,8 +91,7 @@ goodPlays is a web application for collecting and rating games. As games have ce
  #### Review Ratings
    The review button is designed for intuitive rating, allowing users to select a star rating out of five. As the user hover's over the button, different numbers of stars are highlighted, representing the intended score with no text. The interface also allows users to edit their reviews simply by clicking the button once again. The review backend model also contains logic to insert the game into a default collection if the user has not already done so, as well as destroy a review if the user deletes the game from their collection. The game views always display both the user's review, and the average rating.
 
-   ```
-   def handle_create
+   ```def handle_create
      if self.valid?
        game = self.game
        if game.num_reviews && game.num_reviews != 0
@@ -107,7 +105,6 @@ goodPlays is a web application for collecting and rating games. As games have ce
        end
        game.save!
        user = self.user
-
        if !user.games.include?(self.game)
          CollectionGame.create!(
            collection_id: user.default_collections[1].id,
@@ -129,14 +126,12 @@ goodPlays is a web application for collecting and rating games. As games have ce
       @game = Rails.cache.fetch("game-#{params[:id]}", force: false) do
         Game.includes(:developer, :genres, :platforms).find_by(id: params[:id])
       end
-
       if @game
         @reviews = Rails.cache.fetch("game-reviews-#{@game.id}-#{@game.updated_at}", force: false) do
           p ["CACHE MISS CACHE MISS"]
           @game.reviews.includes(:user).load
         end
       end
-
       if @game.nil?
         render :json ["Game not found"], status: 404
       end

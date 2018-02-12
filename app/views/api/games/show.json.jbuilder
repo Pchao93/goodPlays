@@ -20,9 +20,9 @@ if @reviews
     json.users do
       json.set! review.user.id do
         json.extract! review.user, :id, :username
-        json.games review.user.games.pluck(:id) if review.user.id == current_user.id
-        json.collections review.user.collections.pluck(:id) if review.user.id == current_user.id
-        json.reviews review.user.reviews.pluck(:id) if review.user.id == current_user.id
+        json.games review.user.games.pluck(:id) if current_user && review.user.id == current_user.id
+        json.collections review.user.collections.pluck(:id) if current_user && review.user.id == current_user.id
+        json.reviews review.user.reviews.pluck(:id) if current_user && review.user.id == current_user.id
       end
     end
   end

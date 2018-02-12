@@ -16,8 +16,8 @@ const mapStateToProps = (state, ownProps) => {
   }
   let review;
   if (currentUser) {
-    currentUser.reviews.forEach(reviewIdx =>{
-      if (state.entities.reviews[reviewIdx] && game && state.entities.reviews[reviewIdx].game_id === game.id) {
+    game.reviews.forEach(reviewIdx =>{
+      if (state.entities.reviews[reviewIdx] && game && state.entities.reviews[reviewIdx].user_id === currentUser.id) {
         review = state.entities.reviews[reviewIdx];
       }
     });
