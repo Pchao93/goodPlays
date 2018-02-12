@@ -1,6 +1,18 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  if ENV["REDIS_URL"]
+    config = Goodgames::Application.config
+    uri = URI.parse(ENV["REDIS_URL"])
 
+    config.cache_store = [
+      :redis_store, {
+        :host => uri.host,
+        :port => uri.port,
+        :password => uri.password,
+        :namespace => "cache"
+      }
+    ]
+  end
   # Code is not reloaded between requests.
   config.cache_classes = true
 
