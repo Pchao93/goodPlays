@@ -4,7 +4,8 @@ import  {
 } from '../actions/games';
 import {
   RECEIVE_ONE_COLLECTION,
-  RECEIVE_COLLECTIONS
+  RECEIVE_COLLECTIONS,
+  REMOVE_GAME_COLLECTION,
 } from '../actions/collections';
 import {
   RECEIVE_ONE_REVIEW,
@@ -38,6 +39,7 @@ export default (state = {}, action) => {
       if (newState[action.gameId] && newState[action.gameId].reviews) {
         if (!newState[action.gameId].reviews.includes(action.review.id)) {
           newState[action.gameId].reviews.push(action.review.id);
+          newState[action.gameId].review = action.review;
         }
       }
       return newState;
@@ -47,6 +49,14 @@ export default (state = {}, action) => {
         newState[action.gameId].streams = action.streams.map(stream => stream._id);
       }
       return newState;
+    case REMOVE_GAME_COLLECTION:
+      newState = merge({}, state);
+      if (action.removeReviewId) {
+        let index = newState[action.gameId].indexOf;
+        newState[action.gameId].reviews.splice(index, 1);
+      }
+      return newState;
+
     default:
       return state;
   }

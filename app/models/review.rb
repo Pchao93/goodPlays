@@ -12,6 +12,12 @@ class Review < ApplicationRecord
   before_save :handle_save
   before_create :handle_create
   before_destroy :handle_destroy
+  after_update :handle_update
+
+  def handle_update
+    self.game.updated_at = Time.now
+    self.game.save
+  end
 
   def handle_save
     if self.id
