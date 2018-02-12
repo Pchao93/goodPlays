@@ -22,7 +22,7 @@ class ReviewIndex extends React.Component {
   }
 
   closeForm(e) {
-    
+
     this.setState({
       edit: false
     });
@@ -57,6 +57,9 @@ class ReviewIndex extends React.Component {
         }
       }
     });
+    reviewListItems.sort((a, b)=>(
+      a.created_at - b.created_at
+    ));
 
 
     return (
