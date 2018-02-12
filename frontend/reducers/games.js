@@ -9,7 +9,9 @@ import {
 } from '../actions/collections';
 import {
   RECEIVE_ONE_REVIEW,
-  RECEIVE_REVIEWS
+  RECEIVE_REVIEWS,
+  REMOVE_REVIEW,
+
 } from '../actions/reviews';
 import {
   RECEIVE_STREAMS,
@@ -18,6 +20,7 @@ import { merge } from 'lodash';
 
 export default (state = {}, action) => {
   let newState;
+  let index;
   switch(action.type) {
     case RECEIVE_ONE_GAME:
     newState = merge({}, state, action.games);
@@ -39,10 +42,18 @@ export default (state = {}, action) => {
       if (newState[action.gameId] && newState[action.gameId].reviews) {
         if (!newState[action.gameId].reviews.includes(action.review.id)) {
           newState[action.gameId].reviews.push(action.review.id);
-          newState[action.gameId].review = action.review;
+          newState[action.gameId].review = action.review.id;
         }
       }
       return newState;
+    case REMOVE_REVIEW:
+      newState = merge({}, state);
+
+      index = newState[action.review.game_id].reviews.indexOf(action.review.id);
+      newState[action.review.game_id].reviews.splice(index, 1);
+
+      return newState;
+
     case RECEIVE_STREAMS:
       newState = merge({}, state);
       if (action.streams) {
@@ -52,7 +63,7 @@ export default (state = {}, action) => {
     case REMOVE_GAME_COLLECTION:
       newState = merge({}, state);
       if (action.removeReviewId) {
-        let index = newState[action.gameId].indexOf;
+        index = newState[action.gameId].reviews.indexOf(action.removeReviewId);
         newState[action.gameId].reviews.splice(index, 1);
       }
       return newState;

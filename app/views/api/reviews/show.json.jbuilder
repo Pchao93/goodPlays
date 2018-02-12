@@ -4,10 +4,6 @@ json.review do
   json.game_id @review.game_id
 end
 
-json.game do
-  
-end
-
 json.user do
 
   json.extract! @review.user, :id, :username
