@@ -7,7 +7,7 @@ class Api::ReviewsController < ApplicationController
       @game = Game.find_by(id: params[:game_id])
       @reviews = Rails.cache.fetch("game-reviews-#{params[:game_id]}-#{@game.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
-        
+
         @game.reviews.includes(:user).load
       end
     end
@@ -27,8 +27,9 @@ class Api::ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id])
-    @review.old_rating = @review.rating
     if @review
+      @review.old_rating = @review.rating
+      
       if current_user.id == @review.user_id
         if @review.update(review_params)
           render :show

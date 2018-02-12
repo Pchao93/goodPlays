@@ -5,7 +5,7 @@ json.games do
     json.platforms @game.platforms.pluck(:abreviation)
     json.reviews @game.reviews.pluck(:id)
     json.genres @game.genres.pluck(:name)
-    json.review @game.reviews.where(user_id: current_user.id)
+    json.review @game.reviews.find_by(user_id: current_user.id).id if current_user && @game.reviews.find_by(user_id: current_user.id) 
 
   end
 end
