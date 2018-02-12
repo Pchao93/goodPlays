@@ -122,6 +122,8 @@ goodPlays is a web application for collecting and rating games. As games have ce
   #### Twitch Integration
   Twitch is one of the largest cross-platform gaming communities in the world. goodPlays uses Twitch's kraken API to identify top streamers for each game and embed them directly into the site using interactive inline frames. The goal of this feature is to provide users with a new kind of review: a live stream. Through Twitch, users are able to get a sense of a game far better than through scores and reviews alone, and the site would feel incomplete without it.
 
+  ![](https://media.giphy.com/media/3ohs4epp4b974XFfDG/giphy.gif)
+
   #### Redis Caching
   With over 200 games and almost 5,000 reviews, managing the backend data flow is critical to ensuring a smooth user experience on the front end. Every significant data pull from the backend is cached using keys based on the entity being cached, unique ids, and a timestamp to ensure freshness of cached data. Users read many more game reviews than they write, so reviews, collections, and the game index are cached heavily.
 

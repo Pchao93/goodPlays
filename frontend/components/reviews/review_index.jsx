@@ -57,9 +57,11 @@ class ReviewIndex extends React.Component {
         }
       }
     });
-    reviewListItems.sort((a, b)=>(
-      b.created_at - a.created_at
-    ));
+    reviewListItems.sort((a, b)=>{
+      console.log(a.created_at);
+      console.log(b.created_at);
+      return b.created_at - a.created_at;
+    });
 
 
     return (
