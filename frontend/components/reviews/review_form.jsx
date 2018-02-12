@@ -33,7 +33,7 @@ class ReviewForm extends React.Component{
   }
 
   handleClickOutside(e) {
-    
+
     // e.preventDefault();
     this.props.closeForm(e);
   }
@@ -45,9 +45,7 @@ class ReviewForm extends React.Component{
     >
       <div className='review-form-header'>
         <h1 className='review-form-header'>{this.props.review && this.props.review.body ? 'Edit your Review' : 'Add a Review'}</h1>
-        {this.props.edit || !this.props.review && <ReviewButtonContainer
-          game={this.props.game}
-          review={this.props.review}/> }
+        
         <button
           onClick={this.props.closeForm}>
           <span
