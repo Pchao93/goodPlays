@@ -119,6 +119,8 @@ goodPlays is a web application for collecting and rating games. As games have ce
    end
    ```
 
+   ![](https://media.giphy.com/media/xThtahsmCEOW4tfvtC/giphy.gif)
+
   #### Twitch Integration
   Twitch is one of the largest cross-platform gaming communities in the world. goodPlays uses Twitch's kraken API to identify top streamers for each game and embed them directly into the site using interactive inline frames. The goal of this feature is to provide users with a new kind of review: a live stream. Through Twitch, users are able to get a sense of a game far better than through scores and reviews alone, and the site would feel incomplete without it.
 

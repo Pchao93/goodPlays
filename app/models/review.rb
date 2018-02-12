@@ -15,8 +15,10 @@ class Review < ApplicationRecord
   after_update :handle_update
 
   def handle_update
-    self.game.updated_at = Time.now
-    self.game.save
+    
+    self.game.touch(:updated_at)
+    self.user.touch(:updated_at)
+
   end
 
   def handle_save

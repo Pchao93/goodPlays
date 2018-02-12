@@ -1,9 +1,9 @@
 class Api::CollectionsController < ApplicationController
 
   def show
-    # @collection = Rails.cache.fetch("collection-#{params[:id]}", force: false) do
+    @collection = Rails.cache.fetch("collection-#{params[:id]}-#{Collection.maximum(:updated_at)}", force: false) do
       @collection = Collection.includes(games: [:platforms, :developer, :genres, reviews:[:user]]).find_by(id: params[:id])
-    # end
+    end
     if @collection
       @collection_games = Rails.cache.fetch("collection-games-#{params[:id]}-#{@collection.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
@@ -29,7 +29,7 @@ class Api::CollectionsController < ApplicationController
       user = current_user
     end
     if user
-      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{current_user.updated_at}", force: false) do
+      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
         user.collections.includes(:user, games: [:platforms, :developer, :genres, :reviews]).load
