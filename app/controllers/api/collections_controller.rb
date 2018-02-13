@@ -5,10 +5,10 @@ class Api::CollectionsController < ApplicationController
       @collection = Collection.includes(games: [:platforms, :developer, :genres, reviews:[:user]]).find_by(id: params[:id])
     end
     if @collection
-      @collection_games = Rails.cache.fetch("collection-games-#{params[:id]}-#{@collection.updated_at}", force: false) do
-        p ["CACHE MISS CACHE MISS"]
+      @collection_games = #Rails.cache.fetch("collection-games-#{params[:id]}-#{@collection.updated_at}", force: false) do
+        #p ["CACHE MISS CACHE MISS"]
         @collection.games
-      end
+      #end
       if current_user
         @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
           p ["CACHE MISS CACHE MISS"]

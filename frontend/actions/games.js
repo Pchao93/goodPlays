@@ -22,5 +22,5 @@ export const getOneGame = gameId => dispatch => getGame(gameId)
 export const getAllGames = () => dispatch => getGames()
     .then(games => dispatch(receiveGames(games)));
 
-export const fetchUserGames = () => dispatch => getUserGames()
+export const fetchUserGames = (userId) => dispatch => getUserGames(userId)
   .then(games => dispatch(receiveGames(games)));
