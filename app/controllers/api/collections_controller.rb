@@ -7,7 +7,7 @@ class Api::CollectionsController < ApplicationController
     if @collection
       @collection_games = Rails.cache.fetch("collection-games-#{params[:id]}-#{@collection.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
-        @collection.games.load
+        @collection.games
       end
       if current_user
         @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
