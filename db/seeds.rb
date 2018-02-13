@@ -8,7 +8,7 @@
 
 # setup vars
 skip_games = false
-num_users = 75
+num_users = 30
 num_reviews = 15
 
 

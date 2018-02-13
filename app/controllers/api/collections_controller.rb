@@ -32,7 +32,7 @@ class Api::CollectionsController < ApplicationController
       @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
-        user.collections.includes(:user, games: [:platforms, :developer, :genres, :reviews]).load
+        user.collections.load
       end
     else
       render json: ["Unable to find collections for the user with id #{params[:user_id]}."], status: 404
