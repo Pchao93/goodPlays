@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  if ENV["REDISTOGO_URL"]
+  if ENV["REDIS_URL"]
     config = Goodgames::Application.config
-    uri = URI.parse(ENV["REDISTOGO_URL"])
+    uri = URI.parse(ENV["REDIS_URL"])
 
     config.cache_store = [
       :redis_store, {

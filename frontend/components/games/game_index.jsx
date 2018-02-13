@@ -31,7 +31,7 @@ class GameIndex extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleHover = this.toggleHover.bind(this);
 
-    console.log(this.props.action);
+    
   }
 
   toggleHelper(state, toggleClass, classOne, classTwo) {
@@ -71,7 +71,7 @@ class GameIndex extends React.Component {
 
       this.props.action().then(()=> this.setState({loading:false}));
     } else if (this.props.location.pathname === '/collections/my-games' && this.props.currentUser) {
-    
+
       this.setState({loading:true});
       this.props.action(this.props.currentUser.id).then(()=> this.setState({loading:false}));
 
