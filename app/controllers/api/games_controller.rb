@@ -36,6 +36,8 @@ class Api::GamesController < ApplicationController
     end
 
     if current_user
+      p "current user"
+      p current_user
       @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
