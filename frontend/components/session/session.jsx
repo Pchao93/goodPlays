@@ -34,7 +34,7 @@ class Session extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.sessionAction === 'signup') {
+    if (this.state.sessionAction !== 'login') {
       this.props.signup(this.state);
     } else {
       this.props.login(this.state);
@@ -61,7 +61,7 @@ class Session extends React.Component {
   toggleAction(e) {
     e.preventDefault();
     this.setState({
-      sessionAction: this.state.sessionAction === 'signup' ? 'login' : 'signup'
+      sessionAction: this.state.sessionAction !== 'login' ? 'login' : 'signup'
     });
     this.props.clearSessionErrors();
   }
@@ -87,18 +87,18 @@ class Session extends React.Component {
 
           <ul className='tabs'>
             <li
-              onClick={ this.state.sessionAction === 'signup' ?
+              onClick={ this.state.sessionAction !== 'login' ?
                 this.toggleAction : () => {}}
-              className={this.state.sessionAction === 'signup' ? '' : 'target'}>
+              className={this.state.sessionAction !== 'login' ? '' : 'target'}>
               <span >
                 Log In
               </span>
             </li>
 
             <li
-              onClick={ this.state.sessionAction === 'signup' ? () => {} :
+              onClick={ this.state.sessionAction !== 'login' ? () => {} :
                 this.toggleAction}
-              className={this.state.sessionAction === 'signup' ? 'target' : ''}>
+              className={this.state.sessionAction !== 'login' ? 'target' : ''}>
               <span >
                 Sign Up
               </span>
@@ -121,15 +121,15 @@ class Session extends React.Component {
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')}/>
-            { this.state.sessionAction === 'signup' && <label>Email: </label>}
-            { this.state.sessionAction === 'signup' &&
+            { this.state.sessionAction !== 'login' && <label>Email: </label>}
+            { this.state.sessionAction !== 'login' &&
             <input
               type="email"
               value={this.state.email}
               onChange={this.handleInput('email')}/>}
 
           <div className="submit-container">
-            <button className="btn">{this.state.sessionAction === 'signup' ? 'Sign Up' : 'Log In'}</button>
+            <button className="btn">{this.state.sessionAction !== 'login' ? 'Sign Up' : 'Log In'}</button>
             <button className="btn demo" onClick={this.handleDemo}>Demo</button>
           </div>
         </form>
