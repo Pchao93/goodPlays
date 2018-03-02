@@ -8,20 +8,17 @@ import GameShowContainer from './games/game_show_container';
 import GameIndexContainer from './games/game_index_container';
 import CollectionShowContainer from './collections/collection_show_container.jsx';
 import SearchContainer from './search/search_container';
+import SplashPageContainer from './splash/splash_page_container';
 import NotFound from './not_found';
 
 
 
 export default (props) => (
   <div className='app-container'>
-    <Route exact path="/" render={() => (
-          <Redirect to="/directory" />
-    )}/>
-
-
     <NavBarContainer />
     <SideBarContainer />
     <Switch>
+      <AuthRoute exact path='/' component={SplashPageContainer} />
       <Route exact path='/directory' component={GameIndexContainer} />
 
       <Route exact path='/directory/search' component={SearchContainer} />
