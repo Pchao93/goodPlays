@@ -1,4 +1,4 @@
-[goodPlays](https://goodplays.herokuapp.com)
+[goodPlays](https://www.goodplays.gg/)
 ======
 
 goodPlays is a web application for collecting and rating games. As games have cemented themselves into the popular culture, it is high time for a place to gather enthusiasts across platforms into one community. goodplays aims to provide a proof-of-concept for such an application, providing a clean and modern interface for users to easily browse, search, collect, and rate the games they love (or hate!). This app is inspired by both goodreads and Twitch, sites that bring hobbyist communities together in different ways.
