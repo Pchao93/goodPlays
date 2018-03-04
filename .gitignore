@@ -23,6 +23,8 @@ bundle.js.map
 .byebug_history
 .DS_Store
 npm-debug.log
-
+myserver.key
+goodplays.gg.crt
+server.csr
 # Ignore application configuration
 /config/application.yml
