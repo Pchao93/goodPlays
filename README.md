@@ -42,8 +42,6 @@ goodPlays is a web application for collecting and rating games. As games have ce
 
  ## Highlighted Features
 
-   Shelf components are designed to meet the goal of minimal navigation for maximum accessibility, and come with many modular features designed to let a user easily create or update their relationships between their profiles, games and collections. Two are highlighted here:
-
  #### Collection Add-Remove Dropdown
 
   The collection button is the component that gives users both convenience and full autonomy over their collections. The button either displays the default collection option ("want to play") for easy addition, or shows the current played status of the game. Changes made with this button or the accompanying dropdown menu occur immediately, and the backend CollectionGame model handles the logic for allowing a game to appear in only one default collection.
