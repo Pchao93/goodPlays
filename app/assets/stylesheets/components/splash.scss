@@ -1,0 +1,124 @@
+.splash-page-container {
+  position: absolute;
+  left: -240px;
+  width: 100vw;
+}
+
+.splash-header {
+  position: relative;
+
+  background: #19171c;
+  margin-bottom: 30px;
+}
+
+.splash-image {
+  // height: calc(100vh - 50px);
+  width: 70%;
+  margin: 0 auto;
+}
+
+.splash-text-container {
+  position: absolute;
+  margin: auto;
+  font-size: 3vw;
+  text-shadow: 1px 1px #000;
+  left: 15vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.splash-text {
+  margin-left: 5vw;
+  color: $background-gray;
+  // margin-bottom: 15%;
+}
+
+.splash-text:nth-of-type(2) {
+  margin-left: 25vw;
+  // background: black;
+}
+
+.splash-text:nth-of-type(3) {
+  margin-left: 45vw;
+
+}
+
+.splash-text:nth-of-type(4) {
+  margin-left: 35vw;
+}
+.splash-text.btn {
+  text-shadow: none;
+
+  width: 10vw;
+  height: 7vh;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
+  margin: 0 auto;
+  font-size: 2.5vw;
+  // font-weight: 300;
+
+}
+
+.splash-text.btn:hover {
+  cursor: pointer;
+}
+
+.mini-game-index-container {
+  width: 70%;
+  margin: 0 auto;
+
+
+}
+
+.first-mini-game-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.list-header {
+  font-size: 2.5vw;
+  border-bottom: 1px solid $border-purple;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.mini-game {
+  width: 12vw;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.mini-game-title {
+  font-size: 1.15vw;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 3.5vw;
+}
+
+.mini-game:hover {
+  .mini-game-title {
+    color: $border-purple;
+
+  }
+}
+
+.mini-game:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.featured-spinner {
+  // background: black;
+  margin-top: 250px;
+  margin: auto auto;
+  height: 50vh;
+
+
+}
