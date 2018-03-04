@@ -109,7 +109,7 @@ class NavBar extends React.Component {
             </li>
             <li>
               <a className="icon"
-                href='https://github.com/Pchao93'>
+                href='https://github.com/Pchao93/goodplays'>
                 <svg className="svg-inline--fa fa-github-square fa-w-14"
                   aria-hidden="true"
                   data-prefix="fab"
