@@ -24,15 +24,15 @@ class Api::CollectionsController < ApplicationController
 
   def index
     if params[:user_id] != "undefined"
-      user = User.find_by(id: params[:user_id])
+      @user = User.find_by(id: params[:user_id])
     else
-      user = current_user
+      @user = current_user
     end
-    if user
-      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{user.updated_at}", force: false) do
+    if @user
+      @collections = Rails.cache.fetch("user-collections-#{params[:user_id]}-#{@user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
-        user.collections.load
+        @user.collections.load
       end
     else
       render json: ["Unable to find collections for the user with id #{params[:user_id]}."], status: 404

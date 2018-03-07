@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import MiniGame from '../games/mini_game';
 import { BeatLoader } from 'react-spinners';
 
 class SplashPage extends React.Component {
@@ -16,26 +17,14 @@ class SplashPage extends React.Component {
   }
   render(){
 
-    const gamesArray = this.props.games.map((game, index) => {
+    const gamesArray = this.props.games.map(game => {
 
           return (
-            <li
-              key={game.id}
-              className="mini-game">
-              <Link
-                className='mini-game-show-link'
-                to={`/games/${game.id}`}>
-                <img
-                  className='mini-game-cover-art'
-                  src={game.image_url}>
-                </img>
-                <div className="mini-game-title">{game.title}</div>
-              </Link>
-            </li>
+            <MiniGame key={game.id} game={game}/>
           );
         }
       );
-    
+
 
     return (
       <div className="splash-page-container">

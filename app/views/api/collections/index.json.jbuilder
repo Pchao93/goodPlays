@@ -9,10 +9,10 @@ json.collections do
 end
 
 json.users do
-  json.set! current_user.id do
-    json.extract! current_user, :username, :id
-    json.collections current_user.collections.pluck(:id)
-    json.reviews current_user.reviews.pluck(:id)
-    json.games current_user.games.pluck(:id)
+  json.set! @user.id do
+    json.extract! @user, :username, :id
+    json.collections @user.collections.pluck(:id)
+    json.reviews @user.reviews.pluck(:id)
+    json.games @user.games.pluck(:id)
   end
 end

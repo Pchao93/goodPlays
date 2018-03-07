@@ -7,11 +7,115 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # setup vars
-skip_games = false
-num_users = 30
+skip_games = true
+num_users = 100
 num_reviews = 15
 
-
+usernames = [
+  "reallymusty",
+  "needfulbrownies",
+  "stemhygienist",
+  "dotterelhow",
+  "earwholesale",
+  "pizzabeads",
+  "derivedlibra",
+  "boneheadweighted",
+  "sawtknees",
+  'wildfowlscones',
+  "wrenchplayer",
+  "minecartethan",
+  "lateorder",
+  "removetiller",
+  "womantropical",
+  "somberfits",
+  "poisedindex",
+  "beachredshift",
+  "theesmoking",
+  "usefulfreeboard",
+  "trophicsooty",
+  "cockneybrayton",
+  "glitchesflowerpot",
+  "cantatadead",
+  "chickensgit",
+  "goodweakest",
+  "skysailgraphic",
+  "puzzledbounds",
+  "swarmrelax",
+  "astatinesavi",
+  "setupnoxious",
+  "minerspolish",
+  "greatestsmirk",
+  "shipabsolute",
+  "budweisersing",
+  "laptopchewy",
+  "jokesalty",
+  "healresults",
+  "venturiexceute",
+  "goatdugout",
+  "paperclipshrike",
+  "gangwayanion",
+  "entropyrebel",
+  "listlist",
+  "burritoswear",
+  "airplanesquirrel",
+  "kabstrupdopler",
+  "boilingsupply",
+  "boycomponents",
+  "sweattang",
+  "planblackboard",
+  "entireflimsy",
+  "caponsensory",
+  "applefads",
+  "biomassspica",
+  "boarscabbage",
+  "wirehit",
+  "tastelessswindler",
+  "bobshaula",
+  "policyphase",
+  "mushroomadult",
+  "informalranchers",
+  "matureaccess",
+  "attachboars",
+  "immunitychimp",
+  "coalitionturkey",
+  "ganymedemilky",
+  "gumpulsar",
+  "nangruff",
+  "sneakdirectly",
+  "competingduring",
+  "fornaxesteemed",
+  "kingdomself",
+  "downloadautomatic",
+  "coaloretingley",
+  "pourmerten",
+  "scrollconnectdevelop",
+  "fairsvouch",
+  "qedcounting",
+  "somalianpole",
+  "polishlamentable",
+  "nicknamesjumprope",
+  "oilpechora",
+  "maceheavy",
+  "soundmen",
+  "intosubmit",
+  "bellextensions",
+  "bowlingparfait",
+  "informsummery",
+  "reticulumparadigm",
+  "featurescuckoo",
+  "volatileelderflower",
+  "hooverslovenly",
+  "swaggeringway",
+  "posesjuicy",
+  "shaftsrule",
+  "crispbignum",
+  "discloseswagger",
+  "hoppingcheap",
+  "calledicelandic",
+  "eightgrid",
+  "pumlumon",
+  "lucrum",
+]
 
 User.delete_all
 Collection.delete_all
@@ -35,7 +139,7 @@ user.save
 
 num_users.times do |num|
   tempuser = User.new
-  tempuser.username = "test#{num}"
+  tempuser.username = usernames[num]
   tempuser.password = "password"
   tempuser.email="test#{num}@test.com"
   tempuser.save

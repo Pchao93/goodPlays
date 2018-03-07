@@ -19,11 +19,12 @@ class Api::GamesController < ApplicationController
 
   def index
     if params[:user_id]
-      if User.find_by(id: params[:user_id])
+      @user = User.find_by(id: params[:user_id])
+      if @user
         @games = Rails.cache.fetch("user-games-#{params[:user_id]}") do
           p ["CACHE MISS CACHE MISS"]
 
-          current_user.games.includes(:developer, :genres, :platforms, reviews: [:user]).load
+          @user.games.includes(:developer, :genres, :platforms, reviews: [:user]).load
         end
 
       end
