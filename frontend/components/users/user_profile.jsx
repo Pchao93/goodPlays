@@ -4,7 +4,7 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log("props", props);
+
 
 
 
@@ -13,7 +13,7 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount() {
-    console.log("mounted");
+
     this.props.getAllCollections(this.props.userId).then(
       () => this.props.fetchUserGames(this.props.userId)
     );
@@ -26,12 +26,17 @@ class UserProfile extends React.Component {
     return (
       <div className="user-profile-container">
 
-        <div className="user-profile-information">
+        <div className="user-profile-header">
+          {this.props.user && `${this.props.user.username[0].toUpperCase() + this.props.user.username.slice(1)} > Profile`}
+        </div>
 
+        <div className="user-profile-information">
         </div>
 
         <div className="collection-index-container">
-
+          <div className="collection-index-header">
+            Collections
+          </div>
           <CollectionIndex
             collections={this.props.collections}
             games={this.props.games}/>

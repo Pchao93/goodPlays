@@ -68,7 +68,8 @@ export default (state = {}, action) => {
       }
       return newState;
     case LOGOUT_CURRENT_USER:
-      return {};
+      return state;
+      // return {};
     default:
       return state;
   }

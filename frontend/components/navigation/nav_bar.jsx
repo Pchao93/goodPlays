@@ -78,6 +78,13 @@ class NavBar extends React.Component {
       <span>{this.props.currentUser.username}</span>
       <ul className={this.state.userDropdownClass}>
         <li>
+          <button onClick={ () => this.props.history.push(`/users/${this.props.currentUser.id}`)}>
+            <i className="fa fa-user"></i>
+            <span>Profile</span>
+          </button>
+        </li>
+        <li>
+
           <button onClick={this.props.logout}>
             <i className="fa fa-sign-out" aria-hidden="true"></i>
             <span>Log Out</span>

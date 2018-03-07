@@ -189,6 +189,21 @@ a.logo {
 
 }
 
+.user-info li a{
+  // margin: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 20px;
+  width: 100%;
+
+  // right: 0px;
+  // line-height: 1;
+  // transition: 4s;
+
+
+}
+
 .user-info button:hover {
   cursor: pointer;
 }
@@ -199,7 +214,7 @@ a.logo {
   // height: 1000px;
   background: $background-dark-purple;
   transition: height .2s ease-out;
-  height: 50px;
+  height: 100px;
   z-index: 3;
 
 }

@@ -11,13 +11,17 @@ import {fetchUserGames} from '../../actions/games';
 import UserProfile from './user_profile';
 
 const mapStateToProps = (state, ownProps) => {
-  let collections = Object.values(state.entities.collections);
+
   let currentUser = state.session.currentUser;
   let userId = ownProps.match.params.userId;
-  console.log(userId);
+  let collections = Object.values(state.entities.collections).filter(collection => {
+
+    return collection.user_id === parseInt(userId);
+  });
+
   let user = state.entities.users[userId];
   let games = state.entities.games;
-  console.log("state",state);
+  
   return {
     games,
     currentUser,
