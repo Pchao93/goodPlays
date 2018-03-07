@@ -9,6 +9,7 @@ import GameIndexContainer from './games/game_index_container';
 import CollectionShowContainer from './collections/collection_show_container.jsx';
 import SearchContainer from './search/search_container';
 import SplashPageContainer from './splash/splash_page_container';
+import UserProfileContainer from './users/user_profile_container';
 import NotFound from './not_found';
 
 
@@ -28,7 +29,7 @@ export default (props) => (
       <ProtectedRoute exact path='/collections/my-games' component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId" component={CollectionShowContainer}/>
       <Route exact path="/collections/:collectionId/edit" component={CollectionShowContainer}/>
-
+      <Route exact path="/users/:userId" component={UserProfileContainer}/>
       <Route path="*" component={NotFound}/>
 
     </Switch>
