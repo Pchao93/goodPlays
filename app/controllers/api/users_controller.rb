@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @user.image_url = Identicon.data_url_for @user.username
     if @user.save
       login(@user)
       render :show

@@ -6,7 +6,7 @@ end
 
 json.user do
 
-  json.extract! @review.user, :id, :username
+  json.extract! @review.user, :id, :username, :image_url, :friends
   json.collections @review.user.collections.pluck(:id)
   json.reviews @review.user.reviews.pluck(:id)
   json.games @review.user.games.pluck(:id)

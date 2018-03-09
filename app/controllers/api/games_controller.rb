@@ -34,16 +34,17 @@ class Api::GamesController < ApplicationController
 
         Game.includes(:developer, :genres, :platforms, reviews: [:user]).limit(100).load
       end
+      @user = current_user
     end
 
-    if current_user
+    if @user
       # p "current user"
       # p current_user
       # p "user-#{current_user.id}-#{current_user.updated_at}"
-      @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
+      @user_reviews = Rails.cache.fetch("user-#{@user.id}-#{@user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
-        current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load if @games
+        @user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load if @games
       end
       # p @user_reviews
       # p current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load if @games

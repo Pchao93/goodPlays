@@ -1,15 +1,22 @@
 import React from 'react';
 import ScoreStars from '../games/score_stars';
+import {Link} from 'react-router-dom';
 
 
 
 const ReviewListItem = ({review, user, currentUser, handleEdit, destroyReview}) => (
   <li className='review' key={review.id}>
+    <img
+      className="review-profile-image"
+      src={user.image_url}>
+    </img>
   <div className='review-heading'>
     <div className='review-heading-left'>
-      <span className='review-username'>
+      <Link
+        to={`/users/${user.id}`}
+        className='review-username'>
           {user && user.username}
-        </span> rated it
+        </Link> rated it
         <ScoreStars disableScore={true} score={review.rating}/>
 
       </div>

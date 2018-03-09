@@ -29,6 +29,8 @@ class SideBar extends React.Component {
       this.setState({loading: true});
       nextProps.getAllCollections(nextProps.currentUser.id).then(()=> this.setState({loading: false}));
     }
+    console.log(nextProps);
+
   }
 
 
@@ -88,7 +90,7 @@ class SideBar extends React.Component {
   render () {
 
 
-    let { collections, currentUser } = this.props;
+    let { collections, currentUser, friends } = this.props;
     if (!currentUser) {
       return <div></div>;
     }
@@ -104,6 +106,26 @@ class SideBar extends React.Component {
         </li>
       );
     });
+
+
+
+    console.log(friends);
+    let friendsArr = [];
+    // if (friends) {
+      friendsArr = Object.values(this.props.friends).map(friend => (
+        <li key={friend.id}>
+          <Link
+            className="friend-name"
+            to={`/users/${friend.id}`}>
+            <img
+              className="friend-profile-image"
+              src={friend.image_url}>
+            </img>
+            {friend.username}
+          </Link>
+        </li>
+      ));
+    // }
 
 
     return (
@@ -141,6 +163,20 @@ class SideBar extends React.Component {
               {false && <p className={this.state.inputClass}>Add a Collection</p> }
 
           </form>
+        </div>
+        <div className='side-bar-friends'>
+          <div className='side-bar-header'>Following</div>
+          <ul className='friends-list'>
+                {this.state.loading && <div className='side-bar-spinner'>
+                  <BeatLoader
+                    size={5}
+                    color={'#4b367c'}
+                    loading={this.state.loading}
+                  />
+            </div>}
+            {friendsArr}
+
+          </ul>
         </div>
       </div>
     );

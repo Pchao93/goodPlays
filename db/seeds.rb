@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # setup vars
+
+
 skip_games = true
 num_users = 100
-num_reviews = 15
+num_reviews = 10
 
 usernames = [
   "reallymusty",
@@ -117,6 +119,20 @@ usernames = [
   "lucrum",
 ]
 
+summaries = [
+  "I'm a casual gamer at heart.",
+  "I'm the best at games, hit me up for a challenge.",
+  "Getting back into gaming, looking for suggestions!",
+  "Games and books are my life!",
+  "Open to reccomendations.",
+  "Anyone looking for a clan?",
+  "Discord handle same as my username",
+  "Bay Area gamer, cut my teeth on space invaders.",
+  "Gamer. Reader. Chef.",
+  "I am a quadrilateral, AMA.",
+  "Gamer parent. RIP free time...",
+]
+
 User.delete_all
 Collection.delete_all
 Game.delete_all if skip_games == false
@@ -135,6 +151,9 @@ user = User.new
 user.username = "demo"
 user.password = "password"
 user.email = "demo@demo.com"
+user.image_url = Identicon.data_url_for "demo"
+user.summary = "Who am I? What is my purpose?"
+user.description = "If I were a real user, this is where I'd put a brief description of myself, or really anything else that I wanted! The freedom is yours! Hope you enjoy the application!"
 user.save
 
 num_users.times do |num|
@@ -142,6 +161,9 @@ num_users.times do |num|
   tempuser.username = usernames[num]
   tempuser.password = "password"
   tempuser.email="test#{num}@test.com"
+  tempuser.image_url = Identicon.data_url_for tempuser.username
+  tempuser.summary = summaries[rand(0..10)]
+  tempuser.description = "Games have always been a big hobby of mine, and I love sharing this part of my life with all of my friends, old and new! I try to experience as many different kinds of games as I can, but I also love revisiting my old favorites. I think games are great because they give people of any background an opportunity to share common experiences in virtual worlds."
   tempuser.save
 end
 

@@ -1,10 +1,24 @@
 .review {
   background: #fff;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
-  width: 725px;
+  width: 765px;
   // box-sizing: border-box;
   padding: 20px;
+  // padding-left: 80px;
+  padding-left: 100px;
   margin-bottom: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.review-profile-image {
+  width: 60px;
+  position: absolute;
+  top: 20px;
+  // left: -75px;
+  left: 20px;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
+
 }
 
 .review-container-title {
@@ -28,7 +42,8 @@
 
 .review-date {
   font-size: 18px;
-  color: #ccc
+  color: #ccc;
+  white-space: nowrap;
 
 }
 
@@ -40,6 +55,10 @@
   margin-right: 5px;
   text-transform: capitalize;
   font-weight: 600;
+}
+
+.review-username:hover {
+  color: $border-purple;
 }
 
 .review-body {

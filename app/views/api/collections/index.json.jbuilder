@@ -10,7 +10,7 @@ end
 
 json.users do
   json.set! @user.id do
-    json.extract! @user, :username, :id
+    json.extract! @user, :username, :id, :image_url, :summary, :description, :friends
     json.collections @user.collections.pluck(:id)
     json.reviews @user.reviews.pluck(:id)
     json.games @user.games.pluck(:id)

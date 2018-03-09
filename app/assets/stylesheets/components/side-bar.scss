@@ -13,7 +13,7 @@
 
 .side-bar-header {
   color: #b8b5c0;
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 10px;
   margin-top: 20px;
   padding-bottom: 15px;
@@ -62,7 +62,7 @@
 
 .collection-name, .game-count {
   color: #b8b5c0;
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
   margin-left: 5px;
   max-width: 140px;
@@ -182,4 +182,40 @@ div.collection-input input:focus {
   right:0;
   left:0;
   z-index: -1;
+}
+
+.friend-profile-image {
+  margin-right: 10px;
+  width: 30px;
+}
+
+.side-bar .friends-list {
+  width: 240px;
+  margin-bottom: 10px;
+}
+
+.side-bar .friends-list li {
+  width: 220px;
+  height: 40px;
+  padding: 0 10px;
+}
+.side-bar .friends-list a {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  // flex-wrap: wrap;
+  word-wrap: break-word;
+  width: 220px;
+  height: 40px;
+}
+
+.side-bar .friends-list li:hover {
+  background: #2C2640;//#b19dd8;
+}
+
+.friend-name {
+  text-transform: capitalize;
+  font-size: 16px;
+  color: #b8b5c0;
+
 }
