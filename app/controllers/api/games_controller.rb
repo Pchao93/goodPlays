@@ -6,7 +6,7 @@ class Api::GamesController < ApplicationController
     end
 
     if @game
-      @reviews = Rails.cache.fetch("game-reviews-#{@game.id}-#{@game.updated_at}", force: true) do
+      @reviews = Rails.cache.fetch("game-reviews-#{@game.id}-#{@game.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
         @game.reviews.includes(:user).load
       end
