@@ -73,7 +73,7 @@ class NavBar extends React.Component {
     const display = this.props.currentUser ? (
     <div className="user-info" onClick={this.toggleDropdown}>
       <img src=
-        "https://s3.amazonaws.com/i.seelio.com/f3/b3/f3b38e0625012600f8c71693e75443dc526c.jpg">
+        {this.props.currentUser.image_url}>
       </img>
       <span>{this.props.currentUser.username}</span>
       <ul className={this.state.userDropdownClass}>

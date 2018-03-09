@@ -5,7 +5,7 @@ json.games do
     json.platforms @game.platforms.pluck(:abreviation)
     json.reviews @game.reviews.pluck(:id)
     json.genres @game.genres.pluck(:name)
-    json.review @game.reviews.find_by(user_id: current_user.id).id if current_user && @game.reviews.find_by(user_id: current_user.id) 
+    json.review @game.reviews.find_by(user_id: current_user.id).id if current_user && @game.reviews.find_by(user_id: current_user.id)
 
   end
 end
@@ -19,7 +19,7 @@ if @reviews
     end
     json.users do
       json.set! review.user.id do
-        json.extract! review.user, :id, :username
+        json.extract! review.user, :id, :username, :image_url, :friends
         json.games review.user.games.pluck(:id) if current_user && review.user.id == current_user.id
         json.collections review.user.collections.pluck(:id) if current_user && review.user.id == current_user.id
         json.reviews review.user.reviews.pluck(:id) if current_user && review.user.id == current_user.id

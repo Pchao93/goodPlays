@@ -35,7 +35,7 @@ end
 
 json.user do
   # json.set! @collection.user_id do
-    json.extract! @collection.user, :id, :username
+    json.extract! @collection.user, :id, :username, :image_url, :friends
     json.collections @collection.user.collections.pluck(:id)
     json.reviews @collection.user.reviews.pluck(:id)
     json.games @collection.user.games.pluck(:id)

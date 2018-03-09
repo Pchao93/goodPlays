@@ -5,6 +5,10 @@ import {
   REMOVE_GAME_COLLECTION,
 } from '../actions/collections';
 import {
+  RECEIVE_FRIENDSHIP,
+  REMOVE_FRIENDSHIP
+} from '../actions/friends';
+import {
   RECEIVE_ONE_REVIEW,
   RECEIVE_REVIEWS,
   REMOVE_REVIEW
@@ -56,6 +60,24 @@ export default (state = {}, action) => {
     //       newState[collectionId].games.splice(otherIndex, 1);
     //     });
     //   }
+    case RECEIVE_FRIENDSHIP:
+      console.log(action.users);
+      newState = merge({}, state);
+      Object.keys(action.users).forEach(userId => (
+        newState[userId]= action.users[userId]
+      ));
+      return newState;
+
+    case REMOVE_FRIENDSHIP:
+      newState = merge({}, state);
+      console.log(newState);
+      console.log(action.currentUser);
+      Object.keys(action.users).forEach(userId => (
+        delete newState[action.currentUser].friends[userId]
+      ));
+      return newState;
+
+
     default:
       return state;
   }

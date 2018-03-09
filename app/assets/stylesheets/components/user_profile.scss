@@ -7,7 +7,7 @@
 }
 
 .user-profile-header {
-  font-size: 36px;
+  font-size: 30px;
   padding-bottom: 10px;
   margin-bottom: 20px;
   border-bottom: 1px solid $button-purple;
@@ -15,16 +15,56 @@
 
 .user-profile-information {
   width: 100%;
-  height: 20vw;
+  max-width: 725px;
   background: #fff;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
   margin-bottom: 30px;
+  box-sizing: border-box;
+  padding: 30px;
+  display: flex;
+
+}
+
+.profile-info-left {
+  width: 20%;
+  min-width: 150px;
+
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+}
+
+.add-friend {
+  margin: 0 auto;
+}
+
+.profile-image {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.profile-details {
+  padding-left: 30px;
+}
+
+.profile-summary {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+
+}
+
+.profile-description {
+  font-size: 16px;
 
 }
 
 .collection-index-container {
   // padding: 30px;
-  width: 100%
+  width: 100%;
+  // max-width: 865px;
+
 }
 
 .collection-index-header {
@@ -63,12 +103,14 @@
   // height: 200px;
   // width: 150px;
   width: 12vw;
+
   // height: 16vw;
-  // min-width: 150px;
+  min-width: 100px;
   margin-right: 10px;
   margin-bottom: 0px;
   position: relative;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
+  height: 100%;
 
 }
 
@@ -87,7 +129,7 @@
   bottom: 0px;
   height: 100%;
   color: #fff;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
   // white-space: nowrap;
   font-size: 18px;
@@ -100,9 +142,10 @@
 .elipses-button {
   display: flex;
   align-items:center;
-  font-size: 1.5vw;
+  font-size: 1.15vw;
   color: $button-purple;
   margin-left: 1vw;
+  width: 100px
 
 }
 
@@ -111,4 +154,40 @@
 }
 
 .collection-game-ribbon .mini-game-title {
+}
+
+.review-index-container {
+  // padding: 30px;
+  width: 100%
+}
+
+.review-index-header {
+  font-size: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $button-purple;
+}
+
+.user-review-username {
+  margin-right: 5px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.game-link {
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.user-review {
+  background: #fff;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.1),0 2px 2px -2px rgba(0,0,0,.02),0 1px 4px 0 rgba(0,0,0,.04);
+  width: 765px;
+  // box-sizing: border-box;
+  padding: 20px;
+  // padding-left: 80px;
+  // padding-left: 100px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  position: relative;
 }

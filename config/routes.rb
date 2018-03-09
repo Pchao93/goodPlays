@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "static_pages#root"
 
   namespace :api, defaults: { format: :json } do
-
+    resources :friendships, only: [:create]
     resource :session, only: [:create, :destroy]
 
     resources :users, only: :create do
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :collection_games, only: [:create, :destroy]
 
   end
-
+  delete '/api/friendships', to: 'api/friendships#destroy'
   delete '/api/collection_games', to: "api/collection_games#destroy"
 
 

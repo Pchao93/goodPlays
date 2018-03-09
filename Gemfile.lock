@@ -65,6 +65,7 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
+    chunky_png (1.3.10)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -85,6 +86,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
+    identicon (0.0.5)
+      chunky_png
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -224,6 +227,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   figaro
+  identicon
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

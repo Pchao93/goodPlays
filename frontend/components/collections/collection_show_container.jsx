@@ -39,6 +39,7 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     if (ownProps.location.pathname === '/collections/my-games') {
       // if (currentUser) {
+
         let user = state.entities.users[currentUser.id];
         if (user) {
           reviews = Object.values(state.entities.reviews).filter(review => user.games.includes(review.game_id));
@@ -54,7 +55,7 @@ const mapStateToProps = (state, ownProps) => {
         }
       // }
 
-      collectionUser = {username: 'My Games'};
+      collectionUser = {username: 'My Games', id: currentUser.id};
       collection = {name: ''};
 
     } else {
