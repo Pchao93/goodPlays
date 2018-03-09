@@ -10,8 +10,8 @@
 
 
 skip_games = false
-num_users = 250
-num_reviews = 25
+num_users = 100
+num_reviews = 30
 
 usernames = [
   "reallymusty",
