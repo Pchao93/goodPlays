@@ -9,9 +9,9 @@
 # setup vars
 
 
-skip_games = true
-num_users = 100
-num_reviews = 10
+skip_games = false
+num_users = 250
+num_reviews = 25
 
 usernames = [
   "reallymusty",
