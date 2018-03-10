@@ -27,8 +27,13 @@ class UserProfile extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.userId !== newProps.userId) {
+      this.setState({loading: true});
       newProps.getAllCollections(newProps.userId).then(
         () => newProps.fetchUserGames(newProps.userId)
+      ).then(() => (
+        this.setState({loading: false})
+      )
+
       );
     }
   }
@@ -65,16 +70,24 @@ class UserProfile extends React.Component {
                 className="profile-image"
                 src={this.props.user.image_url}>
               </img>
-              {this.props.currentUser && this.props.currentUser.friends && !this.props.currentUser.friends[this.props.userId] && <button
-                onClick={this.handleFollow}
-                className=" add-friend btn">
-                Follow
-              </button>}
-              {this.props.currentUser && this.props.currentUser.friends && this.props.currentUser.friends[this.props.userId] && <button
-                onClick={this.handleUnfollow}
-                className=" add-friend btn">
-                Unfollow
-              </button>}
+              {this.props.currentUser &&
+                this.props.currentUser.id != this.props.userId &&
+                  this.props.currentUser.friends &&
+                    !this.props.currentUser.friends[this.props.userId] &&
+                      <button
+                        onClick={this.handleFollow}
+                        className=" add-friend btn">
+                        Follow
+                      </button>}
+              {this.props.currentUser &&
+                this.props.currentUser.id != this.props.userId &&
+                  this.props.currentUser.friends &&
+                    this.props.currentUser.friends[this.props.userId] &&
+                      <button
+                        onClick={this.handleUnfollow}
+                        className=" add-friend btn">
+                        Unfollow
+                      </button>}
             </div>}
             {this.props.user && <div className="profile-details">
               <div className="user-profile-header">
