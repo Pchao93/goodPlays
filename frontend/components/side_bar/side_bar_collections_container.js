@@ -4,14 +4,13 @@ import {
   getAllCollections,
 
 } from '../../actions/collections';
-import SideBar from './side_bar';
+import SideBarCollections from './side_bar_collections';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
   let collections = [];
   let friends;
   if (currentUser) {
-    friends = currentUser.friends;
 
     collections = Object.values(state.entities.collections)
       .filter(collection => collection.user_id === currentUser.id);
@@ -19,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser,
     collections,
-    friends,
   };
 };
 
@@ -28,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   getAllCollections: (userId) => dispatch(getAllCollections(userId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SideBarCollections);

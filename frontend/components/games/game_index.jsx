@@ -153,12 +153,8 @@ class GameIndex extends React.Component {
       this.props.games.forEach((game) =>{
 
         if (game !== undefined) {
-          // console.log(n);
           let liStyle = {animationDelay: n,};
-          // console.log(liStyle);
           let divClass;
-          // console.error(this.state.hoverGameId);
-          // console.error(game.id);
           if (this.state.hoverGameId === game.id) {
             divClass = this.state.gameHoverClass;
           } else {
@@ -190,7 +186,6 @@ class GameIndex extends React.Component {
     let display = Object.values(gamesListItems).length > 0 ? Object.values(gamesListItems) :
         (this.props.search ? (<span className='empty-index-message' >No results found :(</span>) :
           <Link to='/directory' className='empty-index-message' >No games yet, why don't you take a look?</Link>);
-    console.log(collectionUser);
     return (
       <div className='game-index-container'>
         <div className='game-index-header'>

@@ -61,7 +61,7 @@ export default (state = {}, action) => {
     //     });
     //   }
     case RECEIVE_FRIENDSHIP:
-      console.log(action.users);
+
       newState = merge({}, state);
       Object.keys(action.users).forEach(userId => (
         newState[userId]= action.users[userId]
@@ -70,8 +70,7 @@ export default (state = {}, action) => {
 
     case REMOVE_FRIENDSHIP:
       newState = merge({}, state);
-      console.log(newState);
-      console.log(action.currentUser);
+      
       Object.keys(action.users).forEach(userId => (
         delete newState[action.currentUser].friends[userId]
       ));

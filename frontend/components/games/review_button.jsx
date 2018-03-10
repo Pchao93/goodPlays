@@ -55,9 +55,6 @@ class ReviewButton extends React.Component {
           rating: this.state.rating
         });
       });
-
-      // console.log(this.state.rating);
-
     }
   }
 
