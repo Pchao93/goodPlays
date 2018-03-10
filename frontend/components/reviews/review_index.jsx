@@ -59,8 +59,8 @@ class ReviewIndex extends React.Component {
     });
 
     reviewListItems.sort((a, b)=>{
-      // console.log(a);
-      // console.log(b);
+
+      
       return b.props.review.id - a.props.review.id;
     });
 

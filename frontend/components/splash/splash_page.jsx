@@ -12,7 +12,7 @@ class SplashPage extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log("click");
+    
     this.props.openSessionForm();
   }
   render(){
