@@ -10,7 +10,7 @@ class Api::CollectionsController < ApplicationController
         @collection.games
       #end
       if current_user
-        @user_reviews = Rails.cache.fetch("user-#{current_user.id}-#{current_user.updated_at}", force: false) do
+        @user_reviews = Rails.cache.fetch("user-reviews-#{current_user.id}-#{current_user.updated_at}", force: false) do
           p ["CACHE MISS CACHE MISS"]
 
           current_user.reviews.includes(:game).where(game_id: @collection_games.pluck(:id)).load
