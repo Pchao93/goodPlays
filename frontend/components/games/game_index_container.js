@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     games,
-    collectionUser: {username: "Top Games"},
+    collectionUser: {username: "Top Games", },
     reviews,
     currentUser,
     headerText: '',

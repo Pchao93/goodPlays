@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../utils/route_utils';
 import { logout } from '../actions/session';
 import NavBarContainer from './navigation/nav_bar_container';
-import SideBar from './side_bar/side_bar';
+import SideBarContainer from './side_bar/side_bar_container';
 import GameShowContainer from './games/game_show_container';
 import GameIndexContainer from './games/game_index_container';
 import CollectionShowContainer from './collections/collection_show_container.jsx';
@@ -17,7 +17,7 @@ import NotFound from './not_found';
 export default (props) => (
   <div className='app-container'>
     <NavBarContainer />
-    {props.currentUser && <SideBar/>}
+    <SideBarContainer/>
     <Switch>
       <AuthRoute exact path='/' component={SplashPageContainer} />
       <Route exact path='/directory' component={GameIndexContainer} />

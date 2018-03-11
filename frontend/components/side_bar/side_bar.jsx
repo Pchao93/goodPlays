@@ -12,7 +12,9 @@ class SideBar extends React.Component {
   }
 
   render () {
-
+    if (!this.props.currentUser) {
+      return "";
+    }
     return (
       <div className='side-bar'>
         <SideBarCollectionsContainer/>

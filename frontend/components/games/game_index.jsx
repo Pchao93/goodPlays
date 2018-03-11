@@ -190,7 +190,7 @@ class GameIndex extends React.Component {
       <div className='game-index-container'>
         <div className='game-index-header'>
           <div className='game-index-title'>{collectionUser &&
-            <Link to={`/users/${collectionUser.id}`} className='index-user'>{collectionUser.username} </Link>}
+            <Link to={ collectionUser.id ? `/users/${collectionUser.id}` : '/directory'} className='index-user'>{collectionUser.username} </Link>}
             {collectionUser && headerText !== '' && <span className="pointer">{">"}</span> }
             <span className='index-title'>
             {edit && !["Want to Play", "Have Played", "Playing"].includes(collection.name) ? (<div className="edit-collection-form">

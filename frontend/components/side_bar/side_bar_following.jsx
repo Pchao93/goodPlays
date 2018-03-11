@@ -11,7 +11,7 @@ class SideBarFollowing extends React.Component {
   render () {
     let { friends } = this.props;
     let friendsArr = [];
-    // if (friends) {
+    if (friends) {
       friendsArr = Object.values(this.props.friends).map(friend => (
         <li key={friend.id}>
           <Link
@@ -25,7 +25,7 @@ class SideBarFollowing extends React.Component {
           </Link>
         </li>
       ));
-    // }
+    }
 
 
     return (
