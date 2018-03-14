@@ -45,3 +45,15 @@
 .channel-label {
   font-weight: 700
 }
+
+.no-stream-text {
+  font-size: 24px;
+}
+
+.no-stream-link {
+  color: $button-purple;
+}
+
+.no-stream-link:hover {
+  color: $border-purple;
+}

@@ -39,6 +39,9 @@ class SideBarCollections extends React.Component {
     let nextCollections = nextProps.collections;
     let totalGames = 0;
     let nextTotalGames = 0;
+    if (collections.length !== nextCollections.length) {
+      return true;
+    }
     collections.forEach((collection, idx) => {
       totalGames += collection.count;
     });
@@ -46,6 +49,12 @@ class SideBarCollections extends React.Component {
       nextTotalGames += collection.count;
     });
     if (this.state.loading && !nextState.loading) {
+      return true;
+    }
+    if (this.state.inputClass !== nextState.inputClass) {
+      return true;
+    }
+    if (this.state.value !== nextState.value) {
       return true;
     }
 
@@ -67,11 +76,13 @@ class SideBarCollections extends React.Component {
   }
 
   toggleForm(e) {
+
     e.preventDefault();
     let newClass = this.toggleHelper(
       'inputClass',
       'collection-input hidden',
       'collection-input');
+    
     this.setState({
       inputClass: newClass
     });
@@ -105,6 +116,7 @@ class SideBarCollections extends React.Component {
     }
   }
   render() {
+
     let { collections, currentUser } = this.props;
     if (!currentUser) {
       return <div></div>;

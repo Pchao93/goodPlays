@@ -51,7 +51,7 @@ class TwitchDisplay extends React.Component {
     return (
       <ul className='stream-display-list'>
         <h1 className='stream-header'>Top Streams</h1>
-        {streamListItems}
+        {streamListItems.length > 0 ? streamListItems : <div className='no-stream-text'>No streams found. <a target="_blank" className="no-stream-link" href='https://twitch.tv'>Why don't you start?</a></div>}
       </ul>
     );
   }

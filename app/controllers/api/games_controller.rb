@@ -44,7 +44,7 @@ class Api::GamesController < ApplicationController
       @user_reviews = Rails.cache.fetch("user-reviews-#{@user.id}-#{@user.updated_at}", force: false) do
         p ["CACHE MISS CACHE MISS"]
 
-        @user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load if @games
+        @user.reviews.includes(:game).load if @games
       end
       # p @user_reviews
       # p current_user.reviews.includes(:game).where(game_id: @games.pluck(:id)).load if @games

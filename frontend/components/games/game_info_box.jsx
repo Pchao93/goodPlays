@@ -18,7 +18,7 @@ const GameInfoBox = ({ game, platforms, currentUser, openForm, review, genres}) 
         <span className='game-label'>Summary:</span> {game.description}
       </div>
 
-      <a className='amazon-button' href={game.amazon_url}>
+      <a target="_blank" className='amazon-button' href={game.amazon_url}>
         <img src="https://images-na.ssl-images-amazon.com/images/G/01/SellerCentral/legal/amazon-logo_transparent.png">
         </img>
       </a>
