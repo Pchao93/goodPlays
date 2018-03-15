@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  validates :title, :description, :release_date, :image_url, :amazon_url, presence: true
+  validates :title, :description, :release_date, :image_url, :amazon_url, :rating, presence: true
   validates :title, uniqueness: true
 
 
@@ -36,8 +36,6 @@ class Game < ApplicationRecord
   def calculate_relation(game)
     dif_genres = (self.genres - game.genres).length
     dif_genres / 2
-
-
   end
 
 end

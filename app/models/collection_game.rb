@@ -13,7 +13,7 @@ class CollectionGame < ApplicationRecord
 
 
   has_one :user,
-    through: :game
+    through: :collection
 
   # Every game a user collects must be included in one of the three
   # default collections. Games can also only be in one default collection

@@ -4,12 +4,14 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6, allow_nil: true}
   attr_reader :password
 
-  has_many :collections
-  has_many :reviews
+  has_many :collections,
+    dependent: :destroy
+  has_many :reviews,
+    dependent: :destroy
+
   has_many :reviewed_games,
     through: :reviews,
-    source: :game,
-    dependent: :destroy
+    source: :game
 
 
   has_many :games,

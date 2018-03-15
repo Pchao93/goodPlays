@@ -15,7 +15,7 @@ class Review < ApplicationRecord
   after_update :handle_update
 
   def handle_update
-    
+
     self.game.touch(:updated_at)
     self.user.touch(:updated_at)
 
@@ -27,7 +27,7 @@ class Review < ApplicationRecord
       total_score = game.average_score * game.num_reviews
       game.average_score = ((total_score - self.old_rating + self.rating) / game.num_reviews)
       game.average_score = game.average_score.round(1)
-      game.save
+      game.save!
     end
   end
 
@@ -42,10 +42,10 @@ class Review < ApplicationRecord
       else
         game.num_reviews = 1
         game.average_score = self.rating.to_f
+
       end
       game.save!
       user = self.user
-
       if !user.games.include?(self.game)
         CollectionGame.create!(
           collection_id: user.default_collections[1].id,
@@ -56,11 +56,16 @@ class Review < ApplicationRecord
   end
 
   def handle_destroy
+
     game = self.game
     total_score = game.average_score * game.num_reviews
+
+
     game.num_reviews -= 1
+
     game.average_score = ((total_score - self.rating.to_f) / game.num_reviews)
     game.average_score = game.average_score.round(1)
+
     game.save
   end
 end
