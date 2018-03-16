@@ -40,12 +40,8 @@ class GameIndex extends React.Component {
   }
 
   toggleHover(id) {
-
-    // if (e.target === e.currentTarget) {
     let hoverGameId = parseInt(id);
-    // }
-
-
+    
     let newClass = this.toggleHelper(
       this.state,
       'gameHoverClass',
@@ -80,11 +76,6 @@ class GameIndex extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // if (this.props.search) {
-    //   this.setState({
-    //     headerText: this.props.headerText + ( this.props.query ? "for " + '"' + this.props.query + '"' : '')
-    //   });
-    // }
 
     if (!this.props.search && nextProps.location.pathname !== this.props.location.pathname){
 
@@ -94,9 +85,6 @@ class GameIndex extends React.Component {
         nextProps.action(nextProps.currentUser.id).then(()=> this.setState({loading:false}));
       }
     }
-    // else if (!this.props.search && this.props.games.length !== nextProps.games.length){
-    //   nextProps.action().then(()=> this.setState({loading:false}));
-    // }
     if (nextProps.edit) {
       this.setState({
         name: nextProps.collection.name

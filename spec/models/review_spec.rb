@@ -25,7 +25,6 @@ RSpec.describe Review, type: :model do
 
     it 'should update both user and game when updated' do
       user = User.create!(username: 'donkey', password: 'abcdef', email: 'test@test.com')
-      game = Game.find_by(id: 1)
       review = Review.create(game_id: 1, user_id: user.id, rating: 5)
       user_updated_at = User.find_by(id: user.id).updated_at
       game_updated_at = Game.find_by(id: 1).updated_at

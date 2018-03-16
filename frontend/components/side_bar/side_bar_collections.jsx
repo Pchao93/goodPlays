@@ -19,7 +19,8 @@ class SideBarCollections extends React.Component {
     this.toggleHelper = this.toggleHelper.bind(this);
 
     if (this.props.currentUser) {
-      this.props.getAllCollections(this.props.currentUser.id).then(()=> this.setState({loading: false}));
+      this.props.getAllCollections(this.props.currentUser.id)
+      .then(()=> this.setState({loading: false}));
     }
 
   }
@@ -82,7 +83,7 @@ class SideBarCollections extends React.Component {
       'inputClass',
       'collection-input hidden',
       'collection-input');
-    
+
     this.setState({
       inputClass: newClass
     });

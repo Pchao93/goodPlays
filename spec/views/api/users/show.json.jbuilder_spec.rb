@@ -1,0 +1,27 @@
+require 'spec_helper'
+require 'rails_helper'
+
+describe 'api/users/show' do
+  it 'renders user json object' do
+    user = User.create(username: 'donkey', password: 'abcdef', email: 'email@email.email')
+    assign(:user, user)
+    render
+    expect(view).to render_template(:show)
+    user_hash = JSON.parse(rendered)
+
+    expect(user_hash['id']).to eq(user.id)
+    expect(user_hash['collections'].length).to eq(4)
+    expect(user_hash['username']).to eq('donkey')
+  end
+
+  it 'does not render the user\'s password' do
+    user = User.create(username: 'donkey', password: 'abcdef', email: 'email@email.email')
+    assign(:user, user)
+    render
+    expect(view).to render_template(:show)
+    user_hash = JSON.parse(rendered)
+
+    expect(user_hash['password']).to be_nil
+    expect(user_hash['password_digest']).to be_nil
+  end
+end
