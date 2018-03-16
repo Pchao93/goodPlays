@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe 'api/games/search' do
+  
   it 'renders game json object' do
     games = Game.all
     assign(:games, games)
