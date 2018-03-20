@@ -1,9 +1,9 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import * as actions from "../collections";
-import * as ApiUtil from "../../utils/collection_utils";
+import * as actions from "../reviews";
+import * as ApiUtil from "../../utils/review";
 
-import { testCollections, testCollection } from "../../testUtils/collection_helper";
+import { testReviews, testReview } from "../../testUtils/review_helper";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -13,26 +13,26 @@ const mockStore = configureMockStore(middlewares);
 
 describe("simple action creators", () => {
   test('receiveCollections should create an action to receive collections', () => {
-    expect(actions.receiveCollections(testCollections)).toEqual({
+    expect(actions.receiveCollections(testReviews)).toEqual({
       type: actions.RECEIVE_COLLECTIONS,
-      collections: testCollections.collections,
-      users: testCollections.users,
+      collections: testReviews.collections,
+      users: testReviews.users,
     });
   });
 
   test('receiveOneCollection should create an action to receive collection', () => {
-    expect(actions.receiveOneCollection(testCollection)).toEqual({
+    expect(actions.receiveOneCollection(testReview)).toEqual({
       type: actions.RECEIVE_ONE_COLLECTION,
-      collection: testCollection.collection,
-      user: testCollection.user,
-      games: testCollection.games
+      collection: testReview.collection,
+      user: testReview.user,
+      games: testReview.games
     });
   });
 
   test('removeCollection should create an action to remove collection', () => {
-    expect(actions.removeCollection(testCollection)).toEqual({
+    expect(actions.removeCollection(testReview)).toEqual({
       type: actions.REMOVE_COLLECTION,
-      collection: testCollection.collection,
+      collection: testReview.collection,
     });
   });
 
@@ -45,7 +45,7 @@ describe("simple action creators", () => {
   });
 
   test('clearCollectionErrors should create an action to clear collection errors', () => {
-    expect(actions.clearCollectionErrors(testCollection)).toEqual({
+    expect(actions.clearCollectionErrors(testReview)).toEqual({
       type: actions.CLEAR_COLLECTION_ERRORS,
     });
   });
@@ -79,10 +79,10 @@ describe("async action creators", () => {
   test('getAllCollections creates RECEIVE_COLLECTIONS after fetching collections', () => {
     const store = mockStore({ games: {} });
     const expectedActions = [
-      { type: actions.RECEIVE_COLLECTIONS, collections: testCollections.collections, users: testCollections.users}
+      { type: actions.RECEIVE_COLLECTIONS, collections: testReviews.collections, users: testReviews.users}
     ];
     ApiUtil.getCollections = jest.fn(() => {
-      return Promise.resolve(testCollections);
+      return Promise.resolve(testReviews);
     });
     return store.dispatch(actions.getAllCollections()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -91,10 +91,10 @@ describe("async action creators", () => {
   test('getOneCollection creates RECEIVE_ONE_COLLECTION after fetching collection', () => {
     const store = mockStore({ collections: {} });
     const expectedActions = [
-      { type: actions.RECEIVE_ONE_COLLECTION, collection: testCollection.collection, user: testCollection.user, games: testCollection.games}
+      { type: actions.RECEIVE_ONE_COLLECTION, collection: testReview.collection, user: testReview.user, games: testReview.games}
     ];
     ApiUtil.getCollection = jest.fn(() => {
-      return Promise.resolve(testCollection);
+      return Promise.resolve(testReview);
     });
     return store.dispatch(actions.getOneCollection(51)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -103,10 +103,10 @@ describe("async action creators", () => {
   test('createCollection creates RECEIVE_ONE_COLLECTION after posting collection', () => {
     const store = mockStore({ collections: {} });
     const expectedActions = [
-      { type: actions.RECEIVE_ONE_COLLECTION, collection: testCollection.collection, user: testCollection.user, games: testCollection.games}
+      { type: actions.RECEIVE_ONE_COLLECTION, collection: testReview.collection, user: testReview.user, games: testReview.games}
     ];
     ApiUtil.postCollection = jest.fn(() => {
-      return Promise.resolve(testCollection);
+      return Promise.resolve(testReview);
     });
     return store.dispatch(actions.createCollection(51)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -115,10 +115,10 @@ describe("async action creators", () => {
   test('destroyCollection creates REMOVE_COLLECTION after deleting collection', () => {
     const store = mockStore({ collections: {} });
     const expectedActions = [
-      { type: actions.REMOVE_COLLECTION, collection: testCollection.collection, }
+      { type: actions.REMOVE_COLLECTION, collection: testReview.collection, }
     ];
     ApiUtil.deleteCollection = jest.fn(() => {
-      return Promise.resolve(testCollection);
+      return Promise.resolve(testReview);
     });
     return store.dispatch(actions.destroyCollection(51)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -128,10 +128,10 @@ describe("async action creators", () => {
   test('updateCollection creates RECEIVE_ONE_COLLECTION after updating collection', () => {
     const store = mockStore({ collections: {} });
     const expectedActions = [
-      { type: actions.RECEIVE_ONE_COLLECTION, collection: testCollection.collection, user: testCollection.user, games: testCollection.games }
+      { type: actions.RECEIVE_ONE_COLLECTION, collection: testReview.collection, user: testReview.user, games: testReview.games }
     ];
     ApiUtil.patchCollection = jest.fn(() => {
-      return Promise.resolve(testCollection);
+      return Promise.resolve(testReview);
     });
     return store.dispatch(actions.updateCollection(51)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
