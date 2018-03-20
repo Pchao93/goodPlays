@@ -3,14 +3,14 @@ import { getGame, getGames, getUserGames } from '../utils/games';
 export const RECEIVE_ONE_GAME = "RECEIVE_ONE_GAME";
 export const RECEIVE_GAMES = "RECEIVE_GAMES";
 
-const receiveOneGame = jsonObj => ({
+export const receiveOneGame = jsonObj => ({
   type: RECEIVE_ONE_GAME,
   games: jsonObj.games,
   reviews: jsonObj.reviews,
   users: jsonObj.users
 });
 
-const receiveGames = jsonObj => ({
+export const receiveGames = jsonObj => ({
   type: RECEIVE_GAMES,
   games: jsonObj.games,
   reviews: jsonObj.reviews
