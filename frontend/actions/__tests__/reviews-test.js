@@ -8,184 +8,97 @@ import { testReviews, testReview } from "../../testUtils/review_helper";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-
-
-
 describe("simple action creators", () => {
-  test('receiveCollections should create an action to receive collections', () => {
-    expect(actions.receiveCollections(testReviews)).toEqual({
-      type: actions.RECEIVE_COLLECTIONS,
-      collections: testReviews.collections,
+  test('receiveReviews should create an action to receive reviews', () => {
+    expect(actions.receiveReviews(testReviews)).toEqual({
+      type: actions.RECEIVE_REVIEWS,
+      reviews: testReviews.reviews,
       users: testReviews.users,
     });
   });
 
-  test('receiveOneCollection should create an action to receive collection', () => {
-    expect(actions.receiveOneCollection(testReview)).toEqual({
-      type: actions.RECEIVE_ONE_COLLECTION,
-      collection: testReview.collection,
+  test('receiveOneReview should create an action to receive a review', () => {
+    expect(actions.receiveOneReview(testReview)).toEqual({
+      type: actions.RECEIVE_ONE_REVIEW,
+      review: testReview.review,
       user: testReview.user,
-      games: testReview.games
+      addGameToCollectionId: testReview.to_add,
+      gameId: testReview.review.game_id
     });
   });
 
-  test('removeCollection should create an action to remove collection', () => {
-    expect(actions.removeCollection(testReview)).toEqual({
-      type: actions.REMOVE_COLLECTION,
-      collection: testReview.collection,
+  test('removeReview should create an action to remove a review', () => {
+    expect(actions.removeReview(testReview)).toEqual({
+      type: actions.REMOVE_REVIEW,
+      review: testReview.review,
     });
   });
 
-  test('receiveCollectionErrors should create an action to receive collection errors', () => {
+  test('receiveReviewErrors should create an action to receive review errors', () => {
     let errors = "this is bad";
-    expect(actions.receiveCollectionErrors(errors)).toEqual({
-      type: actions.RECEIVE_COLLECTION_ERRORS,
+    expect(actions.receiveReviewErrors(errors)).toEqual({
+      type: actions.RECEIVE_REVIEW_ERRORS,
       errors
     });
   });
 
-  test('clearCollectionErrors should create an action to clear collection errors', () => {
-    expect(actions.clearCollectionErrors(testReview)).toEqual({
-      type: actions.CLEAR_COLLECTION_ERRORS,
+  test('clearReviewErrors should create an action to clear review errors', () => {
+    expect(actions.clearReviewErrors(testReview)).toEqual({
+      type: actions.CLEAR_REVIEW_ERRORS,
     });
   });
-
-  test('addGametoCollection should create an action to add a game to a collection', () => {
-    expect(actions.addGameToCollection(1, 2, 3, 4)).toEqual({
-      type: actions.ADD_GAME_COLLECTION,
-      gameId: 1,
-      collectionId: 2,
-      addGameToCollectionId: 3,
-      removeGameFromCollectionId: 4,
-    });
-  });
-
-  test('removeGameFromCollection', () => {
-    expect(actions.removeGameFromCollection(1, 2, 3, 4, [1,2,3], 5)).toEqual({
-      type: actions.REMOVE_GAME_COLLECTION,
-      gameId: 1,
-      collectionId: 2,
-      addGameToCollectionId: 3,
-      removeGameFromCollectionId: 4,
-      removeGamesFromCollectionArray: [1, 2, 3],
-      removeReviewId: 5,
-    });
-  });
-
-
 });
 
 describe("async action creators", () => {
-  test('getAllCollections creates RECEIVE_COLLECTIONS after fetching collections', () => {
-    const store = mockStore({ games: {} });
+
+  test('getAllReviews creates RECEIVE_REVIEWS after fetching reviews', () => {
+    const store = mockStore({ reviews: {} });
     const expectedActions = [
-      { type: actions.RECEIVE_COLLECTIONS, collections: testReviews.collections, users: testReviews.users}
+      { type: actions.RECEIVE_REVIEWS, reviews: testReviews.reviews, users: testReviews.users}
     ];
-    ApiUtil.getCollections = jest.fn(() => {
+    ApiUtil.getReviews = jest.fn(() => {
       return Promise.resolve(testReviews);
     });
-    return store.dispatch(actions.getAllCollections()).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-  test('getOneCollection creates RECEIVE_ONE_COLLECTION after fetching collection', () => {
-    const store = mockStore({ collections: {} });
-    const expectedActions = [
-      { type: actions.RECEIVE_ONE_COLLECTION, collection: testReview.collection, user: testReview.user, games: testReview.games}
-    ];
-    ApiUtil.getCollection = jest.fn(() => {
-      return Promise.resolve(testReview);
-    });
-    return store.dispatch(actions.getOneCollection(51)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-  test('createCollection creates RECEIVE_ONE_COLLECTION after posting collection', () => {
-    const store = mockStore({ collections: {} });
-    const expectedActions = [
-      { type: actions.RECEIVE_ONE_COLLECTION, collection: testReview.collection, user: testReview.user, games: testReview.games}
-    ];
-    ApiUtil.postCollection = jest.fn(() => {
-      return Promise.resolve(testReview);
-    });
-    return store.dispatch(actions.createCollection(51)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-  test('destroyCollection creates REMOVE_COLLECTION after deleting collection', () => {
-    const store = mockStore({ collections: {} });
-    const expectedActions = [
-      { type: actions.REMOVE_COLLECTION, collection: testReview.collection, }
-    ];
-    ApiUtil.deleteCollection = jest.fn(() => {
-      return Promise.resolve(testReview);
-    });
-    return store.dispatch(actions.destroyCollection(51)).then(() => {
+    return store.dispatch(actions.getAllReviews()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-  test('updateCollection creates RECEIVE_ONE_COLLECTION after updating collection', () => {
-    const store = mockStore({ collections: {} });
+  test('createReview creates RECEIVE_ONE_REVIEW after posting review', () => {
+    const store = mockStore({ reviews: {} });
     const expectedActions = [
-      { type: actions.RECEIVE_ONE_COLLECTION, collection: testReview.collection, user: testReview.user, games: testReview.games }
+      { type: actions.RECEIVE_ONE_REVIEW, review: testReview.review, user: testReview.user, addGameToCollectionId: testReview.to_add, gameId: testReview.review.game_id }
     ];
-    ApiUtil.patchCollection = jest.fn(() => {
+    ApiUtil.postReview = jest.fn(() => {
       return Promise.resolve(testReview);
     });
-    return store.dispatch(actions.updateCollection(51)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    })
-  });
-
-  test('removeGameCollection creates REMOVE_GAME_COLLECTION after removing game from collection', () => {
-    const store = mockStore({ collections: {} });
-    const expectedActions = [
-      {
-        type: actions.REMOVE_GAME_COLLECTION,
-        gameId: 1,
-        collectionId: 2,
-        addGameToCollectionId: 3,
-        removeGameFromCollectionId: 4,
-        removeGamesFromCollectionArray: [1, 2, 3],
-        removeReviewId: 5,
-      }
-    ];
-    ApiUtil.destroyGameCollection = jest.fn((gameId, collectionId) => {
-      return Promise.resolve({
-        gameId,
-        collectionId,
-        addGameToCollectionId: 3,
-        removeGameFromCollectionId: 4,
-        removeGamesFromCollectionArray: [1, 2, 3],
-        removeReviewId: 5,
-      });
-    });
-    return store.dispatch(actions.removeGameCollection(1, 2)).then(() => {
+    return store.dispatch(actions.createReview()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-  test('addGameCollection creates ADD_GAME_COLLECTION after adding game to collection', () => {
-    const store = mockStore({ collections: {} });
+  test('destroyReview creates REMOVE_REVIEW after deleting review', () => {
+    const store = mockStore({ reviews: {} });
     const expectedActions = [
-      {
-        type: actions.ADD_GAME_COLLECTION,
-        gameId: 1,
-        collectionId: 2,
-        addGameToCollectionId: 3,
-        removeGameFromCollectionId: 4,
-      }
+      { type: actions.REMOVE_REVIEW, review: testReview.review, }
     ];
-    ApiUtil.createGameCollection = jest.fn((gameId, collectionId) => {
-      return Promise.resolve({
-        gameId,
-        collectionId,
-        addGameToCollectionId: 3,
-        removeGameFromCollectionId: 4,
-      });
+    ApiUtil.deleteReview = jest.fn(() => {
+      return Promise.resolve(testReview);
     });
-    return store.dispatch(actions.addGameCollection(1, 2)).then(() => {
+    return store.dispatch(actions.destroyReview()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  test('updateReview creates RECEIVE_ONE_REVIEW after updating review', () => {
+    const store = mockStore({ reviews: {} });
+    const expectedActions = [
+      { type: actions.RECEIVE_ONE_REVIEW, review: testReview.review, user: testReview.user, addGameToCollectionId: testReview.to_add, gameId: testReview.review.game_id }
+    ];
+    ApiUtil.patchReview = jest.fn(() => {
+      return Promise.resolve(testReview);
+    });
+    return store.dispatch(actions.updateReview()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

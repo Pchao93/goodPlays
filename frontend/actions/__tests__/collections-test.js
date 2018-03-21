@@ -77,7 +77,7 @@ describe("simple action creators", () => {
 
 describe("async action creators", () => {
   test('getAllCollections creates RECEIVE_COLLECTIONS after fetching collections', () => {
-    const store = mockStore({ games: {} });
+    const store = mockStore({ collections: {} });
     const expectedActions = [
       { type: actions.RECEIVE_COLLECTIONS, collections: testCollections.collections, users: testCollections.users}
     ];

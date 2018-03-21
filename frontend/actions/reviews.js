@@ -12,7 +12,7 @@ export const REMOVE_REVIEW = "REMOVE_REVIEW";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
 export const CLEAR_REVIEW_ERRORS = "CLEAR_REVIEW_ERRORS";
 
-const receiveOneReview = jsonObj => ({
+export const receiveOneReview = jsonObj => ({
   type: RECEIVE_ONE_REVIEW,
   review: jsonObj.review,
   // game: jsonObj.game,
@@ -21,7 +21,7 @@ const receiveOneReview = jsonObj => ({
   gameId: jsonObj.review.game_id
 });
 
-const receiveReviews = jsonObj => ({
+export const receiveReviews = jsonObj => ({
   type: RECEIVE_REVIEWS,
   reviews: jsonObj.reviews,
   games: jsonObj.games,
@@ -29,12 +29,12 @@ const receiveReviews = jsonObj => ({
 
 });
 
-const removeReview = review => ({
+export const removeReview = review => ({
   type: REMOVE_REVIEW,
   review: review.review
 });
 
-const receiveReviewErrors = errors => ({
+export const receiveReviewErrors = errors => ({
   type: RECEIVE_REVIEW_ERRORS,
   errors
 });
