@@ -4,12 +4,12 @@ import Session from './session';
 
 const mapStateToProps = (state, ownProps) => {
   let errors = state.errors.session;
-  let type = 'signup';
+  let sessionAction = 'signup';
   if (ownProps.sessionAction === 'login') {
-    type = 'login';
+    sessionAction = 'login';
   }
   return ({
-    type,
+    sessionAction,
     errors
   });
 };
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     action,
     clearSessionErrors: () => dispatch(clearSessionErrors()),
     login: formUser => (dispatch(login(formUser))),
-    signup: formUser => dispatch(createNewUser(formUser)),   
+    signup: formUser => dispatch(createNewUser(formUser)),
 
   });
 };

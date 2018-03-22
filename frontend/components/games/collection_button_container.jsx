@@ -11,7 +11,9 @@ const mapStateToProps = (state, ownProps) => {
   let collections;
   let defaultCollection = undefined;
   if (currentUser) {
-    currentUser = state.entities.users[state.session.currentUser.id];
+    if (state.entities.users[state.session.currentUser.id]) {
+      currentUser = state.entities.users[state.session.currentUser.id];
+    }
     collections = [];
     Object.values(state.entities.collections)
       .forEach(collectionListItem => {

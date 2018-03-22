@@ -23,6 +23,8 @@
     "babel": "^6.23.0",
     "babel-jest": "^23.0.0-alpha.0",
     "babel-preset-env": "^1.6.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^22.4.2",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.1"
@@ -53,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/Pchao93/goodgames/issues"
   },
-  "homepage": "https://github.com/Pchao93/goodgames#readme"
+  "homepage": "https://github.com/Pchao93/goodgames#readme",
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/frontend/setupEnzymeAdapter.js"
+  }
 }
