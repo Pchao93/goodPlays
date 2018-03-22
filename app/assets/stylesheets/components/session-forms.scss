@@ -23,6 +23,8 @@
 
 }
 
+
+
 div.logo-container {
   display: flex;
   align-items: center;
@@ -140,6 +142,28 @@ div.logo:hover {
   background: rgba(75,54,124,0.4);
 
   z-index: 100;
+}
+
+@media screen and (max-width: 500px) {
+  .session-form-modal {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .session-form-background .close-form-button a {
+    display: none;
+  }
+
+  .session-form-background {
+    background: rgba(0,0,0,0);
+
+  }
+
 }
 
 .error-container {
