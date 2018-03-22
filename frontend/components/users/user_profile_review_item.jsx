@@ -8,10 +8,10 @@ const UserProfileReviewListItem = ({review, user, game}) => (
   <div className='review-heading'>
     <div className='review-heading-left'>
       <span
-        
+
         className='user-review-username'>
           {user && user.username}
-        </span> rated <Link
+        </span><span className="rated"> rated</span> <Link
           to={`/games/${game.id}`}
           className='review-username game-link'> {game.title}</Link>
         <ScoreStars disableScore={true} score={review.rating}/>

@@ -278,7 +278,8 @@ a.logo {
   align-items: center;
   line-height: 1;
   height: 50px;
-  width: 240px;
+  width: 100%;
+  min-width: 240px;
   // padding: 10px 0;
   transition: height .2s ease-out;
 }

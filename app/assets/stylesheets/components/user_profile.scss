@@ -191,3 +191,55 @@
   box-sizing: border-box;
   position: relative;
 }
+
+@media screen and (max-width: 500px) {
+  .user-profile-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .user-profile-information {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-details {
+    padding-left: 0px;
+  }
+
+  .collection-game-ribbon {
+    overflow: scroll;
+  }
+
+  .user-review-username {
+    display: none;
+  }
+
+  .elipses-button {
+    font-size: 16px;
+    min-width: 50px;
+  }
+
+  .rated {
+    display: none;
+  }
+
+  .review-date {
+    display: none;
+  }
+
+  .game-link {
+    margin-left: 0px;
+    white-space: normal;
+  }
+
+  .review-heading-left {
+    align-items: flex-start;
+  }
+
+  .user-review {
+    width: inherit;
+
+  }
+}
