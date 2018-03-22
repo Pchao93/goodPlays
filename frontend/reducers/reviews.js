@@ -5,6 +5,7 @@ import {
 } from '../actions/reviews';
 import {
   LOGOUT_CURRENT_USER,
+  RECEIVE_CURRENT_USER,
 } from '../actions/session';
 import {
   RECEIVE_ONE_GAME,
@@ -29,6 +30,8 @@ export default (state = {}, action) => {
       newState[action.review.id] = action.review;
       return newState;
     case RECEIVE_REVIEWS:
+      return merge({}, state, action.reviews);
+    case RECEIVE_CURRENT_USER:
       return merge({}, state, action.reviews);
     case REMOVE_REVIEW:
       newState = merge({}, state);

@@ -73,8 +73,7 @@
   height: 40px;
   color: #fff;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  
   border-radius: 0 5px 5px 0;
 
 }
@@ -187,7 +186,7 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-
+  margin: 0 auto;
   border-top: 12px solid #fff;
 }
 

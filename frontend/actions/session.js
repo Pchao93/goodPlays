@@ -7,9 +7,10 @@ export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 export const CLOSE_SESSION_FORM = 'CLOSE_SESSION_FORM';
 export const OPEN_SESSION_FORM = 'OPEN_SESSION_FORM';
 
-const receiveCurrentUser = user => ({
+const receiveCurrentUser = jsonObj => ({
   type: RECEIVE_CURRENT_USER,
-  user,
+  user: jsonObj.users,
+  reviews: jsonObj.reviews,
 });
 
 const logoutCurrentUser = () => ({
@@ -34,14 +35,16 @@ export const closeSessionForm = () => ({
 });
 
 export const createNewUser = formUser => dispatch => postUser(formUser)
-  .then(user => {
-    dispatch(receiveCurrentUser(user));
+  .then(jsonObj => {
+    console.log(jsonObj);
+    dispatch(receiveCurrentUser(jsonObj));
     dispatch(closeSessionForm());
   }, errors => dispatch(receiveSessionErrors(errors)));
 
 export const login = formUser => dispatch => postSession(formUser)
-  .then(user => {
-    dispatch(receiveCurrentUser(user));
+  .then(jsonObj => {
+    console.log(jsonObj);
+    dispatch(receiveCurrentUser(jsonObj));
     dispatch(closeSessionForm());
   }, errors => dispatch(receiveSessionErrors(errors)));
 
