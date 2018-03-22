@@ -7,6 +7,8 @@
 
 }
 
+
+
 .game-show-container .game-cover-art {
   width: 240px;
   height: 320px;
@@ -27,7 +29,29 @@
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 500px) {
+  .game-show-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px;
 
+  }
+
+  .game-info-container {
+    flex-direction: column;
+    box-sizing: border-box;
+    width: inherit;
+  }
+
+  .game-show-container .game-cover-art {
+    width: 100%;
+    height: auto;
+  }
+
+  .show-plus-streams {
+    display: block;
+  }
+}
 
 .collection-button {
   margin-top: 5px;
@@ -73,7 +97,7 @@
   height: 40px;
   color: #fff;
   box-sizing: border-box;
-  
+
   border-radius: 0 5px 5px 0;
 
 }

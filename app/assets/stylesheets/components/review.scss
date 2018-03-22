@@ -29,6 +29,25 @@
   border-bottom: 1px solid $border-purple;
   width: 765px;
 }
+
+@media screen and (max-width: 500px) {
+  .review {
+    width: inherit;
+  }
+
+  .review-container-title {
+    width: inherit;
+  }
+
+  .rated-it {
+    display: none;
+  }
+
+  .review-date {
+    display: none;
+  }
+}
+
 .review-heading {
   display: flex; display: -webkit-flex;
   justify-content: space-between;

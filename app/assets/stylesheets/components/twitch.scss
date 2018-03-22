@@ -57,3 +57,26 @@
 .no-stream-link:hover {
   color: $border-purple;
 }
+
+@media screen and (max-width: 500px) {
+
+  .stream-display-list {
+    width: 100%;
+    overflow: hidden;
+    margin-left: 0px;
+    box-sizing: border-box;
+
+  }
+
+  .stream-header {
+    width: 100%;
+  }
+
+  .twitch-list-item {
+    width: 100%;
+  }
+
+  .show-plus-streams {
+    display: block;
+  }
+}

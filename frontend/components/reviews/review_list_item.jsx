@@ -16,7 +16,7 @@ const ReviewListItem = ({review, user, currentUser, handleEdit, destroyReview}) 
         to={`/users/${user.id}`}
         className='review-username'>
           {user && user.username}
-        </Link> rated it
+        </Link> <span className="rated-it">rated it</span>
         <ScoreStars disableScore={true} score={review.rating}/>
 
       </div>
