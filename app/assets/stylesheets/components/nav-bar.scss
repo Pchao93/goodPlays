@@ -1,3 +1,5 @@
+
+
 nav {
   position: fixed;
   background: $purple-main;
@@ -14,6 +16,8 @@ nav {
   width: 100%;
   z-index: 1000;
 }
+
+
 
 .left-nav {
   display: flex;
@@ -77,6 +81,7 @@ a.logo {
   box-shadow: 0 0 6px 0 $border-purple, inset 0 0 0 1px $border-purple;
   box-sizing: border-box;
 }
+
 
 .search {
   line-height: 1;
@@ -142,6 +147,25 @@ a.logo {
   // box-sizing: border-box;
   // justify-content: flex-end;
 }
+
+@media screen and (max-width: 500px) {
+  nav {
+    // height: 100px;
+  }
+
+  .search-container {
+    display: none;
+  }
+
+  .nav-button-list {
+    display: none;
+  }
+
+  .user-info{
+    width: initial;
+  }
+}
+
 
 .user-info:focus {
   border: 1px solid $purple-main;

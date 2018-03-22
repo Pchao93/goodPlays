@@ -36,6 +36,7 @@ class ReviewButton extends React.Component {
   }
 
   handleClick(e) {
+    e.persist();
     let id;
     if (!this.props.currentUser) {
       this.props.receiveSessionErrors({responseJSON: ["You must be signed in to review a game."]});
@@ -44,15 +45,16 @@ class ReviewButton extends React.Component {
       if (this.props.review) {
         id = this.props.review.id;
       }
+
       this.action({
-        rating: this.state.rating,
+        rating: e.currentTarget.getAttribute('data'),
         id
       }).then(() => {
         if (this.props.openForm) {
           this.props.openForm(e);
         }
         this.setState({
-          rating: this.state.rating
+          rating: e.currentTarget.getAttribute('data')
         });
       });
     }

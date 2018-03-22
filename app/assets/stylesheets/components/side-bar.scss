@@ -1,3 +1,9 @@
+@media screen and (max-width: 500px) {
+  .side-bar {
+    display: none;
+  }
+}
+
 .side-bar {
   width: 240px;
   top: 50px;
