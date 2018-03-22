@@ -46,6 +46,11 @@
   .review-date {
     display: none;
   }
+
+  .review-body {
+    max-height: 200px;
+    overflow: scroll;
+  }
 }
 
 .review-heading {
