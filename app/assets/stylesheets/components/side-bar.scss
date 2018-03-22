@@ -40,7 +40,7 @@
 }
 
 .side-bar .collections-list a {
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
   // flex-wrap: wrap;
@@ -57,7 +57,7 @@
 
 // .side-bar .collections-list li:first-of-type {
 //   font-weight: 700;
-//   display: flex;
+//   display: flex; display: -webkit-flex;
 //   justify-content: space-between;
 //   align-items: center;
 // }
@@ -81,7 +81,7 @@
 }
 
 .new-collection-form {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 }
 
@@ -162,7 +162,7 @@ div.collection-input input:focus {
   width: 30px;
   height: 30px;
   z-index: 3;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   font-size: 30px;
   line-height: .8;
@@ -206,7 +206,7 @@ div.collection-input input:focus {
   padding: 0 10px;
 }
 .side-bar .friends-list a {
-  display: flex;
+  display: flex; display: -webkit-flex;
   // justify-content: space-between;
   align-items: center;
   // flex-wrap: wrap;

@@ -1,6 +1,6 @@
 .game-show-container {
   width: 765px;
-  // display: flex;
+  // display: flex; display: -webkit-flex;
   padding: 30px;
   height: 100%;
   overflow: visible;
@@ -14,7 +14,7 @@
 }
 
 .game-info-container {
-  display: flex;
+  display: flex; display: -webkit-flex;
   background: #fff;
   padding: 20px;
   width: 725px;
@@ -35,7 +35,7 @@
   width: calc(100%);
   height: 40px;
   background: $button-purple;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   box-sizing: border-box;
   justify-content: center;
@@ -127,7 +127,7 @@
     height: 30px;
     transition: height .1s ease-in, padding .1s ease-in;
     // transition-delay: .1s;
-    display: flex;
+    display: flex; display: -webkit-flex;
     // align-items: center;
     // justify-content: space-between;
     flex-shrink: 0;
@@ -214,7 +214,7 @@
 
 .rating-button {
   color: #19171c;
-  display: flex;
+  display: flex; display: -webkit-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -229,7 +229,7 @@
 .rating-stars {
   margin: 0 auto;
 
-  display: flex;
+  display: flex; display: -webkit-flex;
   cursor: pointer;
 
 }
@@ -245,7 +245,7 @@
 
 
 .game-info-header {
-  display: flex;
+  display: flex; display: -webkit-flex;
   flex-direction: column;
   margin-left: 20px;
   // margin-bottom: 10px;
@@ -256,7 +256,7 @@
   font-size: 14px;
 }
 .score-stars {
-  display: flex;
+  display: flex; display: -webkit-flex;
 }
 
 .score-stars .star {
@@ -280,14 +280,14 @@
 }
 
 .stats {
-  display: flex;
+  display: flex; display: -webkit-flex;
 }
 .stats-top-row {
   margin-right: 20px;
 }
 
 .platform-badges {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 
   margin-bottom: 10px;
@@ -310,7 +310,7 @@
   color: #fff;
   background: $button-purple;
   margin-left: 5px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   align-items: center;
   font-size: 10px;

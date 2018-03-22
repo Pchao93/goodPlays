@@ -4,7 +4,7 @@ nav {
   position: fixed;
   background: $purple-main;
   height: 50px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 100px;
@@ -20,7 +20,7 @@ nav {
 
 
 .left-nav {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   height: 50px;
 }
@@ -52,7 +52,7 @@ a.logo {
 }
 
 .nav-button-list {
-  display: flex;
+  display: flex; display: -webkit-flex;
   width: 400px;
 }
 
@@ -61,7 +61,7 @@ a.logo {
   color: #b8b5c0;
   padding: 0 15px;
   height: 50px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 
 
@@ -76,7 +76,7 @@ a.logo {
   background: #fff;
   height: 30px;
   width: 400px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   box-shadow: 0 0 6px 0 $border-purple, inset 0 0 0 1px $border-purple;
   box-sizing: border-box;
@@ -99,7 +99,7 @@ a.logo {
 .icon-div {
   width: 25px;
   height: 25px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   align-items: center;
   margin: 4px;
@@ -119,7 +119,7 @@ a.logo {
 }
 
 .session-controls div {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 
 }
@@ -131,7 +131,7 @@ a.logo {
 
 .session-controls {
   height: 50px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   // justify-content: flex-end;
 }
@@ -141,7 +141,7 @@ a.logo {
 .user-info {
   width: 220px;
   height: 30px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   padding: 10px;
   // box-sizing: border-box;
@@ -184,7 +184,7 @@ a.logo {
 
 .user-info button{
   // margin: 0 20px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   height: 30px;
   padding-left: 20px;
@@ -199,7 +199,7 @@ a.logo {
 
 .user-info li a{
   // margin: 0 20px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   height: 30px;
   padding-left: 20px;
@@ -274,7 +274,7 @@ a.logo {
 }
 
 .user-info li{
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   line-height: 1;
   height: 50px;

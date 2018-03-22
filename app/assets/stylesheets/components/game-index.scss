@@ -21,7 +21,7 @@
 }
 
 .game-index-title {
-  display: flex;
+  display: flex; display: -webkit-flex;
   // align-items: center;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .game-index-header {
-  display: flex;
+  display: flex; display: -webkit-flex;
   flex-direction: column;
   justify-content: space-between;
 
@@ -124,7 +124,7 @@
 
 
 .game-index-list {
-  display: flex;
+  display: flex; display: -webkit-flex;
   flex-wrap: wrap;
   padding-bottom: 100px;
 
@@ -139,13 +139,13 @@
   font-size: 18px;
   font-weight: 400;
   color: #19171c;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   justify-content: center;
 }
 
 .game-index-list .game-index-item .review_button {
-  display: flex;
+  display: flex; display: -webkit-flex;
   background: black;
 }
 
@@ -153,7 +153,7 @@
   // background: black;
 }
 .game-index-list .game-index-item .review_button .rating-stars {
-  display: flex;
+  display: flex; display: -webkit-flex;
   background: black;
 }
 
@@ -216,7 +216,7 @@ a.empty-index-message:hover {
   .game-index-container .game-list-item {
     width: 100%;
     height: inherit;
-    display: flex;
+    display: flex; display: -webkit-flex;
     flex-direction: column;
   }
 }

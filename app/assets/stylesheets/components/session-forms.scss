@@ -6,7 +6,7 @@
   top: 0px;
   bottom: 0px;
   position: fixed;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
@@ -26,7 +26,7 @@
 
 
 div.logo-container {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   // justify-content: center;
   margin-bottom: 30px;
@@ -46,7 +46,7 @@ div.logo:hover {
 }
 
 .tabs {
-  display: flex;
+  display: flex; display: -webkit-flex;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
 }
@@ -121,7 +121,7 @@ div.logo:hover {
   margin-top: 20px;
   border-top: 1px solid #dad8de;
   padding-top: 20px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   align-items: center;
 }
@@ -132,7 +132,7 @@ div.logo:hover {
   font-size: 20px;
   height: 28px;
   width: 28px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   align-items: center;
   font-family: arial;

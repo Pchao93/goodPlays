@@ -30,11 +30,11 @@
   width: 765px;
 }
 .review-heading {
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: space-between;
 }
 .review-heading-left {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: flex-end;
   font-size: 18px;
   margin-bottom: 10px;
@@ -68,7 +68,7 @@
 }
 
 .review-controls {
-  display: flex;
+  display: flex; display: -webkit-flex;
   margin-right: 20px;
   font-size: 14px;
   height: 28px;

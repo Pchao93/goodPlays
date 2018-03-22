@@ -94,7 +94,7 @@ body {
 
 /* line 18, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/base/layout.scss */
 .btn {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   height: 28px;
   padding: 0 9px;
@@ -176,14 +176,14 @@ with a class attribute containing 'col-' */
 nav {
   background: #4b367c;
   height: 50px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* line 9, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/nav-bar.scss */
 .left-nav {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 }
 
@@ -204,7 +204,7 @@ nav {
 
 /* line 26, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/nav-bar.scss */
 .nav-button-list {
-  display: flex;
+  display: flex; display: -webkit-flex;
   width: 400px;
 }
 
@@ -220,7 +220,7 @@ nav {
   background: #fff;
   height: 30px;
   width: 400px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   box-shadow: 0 0 6px 0 #7d5bbe, inset 0 0 0 1px #7d5bbe;
   box-sizing: border-box;
@@ -244,7 +244,7 @@ nav {
 .icon-div {
   width: 25px;
   height: 25px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   justify-content: center;
   align-items: center;
   margin: 4px;
@@ -266,7 +266,7 @@ nav {
 
 /* line 83, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/nav-bar.scss */
 .session-controls div {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 }
 
@@ -278,7 +278,7 @@ nav {
 /* line 94, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/nav-bar.scss */
 .session-controls {
   height: 50px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
 }
 
@@ -286,7 +286,7 @@ nav {
 .user-info {
   width: 220px;
   height: 30px;
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   padding: 10px;
 }
@@ -324,7 +324,7 @@ nav {
 
 /* line 140, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/nav-bar.scss */
 .user-info button {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   height: 30px;
   padding-left: 20px;
@@ -340,7 +340,7 @@ nav {
 
 /* line 159, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/nav-bar.scss */
 .user-info li {
-  display: flex;
+  display: flex; display: -webkit-flex;
   align-items: center;
   line-height: 1;
   width: 240px;
@@ -375,7 +375,7 @@ nav {
 
 /* line 20, /Users/patrick/Desktop/Fullstack/goodgames/app/assets/stylesheets/components/session-forms.scss */
 .tabs {
-  display: flex;
+  display: flex; display: -webkit-flex;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
 }

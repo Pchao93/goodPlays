@@ -24,7 +24,7 @@
   text-shadow: 1px 1px #000;
   left: 15vw;
   height: 100%;
-  display: flex;
+  display: flex; display: -webkit-flex;
   flex-direction: column;
   justify-content: space-around;
   width: 70%;
@@ -74,7 +74,7 @@
 }
 
 .first-mini-game-list {
-  display: flex;
+  display: flex; display: -webkit-flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: center;
