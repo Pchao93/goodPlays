@@ -61,7 +61,7 @@
 
 .game-show-link {
   display: block;
-  
+
 }
 
 .game-show-link:hover {
@@ -97,7 +97,7 @@
   // right: 0;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .game-index-container .game-list-item .game-title-container {
 
     // top: 38vw;
@@ -212,11 +212,29 @@ a.empty-index-message:hover {
     to   { opacity: 1; }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1200px) and (min-width: 650px) {
+  .game-index-container .game-list-item {
+    width: 30%;
+    min-width: 150px;
+    max-width: 240px;
+    height: inherit;
+    display: flex; display: -webkit-flex;
+    flex-direction: column;
+    margin-right: 2.5%;
+
+
+
+  }
+}
+
+@media screen and (max-width: 650px) {
   .game-index-container .game-list-item {
     width: 100%;
     height: inherit;
     display: flex; display: -webkit-flex;
     flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+
   }
 }

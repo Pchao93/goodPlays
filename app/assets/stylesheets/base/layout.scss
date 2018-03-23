@@ -34,6 +34,7 @@ body {
   background: $button-purple;
   color: #fff;
   margin-right: 10px;
+	min-width: 42px;
 }
 
 .btn:hover {
@@ -55,7 +56,7 @@ body {
 
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 650px) {
 	#root {
 		left: 0px;
 		// top: 100px;

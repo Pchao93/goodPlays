@@ -242,7 +242,22 @@ a.logo {
 
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1200px) and (min-width: 651px) {
+  .search-container {
+    width: 25vw;
+  }
+
+  .nav-button-list {
+    width: inherit;
+    min-width: 233px;
+  }
+
+  .nav-button-list li a {
+    padding: 0 1vw;
+  }
+}
+
+@media screen and (max-width: 650px) {
   .user-info .user-dropdown {
     position: fixed;
     left: 0;

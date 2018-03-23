@@ -123,3 +123,76 @@
 
 
 }
+
+@media screen and (max-width: 650px) {
+  .splash-page-container {
+    left: 0px;
+  }
+
+  .splash-text-container {
+
+    font-size: 16px;
+    width: 100%;
+    left: 0px;
+  }
+
+  .splash-text {
+    margin-left: 5vw;
+    color: $background-gray;
+    // margin-bottom: 15%;
+  }
+
+  .splash-text:nth-of-type(2) {
+    margin-left: 35vw;
+    // background: black;
+  }
+
+  .splash-text:nth-of-type(3) {
+    margin-left: 65vw;
+
+  }
+
+  .splash-text:nth-of-type(4) {
+    margin-left: 35vw;
+  }
+
+  .splash-image {
+    width: 100%;
+  }
+
+  .splash-text.btn {
+    height: 5vh;
+    margin: 0 auto;
+    font-size: 16px;
+    min-width: 80px;
+
+  }
+
+  .mini-game-index-container {
+    width: 95%;
+  }
+
+  .list-header {
+    font-size: 24px;
+  }
+
+  .mini-game {
+    min-width: 150px;
+    margin-right: 4px;
+  }
+
+  .mini-game-title {
+    font-size: 14px;
+    height: inherit;
+  }
+
+  .first-mini-game-list {
+    width: 95vw;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .mini-game {
+    margin-right: 2px;
+  }
+}

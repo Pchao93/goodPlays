@@ -142,10 +142,12 @@
 .elipses-button {
   display: flex; display: -webkit-flex;
   align-items:center;
-  font-size: 1.15vw;
+
   color: $button-purple;
   margin-left: 1vw;
-  width: 100px
+  width: 100px;
+  font-size: 16px;
+  min-width: 75px;
 
 }
 
@@ -192,40 +194,36 @@
   position: relative;
 }
 
-@media screen and (max-width: 500px) {
-  .user-profile-container {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .user-profile-information {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .profile-details {
-    padding-left: 0px;
-  }
-
+@media screen and (min-width: 651px) and (max-width: 1200px) {
   .collection-game-ribbon {
     overflow: scroll;
   }
 
-  .user-review-username {
-    display: none;
+  .user-review {
+    width: calc(100%);
   }
 
-  .elipses-button {
-    font-size: 16px;
-    min-width: 50px;
+  .user-profile-container {
+    width: calc(100vw - 300px);
   }
+
+  .review-container {
+    width: inherit;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
 
   .rated {
     display: none;
   }
 
   .review-date {
+    display: none;
+  }
+
+  .user-review-username {
     display: none;
   }
 
@@ -238,8 +236,47 @@
     align-items: flex-start;
   }
 
+}
+
+@media screen and (max-width: 650px) {
+  .user-profile-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .profile-info-left {
+    margin-bottom: 20px;
+  }
+
+  .user-profile-information {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-details {
+    padding-left: 0px;
+  }
+
   .user-review {
     width: inherit;
 
+  }
+
+  .collection-game-ribbon {
+    overflow: scroll;
+  }
+
+
+
+}
+
+@media screen and (max-width: 350px) {
+  .review-heading-left {
+    display: block;
+  }
+
+  .review-heading-left .score-stars {
+    margin-left: 0px;
   }
 }

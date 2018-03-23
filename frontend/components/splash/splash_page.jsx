@@ -12,7 +12,7 @@ class SplashPage extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    
+
     this.props.openSessionForm();
   }
   render(){
@@ -33,18 +33,18 @@ class SplashPage extends React.Component {
           <div className="splash-text-container">
 
             <div className="splash-text">
-              Find Games...
+              Find Games
             </div>
 
             <div className="splash-text">
 
-              Collect Games...
+              Collect Games
             </div>
 
 
             <div className="splash-text">
 
-              Review Games...
+              Review Games
             </div>
 
 

@@ -58,14 +58,24 @@
   color: $border-purple;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1600px) {
+  .show-plus-streams {
+    display: block;
+  }
+
+  .stream-display-list {
+    margin-top: 0px;
+    
+  }
+}
+
+@media screen and (max-width: 650px) {
 
   .stream-display-list {
     width: 100%;
     overflow: hidden;
     margin-left: 0px;
     box-sizing: border-box;
-
   }
 
   .stream-header {
@@ -76,7 +86,5 @@
     width: 100%;
   }
 
-  .show-plus-streams {
-    display: block;
-  }
+
 }

@@ -30,7 +30,7 @@
   width: 765px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 651px) and (max-width: 1200px) {
   .review {
     width: inherit;
   }
@@ -39,6 +39,16 @@
     width: inherit;
   }
 
+  .review-container {
+    width: calc(100vw - 260px);
+    margin-left: 10px;
+
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+
   .rated-it {
     display: none;
   }
@@ -46,6 +56,19 @@
   .review-date {
     display: none;
   }
+
+}
+
+@media screen and (max-width: 650px) {
+  .review {
+    width: inherit;
+  }
+
+  .review-container-title {
+    width: inherit;
+  }
+
+
 
   .review-body {
     max-height: 200px;
