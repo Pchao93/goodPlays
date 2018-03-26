@@ -53,9 +53,7 @@ class ReviewButton extends React.Component {
         if (this.props.openForm) {
           this.props.openForm(e);
         }
-        this.setState({
-          rating: e.currentTarget.getAttribute('data')
-        });
+
       });
     }
   }
