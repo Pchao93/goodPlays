@@ -8,12 +8,19 @@ class SplashPage extends React.Component {
     super(props);
     this.props.getAllGames();
     this.handleClick = this.handleClick.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
+
   }
 
   handleClick(e) {
     e.preventDefault();
 
     this.props.openSessionForm();
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.login({username: 'demo', password: 'password'});
   }
   render(){
 
@@ -47,12 +54,18 @@ class SplashPage extends React.Component {
               Review Games
             </div>
 
+            <div className="splash-text-buttons">
+              <div
+                onClick={this.handleClick}
+                className="splash-text btn">
+                Sign Up
+              </div>
+              <div
+                onClick={this.handleDemo}
+                className="splash-text btn">
 
-            <div
-              onClick={this.handleClick}
-              className="splash-text btn">
-
-              Sign Up
+                Demo
+              </div>
             </div>
           </div>
 

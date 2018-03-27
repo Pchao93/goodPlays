@@ -24,3 +24,5 @@ export const getAllGames = () => dispatch => getGames()
 
 export const fetchUserGames = (userId) => dispatch => getUserGames(userId)
   .then(games => dispatch(receiveGames(games)));
+
+window.getAllGames = getAllGames;

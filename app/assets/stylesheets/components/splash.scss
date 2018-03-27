@@ -62,6 +62,12 @@
 
 }
 
+.splash-text-buttons {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+}
+
 .splash-text.btn:hover {
   cursor: pointer;
 }
@@ -166,6 +172,9 @@
     font-size: 16px;
     min-width: 80px;
 
+  }
+  .splash-text-buttons {
+    width: 75%;
   }
 
   .mini-game-index-container {
