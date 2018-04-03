@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../../utils/route_utils';
 import SessionContainer from '../session/session_container';
 
