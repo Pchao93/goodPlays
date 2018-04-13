@@ -3,7 +3,7 @@
 
 ![goodPlays Logo](https://s3-us-west-1.amazonaws.com/experience.images/goodPlays+logo.png)
 
-goodPlays is a web application for collecting and rating games. As games have cemented themselves into the popular culture, it is high time for a place to gather enthusiasts across platforms into one community. goodplays aims to provide a proof-of-concept for such an application, providing a clean and modern interface for users to easily browse, search, collect, and rate the games they love (or hate!). This app is inspired by both goodreads and Twitch, sites that bring hobbyist communities together in different ways.
+goodPlays is a web application for collecting and rating games. As games have cemented themselves into the popular culture, it is high time for a place to gather enthusiasts across platforms into one community. goodPlays aims to provide a proof-of-concept for such an application, providing a clean and modern interface for users to easily browse, search, collect, and rate the games they love (or hate!). This app is inspired by both goodreads and Twitch, sites that bring hobbyist communities together in different ways.
 
 ## Contents
 [Features](#features) | [Technologies Used](#technologies-used) | [Highlighted Features](#highlighted-features) | [Project Plan](#project-plan)
@@ -31,6 +31,7 @@ goodPlays is a web application for collecting and rating games. As games have ce
  * Backend
    * Database: PostgreSQL (v 0.18)
    * Cache: Redis
+   * Seeding: BeautifulSoup4 and Selenium
    * Routing, Controllers, and Model: Rails (v 5.1.4)
    * Auth: hand-rolled using BCrypt (v 3.1.7)
  * Frontend
