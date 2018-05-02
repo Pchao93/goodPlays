@@ -51,12 +51,12 @@ describe("simple action creators", () => {
   });
 
   test('addGametoCollection should create an action to add a game to a collection', () => {
-    expect(actions.addGameToCollection(1, 2, 3, 4)).toEqual({
+    expect(actions.addGameToCollection(1, 2, 3, 5)).toEqual({
       type: actions.ADD_GAME_COLLECTION,
       gameId: 1,
       collectionId: 2,
       addGameToCollectionId: 3,
-      removeGameFromCollectionId: 4,
+      removeGameFromCollectionId: 5,
     });
   });
 
