@@ -9,7 +9,8 @@ class CollectionGame < ApplicationRecord
   belongs_to :game
 
 
-  belongs_to :collection
+  belongs_to :collection,
+  touch: true
 
 
   has_one :user,
